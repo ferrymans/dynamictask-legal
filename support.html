@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support — Dynamic Todo (灵动代办)</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "PingFang SC", "Hiragino Sans GB", sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; line-height: 1.65; color: #323343; }
+    h1 { font-size: 28px; margin-bottom: 8px; }
+    h2 { font-size: 22px; margin-top: 40px; padding-bottom: 8px; border-bottom: 1px solid #eee; }
+    h3 { font-size: 17px; margin-top: 24px; }
+    p, li { font-size: 15px; }
+    hr { margin: 48px 0; border: 0; border-top: 1px solid #eee; }
+    a { color: #9290ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { background: #f0f4ff; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+    .meta { color: #8a8aa0; font-size: 13px; margin-bottom: 32px; }
+    .nav { color: #8a8aa0; font-size: 13px; margin-top: 48px; padding-top: 24px; border-top: 1px solid #eee; }
+    .contact-card { background: #f0f4ff; padding: 16px 20px; border-radius: 8px; margin: 16px 0; }
+    .contact-card strong { font-size: 16px; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #17171c; color: #fdfdfd; }
+      h2 { border-bottom-color: #2a2a30; }
+      .nav { border-top-color: #2a2a30; }
+      code, .contact-card { background: #26262e; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Support — Dynamic Todo (灵动代办)</h1>
+  <p class="meta">Last updated: 2026-05-13</p>
+
+  <h2>简体中文</h2>
+
+  <h3>联系我们</h3>
+  <div class="contact-card">
+    <strong>📧 邮件:</strong> <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a><br>
+    一般 1-3 个工作日内回复。
+  </div>
+
+  <h3>常见问题</h3>
+
+  <p><strong>Q:如何取消订阅?</strong></p>
+  <p>iPhone → 设置 → 你的 Apple ID → 订阅 → Dynamic Todo Pro → 取消订阅。试用期内取消不会扣费。</p>
+
+  <p><strong>Q:数据丢失怎么办?</strong></p>
+  <ol>
+    <li>若 iCloud 同步开启,在同一 Apple ID 的另一台设备装 App,数据自动拉回</li>
+    <li>检查 iOS 设置 → Apple ID → iCloud → 灵动代办 是否启用</li>
+    <li>仍未恢复,联系 <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a></li>
+  </ol>
+
+  <p><strong>Q:灵动岛 / Live Activity 不显示?</strong></p>
+  <ol>
+    <li>系统设置 → 灵动代办 → 「允许 Live Activities」是否开启</li>
+    <li>App 内 设置 → 「灵动岛」开关是否打开</li>
+    <li>仅当日有未完成代办或番茄钟正运行时才显示</li>
+    <li>iOS Live Activity 有 ~12 小时上限,App 回前台时会自动重新拉起</li>
+  </ol>
+
+  <p><strong>Q:子任务能同步到 iOS 系统提醒事项吗?</strong></p>
+  <p>不能。iOS 26 EventKit 公开 API 暂不支持真子任务(Apple 内部用 SQLite 关系表实现,未对外暴露)。我们的同步覆盖标题 / 描述 / 日期 / 通知,但不含子任务。</p>
+
+  <p><strong>Q:启动页为什么只显示英文 "Dynamic Todo"?</strong></p>
+  <p>iOS 系统不支持启动页文字本地化(预渲染缓存机制,详见 Apple Developer Forums thread 86567)。所有用户看到的都是英文品牌名,这是 Apple 系统的设计限制。</p>
+
+  <p><strong>Q:iCloud 同步看起来没生效?</strong></p>
+  <ol>
+    <li>确认设备已登录 iCloud 且 iCloud Drive 开启</li>
+    <li>iOS 设置 → Apple ID → iCloud → 灵动代办 开关需启用</li>
+    <li>App 内 设置 页有 iCloud 同步状态指示</li>
+    <li>跨设备同步是异步的,可能 30 秒+ 延迟,大量数据可能数分钟</li>
+  </ol>
+
+  <p><strong>Q:恢复购买在哪?</strong></p>
+  <p>设置 → 订阅开通 → ProSheet 弹窗底部 →「恢复购买」。换设备 / 重装 App / 切 Apple ID 后,从这里拉回历史订阅与永久购买 entitlement。</p>
+
+  <p><strong>Q:家庭共享如何使用?</strong></p>
+  <p>家庭组织者购买永久买断 / 订阅后,在 设置 → Apple ID → 家庭共享 内启用「与家庭共享」。家庭成员的设备会自动激活 Pro,设置页 Pro 徽章显示「家庭共享」。</p>
+
+  <h3>反馈与建议</h3>
+  <p>我们重视每一份反馈。请发邮件至 <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>,主题写「Dynamic Todo 反馈」即可。也可在 App 内 设置 → 反馈问题 直接调起邮件。</p>
+
+  <hr>
+
+  <h2>English</h2>
+
+  <h3>Contact us</h3>
+  <div class="contact-card">
+    <strong>📧 Email:</strong> <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a><br>
+    We typically respond within 1-3 business days.
+  </div>
+
+  <h3>FAQ</h3>
+
+  <p><strong>Q: How do I cancel my subscription?</strong></p>
+  <p>iPhone → Settings → Your Apple ID → Subscriptions → Dynamic Todo Pro → Cancel Subscription. Cancelling during the free trial costs nothing.</p>
+
+  <p><strong>Q: My data is missing — how do I recover it?</strong></p>
+  <ol>
+    <li>If iCloud sync was on, install the app on another device with the same Apple ID — data will pull in automatically.</li>
+    <li>Check iOS Settings → Apple ID → iCloud → Dynamic Todo is enabled.</li>
+    <li>Still missing? Email <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>.</li>
+  </ol>
+
+  <p><strong>Q: Dynamic Island / Live Activity isn't showing.</strong></p>
+  <ol>
+    <li>System Settings → Dynamic Todo → "Allow Live Activities" enabled.</li>
+    <li>In-app Settings → "Dynamic Island" toggle on.</li>
+    <li>Shows only when there's an unfinished todo today or a Pomodoro is running.</li>
+    <li>iOS Live Activity has a ~12-hour limit; the app restarts it when you bring it to the foreground.</li>
+  </ol>
+
+  <p><strong>Q: Can subtasks sync to iOS Reminders?</strong></p>
+  <p>No. iOS 26 EventKit's public API doesn't expose real subtasks (Apple uses internal SQLite relations not exposed externally). Sync covers title, notes, date, and alarm — not subtasks.</p>
+
+  <p><strong>Q: Why is the launch screen always in English?</strong></p>
+  <p>iOS doesn't support launch screen text localization (pre-rendered cache mechanism, see Apple Developer Forums thread 86567). All users see the English brand name — this is an Apple platform limitation.</p>
+
+  <p><strong>Q: iCloud sync doesn't seem to work?</strong></p>
+  <ol>
+    <li>Confirm device is signed in to iCloud with iCloud Drive enabled.</li>
+    <li>iOS Settings → Apple ID → iCloud → Dynamic Todo toggle must be on.</li>
+    <li>In-app Settings page shows iCloud sync status indicator.</li>
+    <li>Cross-device sync is asynchronous — may take 30s+, larger data sets may take minutes.</li>
+  </ol>
+
+  <p><strong>Q: Where is "Restore Purchases"?</strong></p>
+  <p>Settings → Subscribe → ProSheet popup → bottom row "Restore Purchases". Use this after switching devices, reinstalling, or changing Apple ID to recover existing subscriptions and lifetime purchases.</p>
+
+  <p><strong>Q: How does Family Sharing work?</strong></p>
+  <p>The family organizer buys the lifetime / subscription, then enables "Share with Family" via Settings → Apple ID → Family Sharing. Family members' devices auto-activate Pro, and the Settings page Pro badge shows "Family".</p>
+
+  <h3>Feedback &amp; suggestions</h3>
+  <p>We value every piece of feedback. Email <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> with subject "Dynamic Todo Feedback". Or use Settings → Feedback in the app to compose an email directly.</p>
+
+  <p class="nav">← <a href="index.html">Privacy Policy / 隐私政策</a></p>
+</body>
+</html>
