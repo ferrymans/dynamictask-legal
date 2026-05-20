@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>使用说明 — DynamicTask (灵动代办)</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "PingFang SC", "Hiragino Sans GB", sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; line-height: 1.65; color: #323343; }
+    h1 { font-size: 28px; margin-bottom: 8px; }
+    h2 { font-size: 22px; margin-top: 40px; padding-bottom: 8px; border-bottom: 1px solid #eee; }
+    h3 { font-size: 17px; margin-top: 24px; }
+    h4 { font-size: 15px; margin-top: 20px; margin-bottom: 6px; color: #555; }
+    p, li { font-size: 15px; }
+    hr { margin: 48px 0; border: 0; border-top: 1px solid #eee; }
+    a { color: #9290ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { background: #f0f4ff; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 14px; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #eee; }
+    th { background: #f9fbff; font-weight: 600; }
+    .meta { color: #8a8aa0; font-size: 13px; margin-bottom: 32px; }
+    .nav { color: #8a8aa0; font-size: 13px; margin-top: 48px; padding-top: 24px; border-top: 1px solid #eee; }
+    .lead { font-size: 16px; color: #4a4a5a; margin: 16px 0 24px; }
+    .layer-card { background: #f0f4ff; padding: 14px 18px; border-radius: 8px; margin: 10px 0; }
+    .layer-card strong { font-size: 16px; color: #323343; }
+    .tip { background: #f9fbff; border-left: 3px solid #9290ff; padding: 10px 14px; margin: 16px 0; font-size: 14px; color: #555; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #17171c; color: #fdfdfd; }
+      h2 { border-bottom-color: #2a2a30; }
+      h4 { color: #b8b8c8; }
+      .nav { border-top-color: #2a2a30; }
+      table th, td { border-bottom-color: #2a2a30; }
+      th { background: #1e1e26; }
+      code, .layer-card, .tip { background: #26262e; }
+      .layer-card strong { color: #fdfdfd; }
+      .tip { color: #b8b8c8; }
+      .lead { color: #c8c8d6; }
+    }
+  </style>
+</head>
+<body>
+  <h1>使用说明 — DynamicTask (灵动代办)</h1>
+  <p class="meta">Last updated: 2026-05-20</p>
+
+  <h2>简体中文</h2>
+
+  <p class="lead">5 分钟上手「灵动代办」 —— 理解核心理念、四层模型与主要功能。</p>
+
+  <h3>这不是又一个 todo list</h3>
+  <p>「灵动代办」的核心理念是:<strong>让代办从「任务清单」升级为「人生四层模型」</strong>。</p>
+  <p>普通代办 App 让你写下"今天要做什么";灵动代办让你想清楚:</p>
+  <ul>
+    <li><strong>维度</strong>:我的人生分几个区?(重要/紧急四象限,或自定义)</li>
+    <li><strong>目标</strong>:我想达成什么?(读书 / 健身 / 学一门乐器)</li>
+    <li><strong>计划</strong>:为达成目标,我要做哪些事?(每周 3 次力量训练)</li>
+    <li><strong>代办</strong>:今天具体要做哪一步?(卧推 4×8)</li>
+  </ul>
+  <p>加上这套结构,你的代办不再是堆砌清单,而是<strong>清晰的人生路径</strong>。</p>
+
+  <h3>四层概念详解</h3>
+
+  <div class="layer-card">
+    <strong>1. 维度 (Dimension)</strong> — 人生参考系。<br>
+    系统默认 4 个(基于 Eisenhower 矩阵):重要程度高 / 重要程度低 / 紧迫程度高 / 紧迫程度低。可在「新增目标」sheet 里自定义维度(选颜色 + 起名)。每个目标可绑多个维度。
+  </div>
+
+  <div class="layer-card">
+    <strong>2. 目标 (Goal)</strong> — 你想完成的事。<br>
+    例:"考上注册建筑师"、"读完 30 本书"、"学会弹《加州旅馆》"。每个目标绑一种<strong>颜色</strong>(11 种预设 + 系统色板自定义),颜色会沿着层级染色到下面的代办;必须绑至少一个维度。系统初始有「默认目标」(绑「重要程度高 + 紧迫程度高」),便于不想分类的用户直接用。
+  </div>
+
+  <div class="layer-card">
+    <strong>3. 计划 (Plan)</strong> — 为目标要做的事。<br>
+    例:目标"读完 30 本书"下的计划 = "每月 2 本经典文学"。每个计划有<strong>图标</strong>(从 800+ 图标库选)和<strong>完成标准</strong>(自由文本)。计划本身不是代办 —— 你做的是计划下的代办。
+  </div>
+
+  <div class="layer-card">
+    <strong>4. 代办 (Todo)</strong> — 可执行动作。<br>
+    例:计划"每月 2 本经典文学"下的代办 = "《百年孤独》第三章"。必须归属一个计划;可加 1-4 个<strong>子任务</strong>;可加<strong>代办时间</strong>(开始 / 结束时段,圆环可拖动)。完成后会有满足感的微动画。
+  </div>
+
+  <h3>主要界面</h3>
+
+  <h4>首页(代办)</h4>
+  <p>底部胶囊导航第 1 个 tab,默认入口。今日的代办按 <strong>置顶 → 进行中 → 已完成</strong> 三段分组。</p>
+  <ul>
+    <li><strong>下拉手势</strong>:依次切换 列表 → 周日历 → 月日历</li>
+    <li><strong>左上角日历图标</strong>:点击切换同上三态</li>
+    <li><strong>历史日期规则</strong>:昨日及更早未完成的代办自动迁移到今日;查看历史日期只能看已完成</li>
+    <li><strong>代办行交互</strong>:点击行 → 编辑 sheet;点击右侧圆环 → 勾选完成;<strong>长按拖动</strong> → 排序,同时底部胶囊变形为「置顶 + 删除」</li>
+  </ul>
+  <p>日历日期下方有 1-3 个<strong>小圆点</strong>,标记该日代办的颜色(列表前 3 项)。设置页可关。</p>
+
+  <h4>计划</h4>
+  <p>底部第 2 个 tab。顶部 tabs 横向滚动列出所有目标,末尾 <code>+</code> 新增目标。选中某目标后下方显示该目标下的所有计划(图标 + 计划名 + 完成标准)。长按计划进入编辑 / 删除。</p>
+
+  <h4>统计</h4>
+  <p>底部第 3 个 tab。<strong>连续打卡热力图</strong>(同 GitHub contributions 风格)+ <strong>目标进度卡片</strong>(每个目标显示当周 / 当月活跃度)。右上角 <code>→</code> 进 <strong>灵感页</strong> —— 想做但还没正式立项的想法,可转成正式目标。</p>
+
+  <h4>设置</h4>
+  <p>底部第 4 个 tab。主题 / 主题色 / 番茄钟时长 / 灵动岛开关 / iCloud 同步状态 / 订阅开通 / 语言 / 帮助 / 反馈联系 / 推广合作 / 分享 / 五星好评。</p>
+
+  <h4>番茄钟</h4>
+  <p>底部第 5 个 tab(特殊)。点击不切换页面,而是在当前页面之上叠一层覆盖:中央倒计时大字、上方 pill 切换 <strong>专注 / 休息</strong>(默认 45 / 5 min,设置可改)、底部 ▶ 开始 / ⏸ 暂停 / ↻ 重置。<strong>灵动岛</strong>同步显示倒计时与进度环;<strong>锁屏</strong>也有番茄钟卡片。番茄钟期间底部胶囊变形为返回按钮。</p>
+
+  <h3>重要功能</h3>
+
+  <h4>与 iOS 系统提醒事项同步</h4>
+  <p>代办时间区右侧有个<strong>多色日历图标</strong>(calendar.badge):灰点 = 未同步;绿点 = 已同步。点灰点:首次会请求授权,授权后立即同步当前代办到系统<strong>默认提醒事项列表</strong>。系统会在代办时间到时弹通知。点绿点:从系统提醒事项删除。</p>
+  <div class="tip">⚠ 删除 App 内代办会<strong>级联删除</strong>对应的系统提醒(在哪儿删两边都消失);清空代办时间会自动 unsync。</div>
+
+  <h4>iCloud 同步</h4>
+  <p>首次启动<strong>自动开启</strong>(无需弹窗询问)。所有数据(维度/目标/计划/代办/灵感)通过 iCloud 私有数据库跨设备同步。冲突策略:<strong>最后写入获胜</strong>。只要 iPhone 已登录 iCloud 且 iCloud Drive 开启,数据自动同步。</p>
+
+  <h4>Widget(主屏小组件)</h4>
+  <p><strong>连续打卡热力图</strong>:同统计页的 streak 视图,有 small / medium / large 三档尺寸。长按主屏 → 加 widget → 搜「灵动代办」。</p>
+
+  <h4>Live Activity(灵动岛 + 锁屏卡)</h4>
+  <p>两种 mode 自动切换:</p>
+  <ul>
+    <li><strong>代办概览</strong>:无番茄钟时,灵动岛显示首个未完成代办 + 总进度,锁屏卡显示前 3 个未完成代办</li>
+    <li><strong>番茄钟</strong>:跑番茄钟时,显示倒计时与进度环</li>
+  </ul>
+  <p>灵动岛长按可展开看完整卡片。</p>
+
+  <h3>订阅说明</h3>
+
+  <p>下方为<strong>中国大陆 App Store</strong> 价格。其他地区按所在 App Store 自动换算成当地货币显示(美国约 $1.99 / $9.99 / $19.99,欧元区约 €1.99 / €9.99 / €19.99,以此类推),订阅档位与功能完全相同。</p>
+
+  <table>
+    <thead>
+      <tr><th>档位</th><th>价格</th><th>说明</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>体验会员</strong></td><td>¥0</td><td>7 天免费试用 → 试用结束自动转月订阅 ¥8</td></tr>
+      <tr><td><strong>月订阅</strong></td><td>¥8 / 月</td><td></td></tr>
+      <tr><td><strong>年订阅</strong></td><td>¥19 / 年</td><td>一天约 ¥0.05,比月订年省 ¥77</td></tr>
+      <tr><td><strong>永久买断</strong></td><td>¥39</td><td><strong>包含未来全部新功能</strong>,与订阅功能等价(带"最受欢迎"徽章)</td></tr>
+    </tbody>
+  </table>
+
+  <p>月 / 年订阅在同一 Subscription Group,可在系统订阅管理里自由升降级(Apple 自动按比例退费)。试用资格由 Apple ID 自动判断,每个 Apple ID 每个订阅组只能用一次。试用到期前可在 系统设置 → Apple ID → 订阅 取消,不会扣费。</p>
+
+  <p>换设备 / 重装 App 后:<strong>设置 → 订阅开通 → 恢复购买</strong>,即可拉回历史购买。</p>
+
+  <h3>隐私</h3>
+  <p>灵动代办<strong>不收集任何用户数据</strong>到我们的服务器。所有数据本地保存 + iCloud 私有数据库同步,只有你和 Apple 可见。详见 <a href="index.html">隐私政策</a>。</p>
+
+  <h3>反馈与联系</h3>
+  <p>问题反馈 / 功能建议 / 推广合作:<a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>。也可在 App 内 设置 → 反馈问题 直接调起邮件。详细常见问题与故障排查见 <a href="support.html">技术支持</a>。</p>
+
+  <hr>
+
+  <h2>English</h2>
+
+  <p class="lead">5-minute onboarding for DynamicTask — core philosophy, the four-layer model, and main features.</p>
+
+  <h3>Not just another todo list</h3>
+  <p>DynamicTask's core idea: <strong>upgrade your todos from a flat list to a four-layer life model</strong>.</p>
+  <p>Regular todo apps let you write "what to do today"; DynamicTask asks you to think clearly:</p>
+  <ul>
+    <li><strong>Dimension</strong>: How is your life partitioned? (Eisenhower matrix, or custom)</li>
+    <li><strong>Goal</strong>: What do you want to achieve? (Read books / Get fit / Learn an instrument)</li>
+    <li><strong>Plan</strong>: To reach the goal, what activities are required? (3× strength training per week)</li>
+    <li><strong>Todo</strong>: What specific step today? (Bench press 4×8)</li>
+  </ul>
+  <p>With this structure, your todos are no longer a pile of tasks — they form a <strong>clear path through life</strong>.</p>
+
+  <h3>The four layers explained</h3>
+
+  <div class="layer-card">
+    <strong>1. Dimension</strong> — life reference frame.<br>
+    Four defaults based on the Eisenhower matrix: High Importance / Low Importance / High Urgency / Low Urgency. You can add custom dimensions (pick a color + name) from the "New Goal" sheet. Each goal can bind multiple dimensions.
+  </div>
+
+  <div class="layer-card">
+    <strong>2. Goal</strong> — what you want to achieve.<br>
+    Examples: "Pass the architect exam", "Read 30 books", "Learn Hotel California on guitar". Each goal binds a <strong>color</strong> (11 presets + system color picker) which cascades down to its todos. Must bind at least one dimension. A "Default Goal" (bound to High Importance + High Urgency) ships with the app for users who don't want to categorize.
+  </div>
+
+  <div class="layer-card">
+    <strong>3. Plan</strong> — activities required to reach a goal.<br>
+    Example: Under the goal "Read 30 books", a plan = "2 classic novels per month". Each plan has an <strong>icon</strong> (from 800+ library) and a <strong>completion criterion</strong> (free text). A plan itself isn't a todo — you don't "do" the plan, you do the todos under it.
+  </div>
+
+  <div class="layer-card">
+    <strong>4. Todo</strong> — actionable steps.<br>
+    Example: Under "2 classic novels per month", a todo = "100 Years of Solitude, Chapter 3". Must belong to a plan. Can have 1–4 <strong>subtasks</strong>; can have a <strong>scheduled time</strong> (start/end window, draggable ring). Completion triggers a satisfying micro-animation.
+  </div>
+
+  <h3>Main interfaces</h3>
+
+  <h4>Home (Todos)</h4>
+  <p>First tab in the bottom capsule nav, default entry. Today's todos grouped into <strong>Pinned → In Progress → Completed</strong>.</p>
+  <ul>
+    <li><strong>Pull-down gesture</strong>: cycle list → week calendar → month calendar</li>
+    <li><strong>Top-left calendar icon</strong>: tap to cycle the same three states</li>
+    <li><strong>Historical date rule</strong>: yesterday's and earlier unfinished todos auto-migrate to today; historical dates only show completed</li>
+    <li><strong>Row interactions</strong>: tap row → edit sheet; tap ring → mark complete; <strong>long-press drag</strong> → reorder, with the capsule morphing into "Pin / Delete" zones</li>
+  </ul>
+  <p>1–3 colored dots under each calendar date mark that day's top todos (toggleable in Settings).</p>
+
+  <h4>Goals</h4>
+  <p>Second tab. Horizontal tabs at the top list all goals with a trailing <code>+</code> for new ones. Selecting a goal reveals its plans below (icon + plan name + completion criterion). Long-press a plan to edit/delete.</p>
+
+  <h4>Statistics</h4>
+  <p>Third tab. <strong>Streak heatmap</strong> (GitHub contributions style) + <strong>per-goal progress cards</strong> (weekly/monthly activity). Top-right <code>→</code> opens <strong>Inspiration</strong> — ideas you want to do but haven't formalized; can be promoted to real goals.</p>
+
+  <h4>Settings</h4>
+  <p>Fourth tab. Theme / accent color / Pomodoro durations / Dynamic Island toggle / iCloud sync status / Subscribe / Language / Help / Feedback / Promotion / Share / Rate.</p>
+
+  <h4>Pomodoro</h4>
+  <p>Fifth tab (special). Doesn't switch pages — overlays on the current page. Center: large countdown. Top: two pills toggle <strong>Focus / Rest</strong> (default 45 / 5 min, customizable). Bottom: ▶ Start / ⏸ Pause / ↻ Reset. The <strong>Dynamic Island</strong> mirrors the countdown and progress ring; <strong>Lock Screen</strong> also shows a Pomodoro card. The bottom capsule morphs into a back button during sessions.</p>
+
+  <h3>Key features</h3>
+
+  <h4>Sync with iOS Reminders</h4>
+  <p>The Todo Time section has a <strong>multi-color calendar icon</strong> (calendar.badge) on the right: gray dot = unsynced; green dot = synced. Tap gray: first time prompts for permission, then immediately syncs the current todo to the <strong>default Reminders list</strong>. The system will fire a notification at the scheduled time. Tap green: removes from Reminders.</p>
+  <div class="tip">⚠ Deleting a todo in DynamicTask <strong>cascades</strong> to delete the corresponding system reminder (one delete clears both); clearing the scheduled time auto-unsyncs.</div>
+
+  <h4>iCloud sync</h4>
+  <p>Enabled <strong>automatically</strong> on first launch (no prompt). All data (dimensions/goals/plans/todos/inspirations) syncs across devices via your private iCloud database. Conflict policy: <strong>last-write wins</strong>. Works as long as your iPhone is signed in to iCloud with iCloud Drive enabled — no extra setup.</p>
+
+  <h4>Widget (Home Screen)</h4>
+  <p><strong>Streak heatmap</strong>: same view as the Statistics page streak, available in small / medium / large sizes. Long-press the Home Screen → Add Widget → search "DynamicTask".</p>
+
+  <h4>Live Activity (Dynamic Island + Lock Screen)</h4>
+  <p>Auto-switches between two modes:</p>
+  <ul>
+    <li><strong>Todo overview</strong>: when no Pomodoro is running, the Dynamic Island shows the first unfinished todo + overall progress; the Lock Screen card shows the top 3 unfinished todos</li>
+    <li><strong>Pomodoro</strong>: during a Pomodoro session, shows countdown and progress ring</li>
+  </ul>
+  <p>Long-press the Dynamic Island to expand the full card.</p>
+
+  <h3>Subscription</h3>
+
+  <p>Prices below are for the <strong>US App Store</strong>. Other regions are auto-converted to your local currency through the App Store (mainland China around ¥8 / ¥19 / ¥39, EU around €1.99 / €9.99 / €19.99, etc.). Tier features are identical worldwide.</p>
+
+  <table>
+    <thead>
+      <tr><th>Tier</th><th>Price</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Trial Member</strong></td><td>Free</td><td>7-day free trial → auto-converts to monthly $1.99 on expiry</td></tr>
+      <tr><td><strong>Monthly</strong></td><td>$1.99 / month</td><td></td></tr>
+      <tr><td><strong>Annual</strong></td><td>$9.99 / year</td><td>~$0.03/day, saves $13.89 vs monthly</td></tr>
+      <tr><td><strong>Lifetime</strong></td><td>$19.99</td><td><strong>Includes all future features</strong>, identical to subscriptions except duration ("Best deal" badge)</td></tr>
+    </tbody>
+  </table>
+
+  <p>Monthly and annual share the same Subscription Group — upgrade/downgrade freely in iOS subscription settings (Apple auto-prorates refunds). Trial eligibility is determined per Apple ID; each Apple ID can use the trial once per subscription group. Cancel anytime via System Settings → Apple ID → Subscriptions; cancelling during trial costs nothing.</p>
+
+  <p>After switching devices / reinstalling: <strong>Settings → Subscribe → Restore Purchases</strong> pulls back all historical purchases.</p>
+
+  <h3>Privacy</h3>
+  <p>DynamicTask <strong>collects zero user data</strong> to our servers. All data is stored locally + synced via your private iCloud database; only you and Apple can see it. See the <a href="index.html">Privacy Policy</a> for details.</p>
+
+  <h3>Feedback &amp; contact</h3>
+  <p>Bug reports / feature requests / business inquiries: <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>. You can also use Settings → Feedback inside the app to compose an email directly. For FAQs and troubleshooting, see <a href="support.html">Support</a>.</p>
+
+  <p class="nav">← <a href="index.html">Privacy Policy / 隐私政策</a> &nbsp;·&nbsp; <a href="support.html">Support / 技术支持</a></p>
+</body>
+</html>
