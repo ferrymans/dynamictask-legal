@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>使用说明 — DynamicTask (灵动待办)</title>
+  <title>User Guide - DynamicTask</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "PingFang SC", "Hiragino Sans GB", sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; line-height: 1.65; color: #323343; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "PingFang SC", "PingFang TC", "Hiragino Sans GB", "Hiragino Sans", "Noto Sans KR", sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; line-height: 1.65; color: #323343; }
     h1 { font-size: 28px; margin-bottom: 8px; }
     h2 { font-size: 22px; margin-top: 40px; padding-bottom: 8px; border-bottom: 1px solid #eee; }
     h3 { font-size: 17px; margin-top: 24px; }
     h4 { font-size: 15px; margin-top: 20px; margin-bottom: 6px; color: #555; }
     p, li { font-size: 15px; }
-    hr { margin: 48px 0; border: 0; border-top: 1px solid #eee; }
     a { color: #9290ff; text-decoration: none; }
     a:hover { text-decoration: underline; }
     code { background: #f0f4ff; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
@@ -24,6 +23,12 @@
     .layer-card { background: #f0f4ff; padding: 14px 18px; border-radius: 8px; margin: 10px 0; }
     .layer-card strong { font-size: 16px; color: #323343; }
     .tip { background: #f9fbff; border-left: 3px solid #9290ff; padding: 10px 14px; margin: 16px 0; font-size: 14px; color: #555; }
+    .lang-switcher { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 32px; padding: 12px; background: #f9fbff; border-radius: 10px; }
+    .lang-pill { padding: 6px 12px; font-size: 13px; background: transparent; color: #323343; border: 0; border-radius: 6px; cursor: pointer; font-family: inherit; }
+    .lang-pill:hover { background: rgba(146, 144, 255, 0.12); }
+    .lang-pill.active { background: #9290ff; color: white; }
+    .lang-block { display: none; }
+    .lang-block.active { display: block; }
     @media (prefers-color-scheme: dark) {
       body { background: #17171c; color: #fdfdfd; }
       h2 { border-bottom-color: #2a2a30; }
@@ -35,217 +40,954 @@
       .layer-card strong { color: #fdfdfd; }
       .tip { color: #b8b8c8; }
       .lead { color: #c8c8d6; }
+      .lang-switcher { background: #1e1e26; }
+      .lang-pill { color: #fdfdfd; }
+      .lang-pill:hover { background: rgba(160, 118, 255, 0.18); }
+      .lang-pill.active { background: #a076ff; color: white; }
     }
   </style>
 </head>
 <body>
-  <h1>使用说明 — DynamicTask (灵动待办)</h1>
-  <p class="meta">Last updated: 2026-05-20</p>
+  <nav class="lang-switcher" role="navigation" aria-label="Language">
+    <button class="lang-pill" data-lang="en">English</button>
+    <button class="lang-pill" data-lang="zh-Hans">简体中文</button>
+    <button class="lang-pill" data-lang="zh-Hant">繁體中文</button>
+    <button class="lang-pill" data-lang="ja">日本語</button>
+    <button class="lang-pill" data-lang="ko">한국어</button>
+    <button class="lang-pill" data-lang="de">Deutsch</button>
+    <button class="lang-pill" data-lang="fr">Français</button>
+    <button class="lang-pill" data-lang="es">Español</button>
+    <button class="lang-pill" data-lang="it">Italiano</button>
+    <button class="lang-pill" data-lang="pt">Português</button>
+    <button class="lang-pill" data-lang="ru">Русский</button>
+  </nav>
 
-  <h2>简体中文</h2>
+  <section class="lang-block" data-lang="en" data-title="User Guide - DynamicTask">
+    <h1>User Guide</h1>
+    <p class="meta">Last updated: 2026-05-20</p>
+    <p class="lead">5-minute onboarding for DynamicTask — core philosophy, the four-layer model, and main features.</p>
+    <h3>Not just another todo list</h3>
+    <p>DynamicTask's core idea: <strong>upgrade your todos from a flat list to a four-layer life model</strong>.</p>
+    <p>Regular todo apps let you write "what to do today"; DynamicTask asks you to think clearly:</p>
+    <ul>
+      <li><strong>Dimension</strong>: How is your life partitioned? (Eisenhower matrix, or custom)</li>
+      <li><strong>Goal</strong>: What do you want to achieve? (Read books / Get fit / Learn an instrument)</li>
+      <li><strong>Plan</strong>: To reach the goal, what activities are required? (3× strength training per week)</li>
+      <li><strong>Todo</strong>: What specific step today? (Bench press 4×8)</li>
+    </ul>
+    <p>With this structure, your todos are no longer a pile of tasks — they form a <strong>clear path through life</strong>.</p>
+    <h3>The four layers explained</h3>
+    <div class="layer-card">
+      <strong>1. Dimension</strong> — life reference frame.<br>
+      Four defaults based on the Eisenhower matrix: High Importance / Low Importance / High Urgency / Low Urgency. You can add custom dimensions (pick a color + name) from the "New Goal" sheet. Each goal can bind multiple dimensions.
+    </div>
+    <div class="layer-card">
+      <strong>2. Goal</strong> — what you want to achieve.<br>
+      Examples: "Pass the architect exam", "Read 30 books", "Learn Hotel California on guitar". Each goal binds a <strong>color</strong> (11 presets + system color picker) which cascades down to its todos. <strong>Dimensions are optional</strong> — bind them to organize goals by life area. A "Default Goal" (bound to High Importance + High Urgency) ships with the app for users who don't want to categorize.
+    </div>
+    <div class="layer-card">
+      <strong>3. Plan</strong> — activities required to reach a goal.<br>
+      Example: Under the goal "Read 30 books", a plan = "2 classic novels per month". Each plan has an <strong>icon</strong> (from 800+ library) and a <strong>completion criterion</strong> (free text). A plan itself isn't a todo — you don't "do" the plan, you do the todos under it.
+    </div>
+    <div class="layer-card">
+      <strong>4. Todo</strong> — actionable steps.<br>
+      Example: Under "2 classic novels per month", a todo = "100 Years of Solitude, Chapter 3". Must belong to a plan. Can have 1–4 <strong>subtasks</strong>; can have a <strong>scheduled time</strong> (start/end window, draggable ring). Completion triggers a satisfying micro-animation.
+    </div>
+    <h3>Main interfaces</h3>
+    <h4>Home (Todos)</h4>
+    <p>First tab in the bottom capsule nav, default entry. Today's todos grouped into <strong>Pinned → In Progress → Completed</strong>.</p>
+    <ul>
+      <li><strong>Pull-down gesture</strong>: cycle list → week calendar → month calendar</li>
+      <li><strong>Top-left calendar icon</strong>: tap to cycle the same three states</li>
+      <li><strong>Historical date rule</strong>: yesterday's and earlier unfinished todos auto-migrate to today; historical dates only show completed</li>
+      <li><strong>Row interactions</strong>: tap row → edit sheet; tap ring → mark complete; <strong>long-press drag</strong> → reorder, with the capsule morphing into "Pin / Delete" zones</li>
+    </ul>
+    <p>1–3 colored dots under each calendar date mark that day's top todos (toggleable in Settings).</p>
+    <h4>Goals</h4>
+    <p>Second tab. Horizontal tabs at the top list all goals with a trailing <code>+</code> for new ones. Selecting a goal reveals its plans below (icon + plan name + completion criterion). Long-press a plan to edit/delete.</p>
+    <h4>Statistics</h4>
+    <p>Third tab. <strong>Streak heatmap</strong> (GitHub contributions style) + <strong>per-goal progress cards</strong> (weekly/monthly activity). Top-right <code>→</code> opens <strong>Inspiration</strong> — ideas you want to do but haven't formalized; can be promoted to real goals.</p>
+    <h4>Settings</h4>
+    <p>Fourth tab. Theme / accent color / Pomodoro durations / Dynamic Island toggle / iCloud sync status / Subscribe / Language / Help / Feedback / Promotion / Share / Rate.</p>
+    <h4>Pomodoro</h4>
+    <p>Fifth tab (special). Doesn't switch pages — overlays on the current page. Center: large countdown. Top: two pills toggle <strong>Focus / Rest</strong> (default 45 / 5 min, customizable). Bottom: ▶ Start / ⏸ Pause / ↻ Reset. The <strong>Dynamic Island</strong> mirrors the countdown and progress ring; <strong>Lock Screen</strong> also shows a Pomodoro card. The bottom capsule morphs into a back button during sessions.</p>
+    <h3>Key features</h3>
+    <h4>Sync with iOS Reminders</h4>
+    <p>The Todo Time section has a <strong>multi-color calendar icon</strong> (calendar.badge) on the right: gray dot = unsynced; green dot = synced. Tap gray: first time prompts for permission, then immediately syncs the current todo to the <strong>default Reminders list</strong>. The system will fire a notification at the scheduled time. Tap green: removes from Reminders.</p>
+    <div class="tip">⚠ Deleting a todo in DynamicTask <strong>cascades</strong> to delete the corresponding system reminder (one delete clears both); clearing the scheduled time auto-unsyncs.</div>
+    <h4>iCloud sync</h4>
+    <p>Enabled <strong>automatically</strong> on first launch (no prompt). All data (dimensions/goals/plans/todos/inspirations) syncs across devices via your private iCloud database. Conflict policy: <strong>last-write wins</strong>. Works as long as your iPhone is signed in to iCloud with iCloud Drive enabled — no extra setup.</p>
+    <h4>Widget (Home Screen)</h4>
+    <p><strong>Streak heatmap</strong>: same view as the Statistics page streak, available in small / medium / large sizes. Long-press the Home Screen → Add Widget → search "DynamicTask".</p>
+    <h4>Live Activity (Dynamic Island + Lock Screen)</h4>
+    <p>Auto-switches between two modes:</p>
+    <ul>
+      <li><strong>Todo overview</strong>: when no Pomodoro is running, the Dynamic Island shows the first unfinished todo + overall progress; the Lock Screen card shows the top 3 unfinished todos</li>
+      <li><strong>Pomodoro</strong>: during a Pomodoro session, shows countdown and progress ring</li>
+    </ul>
+    <p>Long-press the Dynamic Island to expand the full card.</p>
+    <h3>Subscription</h3>
+    <p>Four tiers. Actual prices are shown live by the App Store:</p>
+    <ul>
+      <li><strong>Trial Member</strong>: 7-day free trial, auto-converts to monthly on expiry</li>
+      <li><strong>Monthly</strong></li>
+      <li><strong>Annual</strong>: better value than monthly</li>
+      <li><strong>Lifetime</strong>: <strong>includes all future features</strong>, identical to subscriptions except duration ("Best deal" badge)</li>
+    </ul>
+    <p>The three paid tiers (monthly / annual / lifetime) offer identical features — only the duration differs. Monthly and annual share the same Subscription Group, so you can upgrade/downgrade freely in iOS subscription settings (Apple auto-prorates refunds). Trial eligibility is determined per Apple ID; each Apple ID can use the trial once per subscription group. Cancel anytime via System Settings → Apple ID → Subscriptions; cancelling during trial costs nothing.</p>
+    <p>After switching devices / reinstalling: <strong>Settings → Subscribe → Restore Purchases</strong> pulls back all historical purchases.</p>
+    <h3>Privacy</h3>
+    <p>DynamicTask <strong>collects zero user data</strong> to our servers. All data is stored locally + synced via your private iCloud database; only you and Apple can see it. See the <a href="index.html">Privacy Policy</a> for details.</p>
+    <h3>Feedback &amp; contact</h3>
+    <p>Bug reports / feature requests / business inquiries: <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>. You can also use Settings → Feedback inside the app to compose an email directly. For FAQs and troubleshooting, see <a href="support.html">Support</a>.</p>
+    <p class="nav">← <a href="index.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="support.html">Support</a></p>
+  </section>
 
-  <p class="lead">5 分钟上手「灵动待办」 —— 理解核心理念、四层模型与主要功能。</p>
+  <section class="lang-block" data-lang="zh-Hans" data-title="使用说明 - 灵动待办">
+    <h1>使用说明</h1>
+    <p class="meta">最后更新:2026-05-20</p>
+    <p class="lead">5 分钟上手「灵动待办」 —— 理解核心理念、四层模型与主要功能。</p>
+    <h3>这不是又一个 todo list</h3>
+    <p>「灵动待办」的核心理念是:<strong>让待办从「任务清单」升级为「人生四层模型」</strong>。</p>
+    <p>普通待办 App 让你写下"今天要做什么";灵动待办让你想清楚:</p>
+    <ul>
+      <li><strong>维度</strong>:我的人生分几个区?(重要/紧急四象限,或自定义)</li>
+      <li><strong>目标</strong>:我想达成什么?(读书 / 健身 / 学一门乐器)</li>
+      <li><strong>计划</strong>:为达成目标,我要做哪些事?(每周 3 次力量训练)</li>
+      <li><strong>待办</strong>:今天具体要做哪一步?(卧推 4×8)</li>
+    </ul>
+    <p>加上这套结构,你的待办不再是堆砌清单,而是<strong>清晰的人生路径</strong>。</p>
+    <h3>四层概念详解</h3>
+    <div class="layer-card">
+      <strong>1. 维度 (Dimension)</strong> — 人生参考系。<br>
+      系统默认 4 个(基于 Eisenhower 矩阵):重要程度高 / 重要程度低 / 紧迫程度高 / 紧迫程度低。可在「新增目标」sheet 里自定义维度(选颜色 + 起名)。每个目标可绑多个维度。
+    </div>
+    <div class="layer-card">
+      <strong>2. 目标 (Goal)</strong> — 你想完成的事。<br>
+      例:"考上注册建筑师"、"读完 30 本书"、"学会弹《加州旅馆》"。每个目标绑一种<strong>颜色</strong>(11 种预设 + 系统色板自定义),颜色会沿着层级染色到下面的待办;<strong>维度可选</strong>,绑上后便于按人生区块归类。系统初始有「默认目标」(绑「重要程度高 + 紧迫程度高」),便于不想分类的用户直接用。
+    </div>
+    <div class="layer-card">
+      <strong>3. 计划 (Plan)</strong> — 为目标要做的事。<br>
+      例:目标"读完 30 本书"下的计划 = "每月 2 本经典文学"。每个计划有<strong>图标</strong>(从 800+ 图标库选)和<strong>完成标准</strong>(自由文本)。计划本身不是待办 —— 你做的是计划下的待办。
+    </div>
+    <div class="layer-card">
+      <strong>4. 待办 (Todo)</strong> — 可执行动作。<br>
+      例:计划"每月 2 本经典文学"下的待办 = "《百年孤独》第三章"。必须归属一个计划;可加 1-4 个<strong>子任务</strong>;可加<strong>待办时间</strong>(开始 / 结束时段,圆环可拖动)。完成后会有满足感的微动画。
+    </div>
+    <h3>主要界面</h3>
+    <h4>首页(待办)</h4>
+    <p>底部胶囊导航第 1 个 tab,默认入口。今日的待办按 <strong>置顶 → 进行中 → 已完成</strong> 三段分组。</p>
+    <ul>
+      <li><strong>下拉手势</strong>:依次切换 列表 → 周日历 → 月日历</li>
+      <li><strong>左上角日历图标</strong>:点击切换同上三态</li>
+      <li><strong>历史日期规则</strong>:昨日及更早未完成的待办自动迁移到今日;查看历史日期只能看已完成</li>
+      <li><strong>待办行交互</strong>:点击行 → 编辑 sheet;点击右侧圆环 → 勾选完成;<strong>长按拖动</strong> → 排序,同时底部胶囊变形为「置顶 + 删除」</li>
+    </ul>
+    <p>日历日期下方有 1-3 个<strong>小圆点</strong>,标记该日待办的颜色(列表前 3 项)。设置页可关。</p>
+    <h4>计划</h4>
+    <p>底部第 2 个 tab。顶部 tabs 横向滚动列出所有目标,末尾 <code>+</code> 新增目标。选中某目标后下方显示该目标下的所有计划(图标 + 计划名 + 完成标准)。长按计划进入编辑 / 删除。</p>
+    <h4>统计</h4>
+    <p>底部第 3 个 tab。<strong>连续打卡热力图</strong>(同 GitHub contributions 风格)+ <strong>目标进度卡片</strong>(每个目标显示当周 / 当月活跃度)。右上角 <code>→</code> 进 <strong>灵感页</strong> —— 想做但还没正式立项的想法,可转成正式目标。</p>
+    <h4>设置</h4>
+    <p>底部第 4 个 tab。主题 / 主题色 / 番茄钟时长 / 灵动岛开关 / iCloud 同步状态 / 订阅开通 / 语言 / 帮助 / 反馈联系 / 推广合作 / 分享 / 五星好评。</p>
+    <h4>番茄钟</h4>
+    <p>底部第 5 个 tab(特殊)。点击不切换页面,而是在当前页面之上叠一层覆盖:中央倒计时大字、上方 pill 切换 <strong>专注 / 休息</strong>(默认 45 / 5 min,设置可改)、底部 ▶ 开始 / ⏸ 暂停 / ↻ 重置。<strong>灵动岛</strong>同步显示倒计时与进度环;<strong>锁屏</strong>也有番茄钟卡片。番茄钟期间底部胶囊变形为返回按钮。</p>
+    <h3>重要功能</h3>
+    <h4>与 iOS 系统提醒事项同步</h4>
+    <p>待办时间区右侧有个<strong>多色日历图标</strong>(calendar.badge):灰点 = 未同步;绿点 = 已同步。点灰点:首次会请求授权,授权后立即同步当前待办到系统<strong>默认提醒事项列表</strong>。系统会在待办时间到时弹通知。点绿点:从系统提醒事项删除。</p>
+    <div class="tip">⚠ 删除 App 内待办会<strong>级联删除</strong>对应的系统提醒(在哪儿删两边都消失);清空待办时间会自动 unsync。</div>
+    <h4>iCloud 同步</h4>
+    <p>首次启动<strong>自动开启</strong>(无需弹窗询问)。所有数据(维度/目标/计划/待办/灵感)通过 iCloud 私有数据库跨设备同步。冲突策略:<strong>最后写入获胜</strong>。只要 iPhone 已登录 iCloud 且 iCloud Drive 开启,数据自动同步。</p>
+    <h4>Widget(主屏小组件)</h4>
+    <p><strong>连续打卡热力图</strong>:同统计页的 streak 视图,有 small / medium / large 三档尺寸。长按主屏 → 加 widget → 搜「灵动待办」。</p>
+    <h4>Live Activity(灵动岛 + 锁屏卡)</h4>
+    <p>两种 mode 自动切换:</p>
+    <ul>
+      <li><strong>待办概览</strong>:无番茄钟时,灵动岛显示首个未完成待办 + 总进度,锁屏卡显示前 3 个未完成待办</li>
+      <li><strong>番茄钟</strong>:跑番茄钟时,显示倒计时与进度环</li>
+    </ul>
+    <p>灵动岛长按可展开看完整卡片。</p>
+    <h3>订阅说明</h3>
+    <p>共 4 档,具体价格以 App Store 实时显示为准:</p>
+    <ul>
+      <li><strong>体验会员</strong>:7 天免费试用,试用结束自动转月订阅</li>
+      <li><strong>月订阅</strong></li>
+      <li><strong>年订阅</strong>:相比月订更划算</li>
+      <li><strong>永久买断</strong>:<strong>包含未来全部新功能</strong>,与订阅功能等价(带"最受欢迎"徽章)</li>
+    </ul>
+    <p>订阅三档(月 / 年 / 永久)功能完全一致,仅时长不同。月 / 年订阅在同一 Subscription Group,可在系统订阅管理里自由升降级(Apple 自动按比例退费)。试用资格由 Apple ID 自动判断,每个 Apple ID 每个订阅组只能用一次。试用到期前可在 系统设置 → Apple ID → 订阅 取消,不会扣费。</p>
+    <p>换设备 / 重装 App 后:<strong>设置 → 订阅开通 → 恢复购买</strong>,即可拉回历史购买。</p>
+    <h3>隐私</h3>
+    <p>灵动待办<strong>不收集任何用户数据</strong>到我们的服务器。所有数据本地保存 + iCloud 私有数据库同步,只有你和 Apple 可见。详见 <a href="index.html">隐私政策</a>。</p>
+    <h3>反馈与联系</h3>
+    <p>问题反馈 / 功能建议 / 推广合作:<a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>。也可在 App 内 设置 → 反馈问题 直接调起邮件。详细常见问题与故障排查见 <a href="support.html">技术支持</a>。</p>
+    <p class="nav">← <a href="index.html">隐私政策</a> &nbsp;·&nbsp; <a href="support.html">技术支持</a></p>
+  </section>
 
-  <h3>这不是又一个 todo list</h3>
-  <p>「灵动待办」的核心理念是:<strong>让待办从「任务清单」升级为「人生四层模型」</strong>。</p>
-  <p>普通待办 App 让你写下"今天要做什么";灵动待办让你想清楚:</p>
-  <ul>
-    <li><strong>维度</strong>:我的人生分几个区?(重要/紧急四象限,或自定义)</li>
-    <li><strong>目标</strong>:我想达成什么?(读书 / 健身 / 学一门乐器)</li>
-    <li><strong>计划</strong>:为达成目标,我要做哪些事?(每周 3 次力量训练)</li>
-    <li><strong>待办</strong>:今天具体要做哪一步?(卧推 4×8)</li>
-  </ul>
-  <p>加上这套结构,你的待办不再是堆砌清单,而是<strong>清晰的人生路径</strong>。</p>
+  <section class="lang-block" data-lang="zh-Hant" data-title="使用說明 - 靈動待辦">
+    <h1>使用說明</h1>
+    <p class="meta">最後更新:2026-05-20</p>
+    <p class="lead">5 分鐘上手「靈動待辦」 —— 理解核心理念、四層模型與主要功能。</p>
+    <h3>這不是又一個 todo list</h3>
+    <p>「靈動待辦」的核心理念是:<strong>讓待辦從「任務清單」升級為「人生四層模型」</strong>。</p>
+    <p>一般待辦 App 讓你寫下「今天要做什麼」;靈動待辦讓你想清楚:</p>
+    <ul>
+      <li><strong>維度</strong>:我的人生分幾個區?(重要/緊急四象限,或自訂)</li>
+      <li><strong>目標</strong>:我想達成什麼?(讀書 / 健身 / 學一門樂器)</li>
+      <li><strong>計畫</strong>:為達成目標,我要做哪些事?(每週 3 次力量訓練)</li>
+      <li><strong>待辦</strong>:今天具體要做哪一步?(臥推 4×8)</li>
+    </ul>
+    <p>加上這套結構,你的待辦不再只是堆疊清單,而是<strong>清晰的人生路徑</strong>。</p>
+    <h3>四層概念詳解</h3>
+    <div class="layer-card">
+      <strong>1. 維度 (Dimension)</strong> — 人生參考系。<br>
+      系統預設 4 個(基於 Eisenhower 矩陣):重要程度高 / 重要程度低 / 緊迫程度高 / 緊迫程度低。可在「新增目標」sheet 內自訂維度(選顏色 + 命名)。每個目標可綁多個維度。
+    </div>
+    <div class="layer-card">
+      <strong>2. 目標 (Goal)</strong> — 你想完成的事。<br>
+      例:「考上註冊建築師」、「讀完 30 本書」、「學會彈《加州旅館》」。每個目標綁一種<strong>顏色</strong>(11 種預設 + 系統色盤自訂),顏色會沿著層級染色到下面的待辦;<strong>維度可選</strong>,綁上後便於依人生區塊歸類。系統初始有「預設目標」(綁「重要程度高 + 緊迫程度高」),便於不想分類的使用者直接使用。
+    </div>
+    <div class="layer-card">
+      <strong>3. 計畫 (Plan)</strong> — 為目標要做的事。<br>
+      例:目標「讀完 30 本書」下的計畫 = 「每月 2 本經典文學」。每個計畫有<strong>圖示</strong>(從 800+ 圖示庫選)與<strong>完成標準</strong>(自由文字)。計畫本身不是待辦 —— 你做的是計畫下的待辦。
+    </div>
+    <div class="layer-card">
+      <strong>4. 待辦 (Todo)</strong> — 可執行動作。<br>
+      例:計畫「每月 2 本經典文學」下的待辦 = 「《百年孤獨》第三章」。必須歸屬一個計畫;可加 1-4 個<strong>子任務</strong>;可加<strong>待辦時間</strong>(開始 / 結束時段,圓環可拖動)。完成後會有滿足感的微動畫。
+    </div>
+    <h3>主要介面</h3>
+    <h4>首頁(待辦)</h4>
+    <p>底部膠囊導覽第 1 個 tab,預設入口。今日的待辦依 <strong>置頂 → 進行中 → 已完成</strong> 三段分組。</p>
+    <ul>
+      <li><strong>下拉手勢</strong>:依序切換 列表 → 週日曆 → 月日曆</li>
+      <li><strong>左上角日曆圖示</strong>:點擊切換同上三態</li>
+      <li><strong>歷史日期規則</strong>:昨日及更早未完成的待辦自動遷移到今日;檢視歷史日期只能看已完成</li>
+      <li><strong>待辦列互動</strong>:點擊列 → 編輯 sheet;點擊右側圓環 → 勾選完成;<strong>長按拖動</strong> → 排序,同時底部膠囊變形為「置頂 / 刪除」</li>
+    </ul>
+    <p>日曆日期下方有 1-3 個<strong>小圓點</strong>,標記該日待辦的顏色(列表前 3 項)。設定頁可關閉。</p>
+    <h4>計畫</h4>
+    <p>底部第 2 個 tab。頂部 tabs 水平捲動列出所有目標,結尾 <code>+</code> 新增目標。選中某目標後下方顯示該目標下的所有計畫(圖示 + 計畫名稱 + 完成標準)。長按計畫進入編輯 / 刪除。</p>
+    <h4>統計</h4>
+    <p>底部第 3 個 tab。<strong>連續打卡熱力圖</strong>(同 GitHub contributions 風格)+ <strong>目標進度卡片</strong>(每個目標顯示當週 / 當月活躍度)。右上角 <code>→</code> 進入 <strong>靈感頁</strong> —— 想做但尚未正式立項的想法,可轉為正式目標。</p>
+    <h4>設定</h4>
+    <p>底部第 4 個 tab。主題 / 主題色 / 番茄鐘時長 / 動態島開關 / iCloud 同步狀態 / 訂閱開通 / 語言 / 說明 / 意見回饋 / 推廣合作 / 分享 / 五星好評。</p>
+    <h4>番茄鐘</h4>
+    <p>底部第 5 個 tab(特殊)。點擊不切換頁面,而是在目前頁面之上疊一層覆蓋:中央倒數計時大字、上方 pill 切換 <strong>專注 / 休息</strong>(預設 45 / 5 min,可在設定中變更)、底部 ▶ 開始 / ⏸ 暫停 / ↻ 重設。<strong>動態島</strong>同步顯示倒數計時與進度環;<strong>鎖定畫面</strong>也有番茄鐘卡片。番茄鐘期間底部膠囊變形為返回按鈕。</p>
+    <h3>重要功能</h3>
+    <h4>與 iOS 系統提醒事項同步</h4>
+    <p>待辦時間區右側有個<strong>多色日曆圖示</strong>(calendar.badge):灰點 = 未同步;綠點 = 已同步。點灰點:首次會請求授權,授權後立即將目前待辦同步到系統<strong>預設提醒事項列表</strong>。系統會在待辦時間到時推送通知。點綠點:從系統提醒事項移除。</p>
+    <div class="tip">⚠ 刪除 App 內待辦會<strong>連動刪除</strong>對應的系統提醒(於任一端刪除兩邊都會消失);清空待辦時間會自動取消同步。</div>
+    <h4>iCloud 同步</h4>
+    <p>首次啟動<strong>自動開啟</strong>(無需彈窗詢問)。所有資料(維度/目標/計畫/待辦/靈感)透過 iCloud 私人資料庫跨裝置同步。衝突策略:<strong>最後寫入獲勝</strong>。只要 iPhone 已登入 iCloud 且 iCloud 雲碟開啟,資料即自動同步。</p>
+    <h4>Widget(主畫面小工具)</h4>
+    <p><strong>連續打卡熱力圖</strong>:同統計頁的 streak 視圖,有 small / medium / large 三種尺寸。長按主畫面 → 加入小工具 → 搜尋「靈動待辦」。</p>
+    <h4>即時動態(動態島 + 鎖定畫面卡片)</h4>
+    <p>兩種模式自動切換:</p>
+    <ul>
+      <li><strong>待辦概覽</strong>:沒有番茄鐘時,動態島顯示第一個未完成待辦 + 總進度,鎖定畫面卡片顯示前 3 個未完成待辦</li>
+      <li><strong>番茄鐘</strong>:番茄鐘執行時,顯示倒數計時與進度環</li>
+    </ul>
+    <p>長按動態島可展開查看完整卡片。</p>
+    <h3>訂閱說明</h3>
+    <p>共 4 檔,具體價格以 App Store 即時顯示為準:</p>
+    <ul>
+      <li><strong>體驗會員</strong>:7 天免費試用,試用結束自動轉月訂閱</li>
+      <li><strong>月訂閱</strong></li>
+      <li><strong>年訂閱</strong>:相較月訂更划算</li>
+      <li><strong>永久購買</strong>:<strong>包含未來全部新功能</strong>,與訂閱功能等價(帶「最熱門」徽章)</li>
+    </ul>
+    <p>訂閱三檔(月 / 年 / 永久)功能完全相同,僅時長不同。月 / 年訂閱在同一 Subscription Group,可在系統訂閱管理中自由升降級(Apple 自動按比例退費)。試用資格由 Apple ID 自動判斷,每個 Apple ID 每個訂閱組只能使用一次。試用到期前可於 系統設定 → Apple ID → 訂閱項目 取消,不會扣費。</p>
+    <p>換裝置 / 重新安裝 App 後:<strong>設定 → 訂閱開通 → 回復購買項目</strong>,即可取回歷史購買。</p>
+    <h3>隱私</h3>
+    <p>靈動待辦<strong>不收集任何使用者資料</strong>到我們的伺服器。所有資料本機儲存 + iCloud 私人資料庫同步,只有你和 Apple 可見。詳見 <a href="index.html">隱私政策</a>。</p>
+    <h3>回饋與聯絡</h3>
+    <p>問題回報 / 功能建議 / 推廣合作:<a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>。也可在 App 內 設定 → 回報問題 直接開啟郵件。詳細常見問題與疑難排解見 <a href="support.html">技術支援</a>。</p>
+    <p class="nav">← <a href="index.html">隱私政策</a> &nbsp;·&nbsp; <a href="support.html">技術支援</a></p>
+  </section>
 
-  <h3>四层概念详解</h3>
+  <section class="lang-block" data-lang="ja" data-title="使い方ガイド - DynamicTask">
+    <h1>使い方ガイド</h1>
+    <p class="meta">最終更新日:2026-05-20</p>
+    <p class="lead">DynamicTask を 5 分で始めましょう — コアコンセプト、4 層モデル、主な機能を理解します。</p>
+    <h3>これは普通の ToDo リストではありません</h3>
+    <p>DynamicTask のコア理念は:<strong>ToDo を「平らなリスト」から「人生の 4 層モデル」へ昇華させる</strong>こと。</p>
+    <p>普通の ToDo アプリは「今日何をするか」を書き留めるだけですが、DynamicTask では次のように整理して考えます:</p>
+    <ul>
+      <li><strong>次元 (Dimension)</strong>:人生をいくつの軸で分けるか?(重要度・緊急度の 4 象限、または独自設定)</li>
+      <li><strong>目標 (Goal)</strong>:何を達成したいか?(本を読む / 体を鍛える / 楽器を学ぶ)</li>
+      <li><strong>計画 (Plan)</strong>:目標達成のために何をするか?(週 3 回の筋トレ)</li>
+      <li><strong>ToDo</strong>:今日の具体的な一歩は?(ベンチプレス 4×8)</li>
+    </ul>
+    <p>この構造があれば、ToDo は単なる作業の山ではなく、<strong>人生の明確な道筋</strong>になります。</p>
+    <h3>4 層の解説</h3>
+    <div class="layer-card">
+      <strong>1. 次元 (Dimension)</strong> — 人生の参照軸。<br>
+      Eisenhower マトリクスに基づく 4 つの初期値:重要度高 / 重要度低 / 緊急度高 / 緊急度低。「目標を追加」シートからカスタム次元を追加できます(色 + 名前を選択)。各目標は複数の次元にバインドできます。
+    </div>
+    <div class="layer-card">
+      <strong>2. 目標 (Goal)</strong> — 達成したいこと。<br>
+      例:「建築士試験に合格する」「30 冊の本を読む」「ホテル・カリフォルニアをギターで弾けるようになる」。各目標は<strong>色</strong>を 1 つバインドし(11 種プリセット + システムカラーピッカー)、その色は下位の ToDo まで染色されます。<strong>次元は任意</strong>で、人生の領域別に整理したい場合にバインドします。分類を望まないユーザー向けに「デフォルト目標」(重要度高 + 緊急度高にバインド)が初期搭載されています。
+    </div>
+    <div class="layer-card">
+      <strong>3. 計画 (Plan)</strong> — 目標達成のために必要な活動。<br>
+      例:目標「30 冊の本を読む」の下の計画 = 「毎月 2 冊の古典文学」。各計画は<strong>アイコン</strong>(800+ のライブラリから選択)と<strong>達成基準</strong>(自由テキスト)を持ちます。計画自体は ToDo ではありません — 行うのは計画の下の ToDo です。
+    </div>
+    <div class="layer-card">
+      <strong>4. ToDo</strong> — 実行可能なアクション。<br>
+      例:計画「毎月 2 冊の古典文学」の下の ToDo = 「『百年の孤独』第 3 章」。必ず計画に紐づきます。1〜4 個の<strong>サブタスク</strong>を追加可能、<strong>予定時刻</strong>を設定可能(開始/終了の時間帯、ドラッグ可能なリング)。完了時には心地よいマイクロアニメーションが再生されます。
+    </div>
+    <h3>主な画面</h3>
+    <h4>ホーム(ToDo)</h4>
+    <p>下部カプセルナビの 1 つ目のタブ、デフォルトのエントリー。今日の ToDo は <strong>ピン留め → 進行中 → 完了</strong> の 3 セクションに分類されます。</p>
+    <ul>
+      <li><strong>下方向スワイプ</strong>:リスト → 週カレンダー → 月カレンダーを順に切り替え</li>
+      <li><strong>左上のカレンダーアイコン</strong>:タップで同じ 3 つの状態を切り替え</li>
+      <li><strong>過去日付のルール</strong>:昨日以前の未完了 ToDo は自動で今日に移行;過去日付では完了済みのみ表示</li>
+      <li><strong>行のインタラクション</strong>:行をタップ → 編集シート;リングをタップ → 完了マーク;<strong>長押しドラッグ</strong> → 並べ替え。カプセルは「ピン / 削除」ゾーンに変形します。</li>
+    </ul>
+    <p>各カレンダー日付の下に 1〜3 個の色付きドットが表示され、その日の主要 ToDo を示します(設定で切り替え可能)。</p>
+    <h4>計画</h4>
+    <p>2 つ目のタブ。上部の水平タブにすべての目標が並び、末尾の <code>+</code> で新規目標。目標を選択すると下にその計画一覧が表示されます(アイコン + 計画名 + 達成基準)。計画を長押しすると編集 / 削除。</p>
+    <h4>統計</h4>
+    <p>3 つ目のタブ。<strong>連続記録のヒートマップ</strong>(GitHub の contributions 風)+ <strong>目標ごとの進捗カード</strong>(週次/月次のアクティビティ)。右上の <code>→</code> で <strong>ひらめき</strong>ページへ — まだ正式化していないアイデア。正式な目標に昇格できます。</p>
+    <h4>設定</h4>
+    <p>4 つ目のタブ。テーマ / アクセントカラー / ポモドーロ時間 / Dynamic Island スイッチ / iCloud 同期状況 / サブスクリプション / 言語 / ヘルプ / フィードバック / プロモーション / 共有 / 評価。</p>
+    <h4>ポモドーロ</h4>
+    <p>5 つ目のタブ(特殊)。タップしてもページは切り替わらず、現在のページに重ねて表示されます。中央:大きなカウントダウン。上部:2 つの pill で <strong>集中 / 休憩</strong> を切り替え(初期値 45 / 5 分、カスタマイズ可)。下部:▶ 開始 / ⏸ 一時停止 / ↻ リセット。<strong>Dynamic Island</strong> がカウントダウンと進捗リングを連動表示し、<strong>ロック画面</strong>にもポモドーロカードが表示されます。セッション中、下部カプセルは戻るボタンに変形します。</p>
+    <h3>主要機能</h3>
+    <h4>iOS リマインダーとの同期</h4>
+    <p>ToDo 時刻セクションの右側に<strong>マルチカラーのカレンダーアイコン</strong>(calendar.badge)があります:灰色のドット = 未同期;緑のドット = 同期済。灰色をタップ:初回は許可を要求し、許可後は現在の ToDo を即座にシステムの<strong>デフォルトのリマインダーリスト</strong>へ同期します。設定した時刻になるとシステムが通知を発火します。緑をタップ:リマインダーから削除。</p>
+    <div class="tip">⚠ DynamicTask 内で ToDo を削除すると、対応するシステムのリマインダーも<strong>連動削除</strong>されます(片方を消せば両方消える);予定時刻をクリアすると自動で同期解除されます。</div>
+    <h4>iCloud 同期</h4>
+    <p>初回起動時に<strong>自動的に</strong>有効化されます(ダイアログなし)。すべてのデータ(次元/目標/計画/ToDo/ひらめき)は、あなたのプライベート iCloud データベースを介してデバイス間で同期されます。競合戦略:<strong>最後の書き込みが勝つ</strong>。iPhone が iCloud にサインインし、iCloud Drive が有効であれば、追加設定なしで動作します。</p>
+    <h4>ウィジェット(ホーム画面)</h4>
+    <p><strong>連続記録のヒートマップ</strong>:統計ページの streak と同じビューを、小 / 中 / 大の 3 サイズで提供します。ホーム画面を長押し → ウィジェットを追加 → 「DynamicTask」を検索。</p>
+    <h4>Live Activity(Dynamic Island + ロック画面)</h4>
+    <p>2 つのモードを自動で切り替えます:</p>
+    <ul>
+      <li><strong>ToDo 概要</strong>:ポモドーロが動いていないとき、Dynamic Island は最初の未完了 ToDo + 全体の進捗を表示し、ロック画面カードは上位 3 件の未完了 ToDo を表示</li>
+      <li><strong>ポモドーロ</strong>:ポモドーロ実行中はカウントダウンと進捗リングを表示</li>
+    </ul>
+    <p>Dynamic Island を長押しすると、フルカードに展開します。</p>
+    <h3>サブスクリプション</h3>
+    <p>4 つのプラン。実際の価格は App Store のリアルタイム表示に従います:</p>
+    <ul>
+      <li><strong>体験会員</strong>:7 日間の無料トライアル。期間終了後、自動で月額に切り替わります</li>
+      <li><strong>月額</strong></li>
+      <li><strong>年額</strong>:月額よりお得</li>
+      <li><strong>買い切り</strong>:<strong>将来の新機能をすべて含む</strong>、機能はサブスクリプションと同等(「人気」バッジ付き)</li>
+    </ul>
+    <p>有料 3 プラン(月額 / 年額 / 買い切り)は機能が同一で、期間のみが異なります。月額と年額は同じ Subscription Group に属し、iOS のサブスクリプション設定で自由にアップグレード/ダウングレードできます(Apple が比例配分で返金処理)。トライアルの資格は Apple ID 単位で判定され、各 Apple ID は Subscription Group ごとに 1 回のみ利用できます。システム設定 → Apple ID → サブスクリプション からいつでもキャンセル可能;トライアル中の解約は無料です。</p>
+    <p>デバイス変更 / 再インストール後:<strong>設定 → サブスクリプション開通 → 購入を復元</strong> で過去の購入をすべて復元できます。</p>
+    <h3>プライバシー</h3>
+    <p>DynamicTask は<strong>ユーザーデータを一切収集しません</strong>(当社サーバーへの収集はゼロ)。すべてのデータはローカルに保存され、あなたのプライベート iCloud データベースを通じて同期されます。あなたと Apple のみが閲覧可能です。詳しくは <a href="index.html">プライバシーポリシー</a> をご覧ください。</p>
+    <h3>フィードバックと連絡先</h3>
+    <p>不具合報告 / 機能要望 / プロモーションに関するご相談:<a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>。App 内の 設定 → 問題のフィードバック からも直接メールを作成できます。よくある質問とトラブルシューティングは <a href="support.html">サポート</a> をご覧ください。</p>
+    <p class="nav">← <a href="index.html">プライバシーポリシー</a> &nbsp;·&nbsp; <a href="support.html">サポート</a></p>
+  </section>
 
-  <div class="layer-card">
-    <strong>1. 维度 (Dimension)</strong> — 人生参考系。<br>
-    系统默认 4 个(基于 Eisenhower 矩阵):重要程度高 / 重要程度低 / 紧迫程度高 / 紧迫程度低。可在「新增目标」sheet 里自定义维度(选颜色 + 起名)。每个目标可绑多个维度。
-  </div>
+  <section class="lang-block" data-lang="ko" data-title="사용 안내 - DynamicTask">
+    <h1>사용 안내</h1>
+    <p class="meta">최종 업데이트: 2026-05-20</p>
+    <p class="lead">5분 만에 시작하는 DynamicTask — 핵심 철학, 네 단계 모델, 주요 기능을 살펴봅니다.</p>
+    <h3>또 다른 할 일 목록이 아닙니다</h3>
+    <p>DynamicTask의 핵심 아이디어: <strong>할 일을 평평한 목록에서 네 단계로 이루어진 인생 모델로 격상시킨다</strong>.</p>
+    <p>일반적인 할 일 앱은 '오늘 무엇을 할지'를 적게 하지만, DynamicTask는 다음과 같이 명확하게 정리하도록 돕습니다:</p>
+    <ul>
+      <li><strong>차원 (Dimension)</strong>: 내 인생은 어떤 축으로 나뉘는가? (아이젠하워 4분면 또는 사용자 정의)</li>
+      <li><strong>목표 (Goal)</strong>: 무엇을 달성하고 싶은가? (책 읽기 / 운동 / 악기 배우기)</li>
+      <li><strong>계획 (Plan)</strong>: 목표 달성을 위해 어떤 활동이 필요한가? (주 3회 근력 운동)</li>
+      <li><strong>할 일 (Todo)</strong>: 오늘의 구체적인 한 걸음은? (벤치프레스 4×8)</li>
+    </ul>
+    <p>이 구조가 있다면, 할 일은 더 이상 작업 더미가 아니라 <strong>명확한 인생의 길</strong>이 됩니다.</p>
+    <h3>네 단계 설명</h3>
+    <div class="layer-card">
+      <strong>1. 차원 (Dimension)</strong> — 인생의 기준틀.<br>
+      아이젠하워 매트릭스 기반의 4가지 기본값: 중요도 높음 / 중요도 낮음 / 긴급도 높음 / 긴급도 낮음. '새 목표' 시트에서 사용자 정의 차원(색상 + 이름 선택)을 추가할 수 있습니다. 각 목표에는 여러 차원을 연결할 수 있습니다.
+    </div>
+    <div class="layer-card">
+      <strong>2. 목표 (Goal)</strong> — 달성하고 싶은 일.<br>
+      예: "건축사 시험 합격", "30권의 책 읽기", "기타로 호텔 캘리포니아 연주하기". 각 목표는 하나의 <strong>색상</strong>을 연결하며(11가지 프리셋 + 시스템 색상 선택기), 그 색상은 하위 할 일까지 계단식으로 적용됩니다. <strong>차원은 선택사항</strong>이며 인생 영역별로 목표를 정리하고 싶을 때 연결합니다. 분류를 원하지 않는 사용자를 위해 '기본 목표'(중요도 높음 + 긴급도 높음 연결)가 기본 제공됩니다.
+    </div>
+    <div class="layer-card">
+      <strong>3. 계획 (Plan)</strong> — 목표 달성을 위한 활동.<br>
+      예: 목표 "30권의 책 읽기"의 계획 = "매월 고전 소설 2권". 각 계획에는 <strong>아이콘</strong>(800+ 라이브러리에서 선택)과 <strong>완료 기준</strong>(자유 텍스트)이 있습니다. 계획 자체는 할 일이 아닙니다 — 실제로 하는 일은 계획 아래의 할 일입니다.
+    </div>
+    <div class="layer-card">
+      <strong>4. 할 일 (Todo)</strong> — 실행 가능한 단계.<br>
+      예: "매월 고전 소설 2권" 아래의 할 일 = "『백 년 동안의 고독』 3장". 반드시 계획에 속해야 합니다. 1-4개의 <strong>하위 작업</strong>을 추가할 수 있고, <strong>예정 시간</strong>(시작/종료 시간대, 드래그 가능한 링)을 설정할 수 있습니다. 완료 시 만족스러운 마이크로 애니메이션이 재생됩니다.
+    </div>
+    <h3>주요 화면</h3>
+    <h4>홈 (할 일)</h4>
+    <p>하단 캡슐 내비게이션의 첫 번째 탭, 기본 진입점. 오늘의 할 일은 <strong>고정 → 진행 중 → 완료</strong> 세 섹션으로 그룹화됩니다.</p>
+    <ul>
+      <li><strong>아래로 스와이프</strong>: 목록 → 주간 캘린더 → 월간 캘린더 순으로 전환</li>
+      <li><strong>좌측 상단 캘린더 아이콘</strong>: 동일한 세 상태를 탭으로 순환</li>
+      <li><strong>과거 날짜 규칙</strong>: 어제 이전의 미완료 할 일은 자동으로 오늘로 이동; 과거 날짜에서는 완료된 항목만 표시</li>
+      <li><strong>행 상호작용</strong>: 행 탭 → 편집 시트; 링 탭 → 완료 표시; <strong>길게 눌러 드래그</strong> → 정렬, 동시에 캡슐이 '고정 / 삭제' 영역으로 변형</li>
+    </ul>
+    <p>각 캘린더 날짜 아래에 1-3개의 색상 점이 그날의 주요 할 일을 표시합니다(설정에서 끌 수 있음).</p>
+    <h4>계획</h4>
+    <p>두 번째 탭. 상단의 가로 탭에 모든 목표가 나열되며 끝에 <code>+</code>로 새 목표를 추가합니다. 목표를 선택하면 아래에 해당 목표의 모든 계획이 표시됩니다(아이콘 + 계획 이름 + 완료 기준). 계획을 길게 누르면 편집 / 삭제 메뉴가 나타납니다.</p>
+    <h4>통계</h4>
+    <p>세 번째 탭. <strong>연속 기록 히트맵</strong>(GitHub contributions 스타일) + <strong>목표별 진행 카드</strong>(주간/월간 활동). 우측 상단 <code>→</code>로 <strong>영감</strong> 페이지에 진입 — 아직 정식 목표로 정하지 않은 아이디어로, 정식 목표로 승격할 수 있습니다.</p>
+    <h4>설정</h4>
+    <p>네 번째 탭. 테마 / 강조색 / 뽀모도로 시간 / Dynamic Island 스위치 / iCloud 동기화 상태 / 구독 / 언어 / 도움말 / 피드백 / 홍보 제휴 / 공유 / 별점 매기기.</p>
+    <h4>뽀모도로</h4>
+    <p>다섯 번째 탭(특수). 탭해도 페이지가 전환되지 않고, 현재 페이지 위에 겹쳐서 표시됩니다. 중앙: 큰 카운트다운. 상단: 두 개의 pill로 <strong>집중 / 휴식</strong> 전환(기본 45 / 5분, 설정에서 변경 가능). 하단: ▶ 시작 / ⏸ 일시정지 / ↻ 재설정. <strong>Dynamic Island</strong>는 카운트다운과 진행 링을 동기화하여 표시하고, <strong>잠금 화면</strong>에도 뽀모도로 카드가 표시됩니다. 세션 동안 하단 캡슐은 뒤로가기 버튼으로 변형됩니다.</p>
+    <h3>주요 기능</h3>
+    <h4>iOS 미리 알림과 동기화</h4>
+    <p>할 일 시간 섹션의 오른쪽에는 <strong>다색 캘린더 아이콘</strong>(calendar.badge)이 있습니다: 회색 점 = 미동기화; 녹색 점 = 동기화됨. 회색을 탭: 처음에는 권한을 요청하고, 권한이 부여되면 현재 할 일을 시스템의 <strong>기본 미리 알림 목록</strong>에 즉시 동기화합니다. 예정된 시간에 시스템이 알림을 발송합니다. 녹색을 탭: 미리 알림에서 제거합니다.</p>
+    <div class="tip">⚠ DynamicTask 내에서 할 일을 삭제하면 해당하는 시스템 미리 알림도 <strong>연쇄적으로 삭제</strong>됩니다(한 쪽에서 지우면 양쪽 모두 사라짐); 예정 시간을 지우면 자동으로 동기화가 해제됩니다.</div>
+    <h4>iCloud 동기화</h4>
+    <p>첫 실행 시 <strong>자동으로</strong> 활성화됩니다(별도 안내 없음). 모든 데이터(차원/목표/계획/할 일/영감)는 본인의 비공개 iCloud 데이터베이스를 통해 기기 간에 동기화됩니다. 충돌 정책: <strong>마지막 쓰기 우선</strong>. iPhone이 iCloud에 로그인되어 있고 iCloud Drive가 활성화되어 있으면 추가 설정 없이 작동합니다.</p>
+    <h4>위젯(홈 화면)</h4>
+    <p><strong>연속 기록 히트맵</strong>: 통계 페이지의 streak와 동일한 보기로, 소 / 중 / 대 세 가지 크기로 제공됩니다. 홈 화면을 길게 누름 → 위젯 추가 → 'DynamicTask' 검색.</p>
+    <h4>Live Activity (Dynamic Island + 잠금 화면)</h4>
+    <p>두 모드 사이를 자동으로 전환합니다:</p>
+    <ul>
+      <li><strong>할 일 개요</strong>: 뽀모도로가 실행 중이 아닐 때, Dynamic Island는 첫 번째 미완료 할 일 + 전체 진행 상황을 표시하고, 잠금 화면 카드는 상위 3개의 미완료 할 일을 표시합니다.</li>
+      <li><strong>뽀모도로</strong>: 뽀모도로 세션 중에는 카운트다운과 진행 링을 표시합니다.</li>
+    </ul>
+    <p>Dynamic Island를 길게 누르면 전체 카드로 확장됩니다.</p>
+    <h3>구독</h3>
+    <p>네 가지 등급. 실제 가격은 App Store가 실시간으로 표시합니다:</p>
+    <ul>
+      <li><strong>체험 회원</strong>: 7일 무료 체험, 만료 시 자동으로 월간으로 전환</li>
+      <li><strong>월간</strong></li>
+      <li><strong>연간</strong>: 월간보다 가성비 우수</li>
+      <li><strong>평생 구입</strong>: <strong>향후 모든 새 기능 포함</strong>, 구독과 기능 동일(기간만 다름, '인기' 배지 부여)</li>
+    </ul>
+    <p>세 가지 유료 등급(월간 / 연간 / 평생)은 기능이 동일하며, 기간만 다릅니다. 월간과 연간은 동일한 Subscription Group에 속하므로 iOS 구독 설정에서 자유롭게 업그레이드/다운그레이드할 수 있습니다(Apple이 자동으로 비례 환불). 체험 자격은 Apple ID별로 판단되며, 각 Apple ID는 Subscription Group당 한 번만 사용할 수 있습니다. 시스템 설정 → Apple ID → 구독 에서 언제든지 취소 가능; 체험 기간 중 취소하면 요금이 청구되지 않습니다.</p>
+    <p>기기 변경 / 앱 재설치 후: <strong>설정 → 구독 시작 → 구입 복원</strong>으로 모든 과거 구입 항목을 복원할 수 있습니다.</p>
+    <h3>개인정보 보호</h3>
+    <p>DynamicTask는 자사 서버에 <strong>사용자 데이터를 일절 수집하지 않습니다</strong>. 모든 데이터는 로컬에 저장되고 본인의 비공개 iCloud 데이터베이스를 통해 동기화되며, 본인과 Apple만 볼 수 있습니다. 자세한 내용은 <a href="index.html">개인정보 처리방침</a>을 참조하세요.</p>
+    <h3>피드백 및 연락처</h3>
+    <p>버그 신고 / 기능 요청 / 비즈니스 문의: <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>. 앱 내 설정 → 문제 피드백 에서도 직접 메일을 작성할 수 있습니다. 자주 묻는 질문과 문제 해결은 <a href="support.html">지원</a>을 참조하세요.</p>
+    <p class="nav">← <a href="index.html">개인정보 처리방침</a> &nbsp;·&nbsp; <a href="support.html">지원</a></p>
+  </section>
 
-  <div class="layer-card">
-    <strong>2. 目标 (Goal)</strong> — 你想完成的事。<br>
-    例:"考上注册建筑师"、"读完 30 本书"、"学会弹《加州旅馆》"。每个目标绑一种<strong>颜色</strong>(11 种预设 + 系统色板自定义),颜色会沿着层级染色到下面的待办;<strong>维度可选</strong>,绑上后便于按人生区块归类。系统初始有「默认目标」(绑「重要程度高 + 紧迫程度高」),便于不想分类的用户直接用。
-  </div>
+  <section class="lang-block" data-lang="de" data-title="Benutzerhandbuch - DynamicTask">
+    <h1>Benutzerhandbuch</h1>
+    <p class="meta">Zuletzt aktualisiert: 20.05.2026</p>
+    <p class="lead">In 5 Minuten startklar mit DynamicTask — die Kernphilosophie, das Vier-Ebenen-Modell und die wichtigsten Funktionen.</p>
+    <h3>Nicht noch eine To-do-Liste</h3>
+    <p>Die Kernidee von DynamicTask: <strong>Ihre To-dos von einer flachen Liste zu einem vierstufigen Lebensmodell aufwerten</strong>.</p>
+    <p>Gewöhnliche To-do-Apps lassen Sie aufschreiben, „was heute zu tun ist"; DynamicTask fordert Sie auf, klar zu denken:</p>
+    <ul>
+      <li><strong>Dimension</strong>: Wie ist Ihr Leben unterteilt? (Eisenhower-Matrix oder individuell)</li>
+      <li><strong>Ziel (Goal)</strong>: Was möchten Sie erreichen? (Bücher lesen / Fit werden / Ein Instrument lernen)</li>
+      <li><strong>Plan</strong>: Welche Aktivitäten sind zur Zielerreichung nötig? (3× Krafttraining pro Woche)</li>
+      <li><strong>To-do</strong>: Welcher konkrete Schritt heute? (Bankdrücken 4×8)</li>
+    </ul>
+    <p>Mit dieser Struktur sind Ihre To-dos kein Aufgabenhaufen mehr, sondern bilden einen <strong>klaren Lebensweg</strong>.</p>
+    <h3>Die vier Ebenen im Detail</h3>
+    <div class="layer-card">
+      <strong>1. Dimension</strong> — Bezugsrahmen Ihres Lebens.<br>
+      Vier Standardwerte basierend auf der Eisenhower-Matrix: Hohe Wichtigkeit / Geringe Wichtigkeit / Hohe Dringlichkeit / Geringe Dringlichkeit. Eigene Dimensionen (Farbe + Name) lassen sich über die „Neues Ziel"-Ansicht hinzufügen. Jedes Ziel kann an mehrere Dimensionen gebunden werden.
+    </div>
+    <div class="layer-card">
+      <strong>2. Ziel (Goal)</strong> — was Sie erreichen möchten.<br>
+      Beispiele: „Architekturprüfung bestehen", „30 Bücher lesen", „Hotel California auf der Gitarre lernen". Jedes Ziel ist an eine <strong>Farbe</strong> gebunden (11 Voreinstellungen + Systemfarbwähler), die sich kaskadiert auf die zugehörigen To-dos überträgt. <strong>Dimensionen sind optional</strong> — binden Sie sie, um Ziele nach Lebensbereich zu ordnen. Für Nutzer, die nicht kategorisieren möchten, ist ein „Standardziel" (mit Hoher Wichtigkeit + Hoher Dringlichkeit) bereits angelegt.
+    </div>
+    <div class="layer-card">
+      <strong>3. Plan</strong> — Aktivitäten zur Zielerreichung.<br>
+      Beispiel: Unter dem Ziel „30 Bücher lesen" lautet ein Plan = „2 klassische Romane pro Monat". Jeder Plan hat ein <strong>Symbol</strong> (aus 800+ Bibliothek) und ein <strong>Erfüllungskriterium</strong> (Freitext). Ein Plan ist selbst kein To-do — Sie „erledigen" den Plan nicht, sondern die darunter liegenden To-dos.
+    </div>
+    <div class="layer-card">
+      <strong>4. To-do</strong> — umsetzbare Schritte.<br>
+      Beispiel: Unter „2 klassische Romane pro Monat" lautet ein To-do = „‚Hundert Jahre Einsamkeit', Kapitel 3". Muss zu einem Plan gehören. Kann 1–4 <strong>Teilaufgaben</strong> haben; kann eine <strong>geplante Zeit</strong> (Start-/Endfenster, ziehbarer Ring) haben. Beim Abschluss wird eine angenehme Mikroanimation abgespielt.
+    </div>
+    <h3>Hauptansichten</h3>
+    <h4>Start (To-dos)</h4>
+    <p>Erste Schaltfläche in der unteren Kapsel-Navigation, Standardeinstieg. Die heutigen To-dos sind in drei Gruppen unterteilt: <strong>Angeheftet → In Bearbeitung → Erledigt</strong>.</p>
+    <ul>
+      <li><strong>Pull-Down-Geste</strong>: zwischen Liste → Wochenkalender → Monatskalender wechseln</li>
+      <li><strong>Kalendersymbol oben links</strong>: tippen, um dieselben drei Zustände zu durchlaufen</li>
+      <li><strong>Regel für vergangene Termine</strong>: gestern und früher offene To-dos werden automatisch auf heute verschoben; an vergangenen Daten werden nur erledigte angezeigt</li>
+      <li><strong>Zeileninteraktionen</strong>: Zeile antippen → Bearbeitungs-Sheet; Ring antippen → als erledigt markieren; <strong>Lange drücken und ziehen</strong> → neu ordnen, die Kapsel verwandelt sich in „Anheften / Löschen"-Zonen</li>
+    </ul>
+    <p>Unter jedem Kalendertag markieren 1–3 farbige Punkte die wichtigsten To-dos des Tages (in den Einstellungen abschaltbar).</p>
+    <h4>Ziele</h4>
+    <p>Zweite Schaltfläche. Horizontale Tabs oben listen alle Ziele auf, mit einem nachfolgenden <code>+</code> für neue Ziele. Wenn Sie ein Ziel auswählen, erscheinen darunter dessen Pläne (Symbol + Planname + Erfüllungskriterium). Plan lange drücken, um zu bearbeiten / löschen.</p>
+    <h4>Statistik</h4>
+    <p>Dritte Schaltfläche. <strong>Streak-Heatmap</strong> (im Stil von GitHub-Contributions) + <strong>Fortschrittskarten pro Ziel</strong> (Wochen-/Monatsaktivität). Oben rechts öffnet <code>→</code> die <strong>Inspirationen</strong> — Ideen, die Sie noch nicht formal festgelegt haben; lassen sich zu echten Zielen befördern.</p>
+    <h4>Einstellungen</h4>
+    <p>Vierte Schaltfläche. Erscheinungsbild / Akzentfarbe / Pomodoro-Dauern / Dynamic-Island-Schalter / iCloud-Synchronisierungsstatus / Abonnement / Sprache / Hilfe / Feedback / Werbung / Teilen / Bewerten.</p>
+    <h4>Pomodoro</h4>
+    <p>Fünfte Schaltfläche (Sonderfall). Tippen wechselt nicht die Seite, sondern legt eine Schicht über die aktuelle Seite. Mitte: großer Countdown. Oben: zwei Pills zum Umschalten zwischen <strong>Fokus / Pause</strong> (Standard 45 / 5 Min., konfigurierbar). Unten: ▶ Start / ⏸ Pause / ↻ Zurücksetzen. Die <strong>Dynamic Island</strong> spiegelt Countdown und Fortschrittsring; auch der <strong>Sperrbildschirm</strong> zeigt eine Pomodoro-Karte. Während einer Sitzung verwandelt sich die untere Kapsel in eine Zurück-Schaltfläche.</p>
+    <h3>Wichtige Funktionen</h3>
+    <h4>Synchronisierung mit iOS Erinnerungen</h4>
+    <p>Im Abschnitt „To-do-Zeit" befindet sich rechts ein <strong>mehrfarbiges Kalendersymbol</strong> (calendar.badge): grauer Punkt = nicht synchronisiert; grüner Punkt = synchronisiert. Grauer Punkt antippen: Beim ersten Mal wird die Berechtigung angefragt; danach wird das aktuelle To-do sofort in die <strong>Standardliste „Erinnerungen"</strong> synchronisiert. Das System löst zur geplanten Zeit eine Mitteilung aus. Grünen Punkt antippen: aus „Erinnerungen" entfernen.</p>
+    <div class="tip">⚠ Wenn Sie ein To-do in DynamicTask löschen, wird die zugehörige System-Erinnerung <strong>kaskadiert</strong> ebenfalls gelöscht (eine Löschung räumt beide auf); das Entfernen der geplanten Zeit hebt die Synchronisierung automatisch auf.</div>
+    <h4>iCloud-Synchronisierung</h4>
+    <p>Beim ersten Start <strong>automatisch aktiviert</strong> (ohne Nachfrage). Alle Daten (Dimensionen/Ziele/Pläne/To-dos/Inspirationen) werden über Ihre private iCloud-Datenbank zwischen Geräten synchronisiert. Konfliktstrategie: <strong>letzte Schreibung gewinnt</strong>. Funktioniert ohne weitere Einrichtung, sofern Ihr iPhone bei iCloud angemeldet und iCloud Drive aktiviert ist.</p>
+    <h4>Widget (Home-Bildschirm)</h4>
+    <p><strong>Streak-Heatmap</strong>: dieselbe Ansicht wie auf der Statistikseite, verfügbar in den Größen klein / mittel / groß. Home-Bildschirm lange drücken → Widget hinzufügen → nach „DynamicTask" suchen.</p>
+    <h4>Live-Aktivität (Dynamic Island + Sperrbildschirm)</h4>
+    <p>Wechselt automatisch zwischen zwei Modi:</p>
+    <ul>
+      <li><strong>To-do-Übersicht</strong>: Wenn kein Pomodoro läuft, zeigt die Dynamic Island das erste offene To-do + den Gesamtfortschritt; die Sperrbildschirm-Karte zeigt die Top 3 offenen To-dos</li>
+      <li><strong>Pomodoro</strong>: Während einer Pomodoro-Sitzung werden Countdown und Fortschrittsring angezeigt</li>
+    </ul>
+    <p>Lange auf die Dynamic Island drücken, um die vollständige Karte zu öffnen.</p>
+    <h3>Abonnement</h3>
+    <p>Vier Stufen. Die tatsächlichen Preise zeigt der App Store in Echtzeit an:</p>
+    <ul>
+      <li><strong>Testmitglied</strong>: 7 Tage kostenlose Testphase, läuft danach automatisch in das Monatsabo über</li>
+      <li><strong>Monatlich</strong></li>
+      <li><strong>Jährlich</strong>: günstiger als das Monatsabo</li>
+      <li><strong>Einmalkauf</strong>: <strong>enthält alle zukünftigen Funktionen</strong>, identisch mit Abonnements abgesehen von der Laufzeit (Abzeichen „Bestes Angebot")</li>
+    </ul>
+    <p>Die drei kostenpflichtigen Stufen (monatlich / jährlich / einmal) bieten dieselben Funktionen — nur die Laufzeit unterscheidet sich. Monatlich und jährlich gehören zur selben Subscription Group, sodass Sie in den iOS-Aboeinstellungen frei zwischen Upgrades und Downgrades wechseln können (Apple erstattet anteilig). Die Berechtigung zur Testphase wird pro Apple-ID bestimmt; jede Apple-ID kann die Testphase einmal pro Subscription Group nutzen. Über Systemeinstellungen → Apple-ID → Abonnements jederzeit kündbar; eine Kündigung während der Testphase ist kostenlos.</p>
+    <p>Nach Gerätewechsel / Neuinstallation: <strong>Einstellungen → Abonnieren → Käufe wiederherstellen</strong> holt alle bisherigen Käufe zurück.</p>
+    <h3>Datenschutz</h3>
+    <p>DynamicTask <strong>erhebt keine Nutzerdaten</strong> auf unseren Servern. Alle Daten werden lokal gespeichert und über Ihre private iCloud-Datenbank synchronisiert; nur Sie und Apple haben Einblick. Details siehe <a href="index.html">Datenschutzerklärung</a>.</p>
+    <h3>Feedback &amp; Kontakt</h3>
+    <p>Fehlerberichte / Funktionswünsche / Business-Anfragen: <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>. Sie können auch in der App über Einstellungen → Feedback direkt eine E-Mail verfassen. FAQs und Fehlerbehebung finden Sie unter <a href="support.html">Support</a>.</p>
+    <p class="nav">← <a href="index.html">Datenschutzerklärung</a> &nbsp;·&nbsp; <a href="support.html">Support</a></p>
+  </section>
 
-  <div class="layer-card">
-    <strong>3. 计划 (Plan)</strong> — 为目标要做的事。<br>
-    例:目标"读完 30 本书"下的计划 = "每月 2 本经典文学"。每个计划有<strong>图标</strong>(从 800+ 图标库选)和<strong>完成标准</strong>(自由文本)。计划本身不是待办 —— 你做的是计划下的待办。
-  </div>
+  <section class="lang-block" data-lang="fr" data-title="Guide d'utilisation - DynamicTask">
+    <h1>Guide d'utilisation</h1>
+    <p class="meta">Dernière mise à jour : 20/05/2026</p>
+    <p class="lead">Démarrez DynamicTask en 5 minutes — la philosophie, le modèle à quatre niveaux et les fonctionnalités principales.</p>
+    <h3>Pas une énième liste de tâches</h3>
+    <p>L'idée fondatrice de DynamicTask : <strong>faire passer vos tâches d'une liste plate à un modèle de vie à quatre niveaux</strong>.</p>
+    <p>Les apps de tâches classiques vous font noter « ce que vous devez faire aujourd'hui » ; DynamicTask vous aide à penser plus clair :</p>
+    <ul>
+      <li><strong>Dimension</strong> : comment votre vie est-elle découpée ? (matrice d'Eisenhower, ou personnalisée)</li>
+      <li><strong>Objectif (Goal)</strong> : qu'est-ce que vous voulez accomplir ? (lire / vous mettre en forme / apprendre un instrument)</li>
+      <li><strong>Plan</strong> : quelles activités sont nécessaires pour atteindre l'objectif ? (3 séances de musculation par semaine)</li>
+      <li><strong>Tâche (Todo)</strong> : quelle étape concrète aujourd'hui ? (développé couché 4×8)</li>
+    </ul>
+    <p>Avec cette structure, vos tâches ne sont plus un amas, mais un <strong>chemin de vie clair</strong>.</p>
+    <h3>Les quatre niveaux expliqués</h3>
+    <div class="layer-card">
+      <strong>1. Dimension</strong> — cadre de référence de votre vie.<br>
+      Quatre valeurs par défaut basées sur la matrice d'Eisenhower : Importance élevée / Importance faible / Urgence élevée / Urgence faible. Vous pouvez ajouter des dimensions personnalisées (choisir une couleur + un nom) depuis la fiche « Nouvel objectif ». Chaque objectif peut être lié à plusieurs dimensions.
+    </div>
+    <div class="layer-card">
+      <strong>2. Objectif (Goal)</strong> — ce que vous voulez accomplir.<br>
+      Exemples : « Réussir l'examen d'architecte », « Lire 30 livres », « Apprendre Hotel California à la guitare ». Chaque objectif est lié à une <strong>couleur</strong> (11 préréglages + sélecteur système) qui se répercute en cascade sur ses tâches. <strong>Les dimensions sont facultatives</strong> — utilisez-les pour organiser vos objectifs par domaine de vie. Un « Objectif par défaut » (lié à Importance élevée + Urgence élevée) est fourni pour les utilisateurs qui ne veulent pas catégoriser.
+    </div>
+    <div class="layer-card">
+      <strong>3. Plan</strong> — activités nécessaires pour atteindre un objectif.<br>
+      Exemple : sous l'objectif « Lire 30 livres », un plan = « 2 romans classiques par mois ». Chaque plan possède une <strong>icône</strong> (parmi une bibliothèque de 800+) et un <strong>critère d'achèvement</strong> (texte libre). Un plan n'est pas une tâche en lui-même — vous ne « faites » pas le plan, vous faites les tâches en dessous.
+    </div>
+    <div class="layer-card">
+      <strong>4. Tâche (Todo)</strong> — étapes actionnables.<br>
+      Exemple : sous « 2 romans classiques par mois », une tâche = « Cent ans de solitude, chapitre 3 ». Doit appartenir à un plan. Peut avoir 1 à 4 <strong>sous-tâches</strong> ; peut avoir une <strong>plage horaire planifiée</strong> (début/fin, anneau déplaçable). L'achèvement déclenche une micro-animation satisfaisante.
+    </div>
+    <h3>Interfaces principales</h3>
+    <h4>Accueil (Tâches)</h4>
+    <p>Premier onglet de la barre capsule en bas, point d'entrée par défaut. Les tâches du jour sont regroupées en trois sections : <strong>Épinglées → En cours → Terminées</strong>.</p>
+    <ul>
+      <li><strong>Geste de balayage vers le bas</strong> : faites défiler entre liste → calendrier hebdomadaire → calendrier mensuel</li>
+      <li><strong>Icône calendrier en haut à gauche</strong> : touchez pour parcourir les mêmes trois états</li>
+      <li><strong>Règle des dates passées</strong> : les tâches non terminées d'hier et avant migrent automatiquement vers aujourd'hui ; les dates passées n'affichent que les terminées</li>
+      <li><strong>Interactions sur les lignes</strong> : touchez la ligne → fiche d'édition ; touchez l'anneau → marquer comme terminée ; <strong>appui long avec glissement</strong> → réorganiser, la capsule se transforme en zones « Épingler / Supprimer »</li>
+    </ul>
+    <p>Sous chaque date du calendrier, 1 à 3 points colorés indiquent les principales tâches de la journée (désactivable dans les Réglages).</p>
+    <h4>Objectifs</h4>
+    <p>Deuxième onglet. Les onglets horizontaux en haut listent tous les objectifs, suivis d'un <code>+</code> pour en créer. Quand vous sélectionnez un objectif, ses plans s'affichent en dessous (icône + nom + critère d'achèvement). Appui long sur un plan pour le modifier / supprimer.</p>
+    <h4>Statistiques</h4>
+    <p>Troisième onglet. <strong>Carte thermique des séries</strong> (style GitHub contributions) + <strong>cartes de progression par objectif</strong> (activité hebdomadaire/mensuelle). En haut à droite, <code>→</code> ouvre <strong>Inspirations</strong> — des idées que vous voulez réaliser mais n'avez pas encore formalisées ; on peut les promouvoir en véritables objectifs.</p>
+    <h4>Réglages</h4>
+    <p>Quatrième onglet. Thème / couleur d'accentuation / durées Pomodoro / interrupteur Dynamic Island / état de synchronisation iCloud / Abonnement / Langue / Aide / Signaler un problème / Promotion / Partager / Noter.</p>
+    <h4>Pomodoro</h4>
+    <p>Cinquième onglet (spécial). Le toucher ne change pas de page — une couche se superpose à la page en cours. Au centre : un grand compte à rebours. En haut : deux pills pour basculer <strong>Focus / Pause</strong> (par défaut 45 / 5 min, personnalisable). En bas : ▶ Démarrer / ⏸ Mettre en pause / ↻ Réinitialiser. La <strong>Dynamic Island</strong> reflète le compte à rebours et l'anneau de progression ; l'<strong>écran verrouillé</strong> affiche également une carte Pomodoro. Pendant la session, la capsule du bas se transforme en bouton retour.</p>
+    <h3>Fonctionnalités clés</h3>
+    <h4>Synchronisation avec Rappels d'iOS</h4>
+    <p>La section Heure de la tâche comporte à droite une <strong>icône calendrier multicolore</strong> (calendar.badge) : point gris = non synchronisé ; point vert = synchronisé. Touchez le point gris : la première fois, une autorisation est demandée ; ensuite la tâche en cours est immédiatement synchronisée dans la <strong>liste Rappels par défaut</strong>. Le système déclenche une notification à l'heure programmée. Touchez le point vert : retirer de Rappels.</p>
+    <div class="tip">⚠ Supprimer une tâche dans DynamicTask supprime <strong>en cascade</strong> le rappel système correspondant (une seule suppression efface les deux côtés) ; effacer l'heure programmée annule automatiquement la synchronisation.</div>
+    <h4>Synchronisation iCloud</h4>
+    <p>Activée <strong>automatiquement</strong> au premier lancement (sans invite). Toutes les données (dimensions / objectifs / plans / tâches / inspirations) se synchronisent entre vos appareils via votre base de données iCloud privée. Stratégie de conflit : <strong>la dernière écriture l'emporte</strong>. Fonctionne tant que votre iPhone est connecté à iCloud avec iCloud Drive activé — aucune configuration supplémentaire.</p>
+    <h4>Widget (écran d'accueil)</h4>
+    <p><strong>Carte thermique des séries</strong> : même vue que sur la page Statistiques, disponible en petite / moyenne / grande taille. Appui long sur l'écran d'accueil → Ajouter un widget → rechercher « DynamicTask ».</p>
+    <h4>Activité en direct (Dynamic Island + écran verrouillé)</h4>
+    <p>Bascule automatique entre deux modes :</p>
+    <ul>
+      <li><strong>Aperçu des tâches</strong> : lorsqu'aucun Pomodoro n'est en cours, la Dynamic Island affiche la première tâche non terminée + la progression globale ; la carte d'écran verrouillé affiche les 3 premières tâches non terminées</li>
+      <li><strong>Pomodoro</strong> : pendant une session Pomodoro, le compte à rebours et l'anneau de progression sont affichés</li>
+    </ul>
+    <p>Appuyez longuement sur la Dynamic Island pour développer la carte complète.</p>
+    <h3>Abonnement</h3>
+    <p>Quatre formules. Les prix réels sont affichés en direct par l'App Store :</p>
+    <ul>
+      <li><strong>Membre d'essai</strong> : essai gratuit de 7 jours, conversion automatique au mensuel à l'expiration</li>
+      <li><strong>Mensuel</strong></li>
+      <li><strong>Annuel</strong> : meilleur rapport qualité-prix qu'au mensuel</li>
+      <li><strong>À vie</strong> : <strong>inclut toutes les fonctionnalités futures</strong>, identique aux abonnements à la durée près (badge « Meilleure offre »)</li>
+    </ul>
+    <p>Les trois formules payantes (mensuel / annuel / à vie) offrent les mêmes fonctionnalités, seule la durée diffère. Mensuel et annuel font partie du même Subscription Group, vous pouvez donc librement passer de l'un à l'autre dans les réglages d'abonnement iOS (Apple ajuste le remboursement au prorata). L'éligibilité à l'essai est déterminée par identifiant Apple ; chaque identifiant Apple ne peut utiliser l'essai qu'une fois par Subscription Group. Annulez à tout moment via Réglages système → Identifiant Apple → Abonnements ; annuler pendant l'essai ne coûte rien.</p>
+    <p>Après un changement d'appareil ou une réinstallation : <strong>Réglages → S'abonner → Restaurer les achats</strong> récupère tous les achats antérieurs.</p>
+    <h3>Confidentialité</h3>
+    <p>DynamicTask <strong>ne collecte aucune donnée utilisateur</strong> sur nos serveurs. Toutes les données sont stockées localement et synchronisées via votre base iCloud privée ; vous et Apple êtes les seuls à les voir. Voir la <a href="index.html">Politique de confidentialité</a> pour les détails.</p>
+    <h3>Retours &amp; contact</h3>
+    <p>Rapports de bug / demandes de fonctionnalités / partenariats : <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>. Vous pouvez également utiliser Réglages → Signaler un problème dans l'app pour rédiger un e-mail directement. Pour les FAQ et le dépannage, consultez <a href="support.html">Assistance</a>.</p>
+    <p class="nav">← <a href="index.html">Politique de confidentialité</a> &nbsp;·&nbsp; <a href="support.html">Assistance</a></p>
+  </section>
 
-  <div class="layer-card">
-    <strong>4. 待办 (Todo)</strong> — 可执行动作。<br>
-    例:计划"每月 2 本经典文学"下的待办 = "《百年孤独》第三章"。必须归属一个计划;可加 1-4 个<strong>子任务</strong>;可加<strong>待办时间</strong>(开始 / 结束时段,圆环可拖动)。完成后会有满足感的微动画。
-  </div>
+  <section class="lang-block" data-lang="es" data-title="Guía de uso - DynamicTask">
+    <h1>Guía de uso</h1>
+    <p class="meta">Última actualización: 20/05/2026</p>
+    <p class="lead">Empieza con DynamicTask en 5 minutos — filosofía central, el modelo de cuatro capas y las funciones principales.</p>
+    <h3>No es otra lista de tareas más</h3>
+    <p>La idea central de DynamicTask: <strong>llevar tus pendientes de una lista plana a un modelo de vida de cuatro capas</strong>.</p>
+    <p>Las apps de tareas habituales te dejan anotar «qué hacer hoy»; DynamicTask te pide pensar con claridad:</p>
+    <ul>
+      <li><strong>Dimensión</strong>: ¿cómo se divide tu vida? (matriz de Eisenhower o personalizada)</li>
+      <li><strong>Objetivo (Goal)</strong>: ¿qué quieres lograr? (leer libros / ponerte en forma / aprender un instrumento)</li>
+      <li><strong>Plan</strong>: ¿qué actividades hacen falta para alcanzar el objetivo? (3 sesiones de fuerza por semana)</li>
+      <li><strong>Pendiente (Todo)</strong>: ¿qué paso concreto hoy? (press de banca 4×8)</li>
+    </ul>
+    <p>Con esta estructura tus pendientes dejan de ser un montón de tareas y forman un <strong>camino de vida claro</strong>.</p>
+    <h3>Las cuatro capas explicadas</h3>
+    <div class="layer-card">
+      <strong>1. Dimensión</strong> — marco de referencia vital.<br>
+      Cuatro valores predeterminados basados en la matriz de Eisenhower: Importancia alta / Importancia baja / Urgencia alta / Urgencia baja. Puedes añadir dimensiones personalizadas (color + nombre) desde la hoja «Nuevo objetivo». Cada objetivo puede enlazarse con varias dimensiones.
+    </div>
+    <div class="layer-card">
+      <strong>2. Objetivo (Goal)</strong> — lo que quieres lograr.<br>
+      Ejemplos: «Aprobar el examen de arquitecto», «Leer 30 libros», «Aprender Hotel California a la guitarra». Cada objetivo se enlaza con un <strong>color</strong> (11 preajustes + selector del sistema) que se hereda en cascada hasta sus pendientes. <strong>Las dimensiones son opcionales</strong> — enlázalas para organizar los objetivos por áreas vitales. Para usuarios que no quieren categorizar, viene un «Objetivo predeterminado» (enlazado a Importancia alta + Urgencia alta).
+    </div>
+    <div class="layer-card">
+      <strong>3. Plan</strong> — actividades necesarias para alcanzar un objetivo.<br>
+      Ejemplo: bajo el objetivo «Leer 30 libros», un plan = «2 novelas clásicas al mes». Cada plan tiene un <strong>icono</strong> (de una biblioteca de 800+) y un <strong>criterio de cumplimiento</strong> (texto libre). El plan no es un pendiente: lo que haces son los pendientes que cuelgan de él.
+    </div>
+    <div class="layer-card">
+      <strong>4. Pendiente (Todo)</strong> — pasos accionables.<br>
+      Ejemplo: bajo «2 novelas clásicas al mes», un pendiente = «Cien años de soledad, capítulo 3». Debe pertenecer a un plan. Admite de 1 a 4 <strong>subtareas</strong>; puede tener una <strong>franja horaria</strong> (inicio/fin, anillo arrastrable). Al completarlo se reproduce una microanimación gratificante.
+    </div>
+    <h3>Interfaces principales</h3>
+    <h4>Inicio (Pendientes)</h4>
+    <p>Primera pestaña de la barra cápsula inferior, punto de entrada por defecto. Los pendientes del día se agrupan en tres secciones: <strong>Fijados → En curso → Completados</strong>.</p>
+    <ul>
+      <li><strong>Gesto de deslizar hacia abajo</strong>: pasa de lista → calendario semanal → calendario mensual</li>
+      <li><strong>Icono de calendario arriba a la izquierda</strong>: toca para recorrer esos tres estados</li>
+      <li><strong>Regla de fechas pasadas</strong>: los pendientes sin completar de ayer y anteriores se migran automáticamente a hoy; las fechas pasadas solo muestran los completados</li>
+      <li><strong>Interacciones de fila</strong>: toca la fila → hoja de edición; toca el anillo → marcar como completado; <strong>mantén pulsado y arrastra</strong> → reordenar, y la cápsula se transforma en zonas «Fijar / Eliminar»</li>
+    </ul>
+    <p>Bajo cada fecha del calendario aparecen 1-3 puntos de color que marcan los principales pendientes del día (se puede desactivar en Ajustes).</p>
+    <h4>Objetivos</h4>
+    <p>Segunda pestaña. Las pestañas horizontales superiores enumeran todos los objetivos, con un <code>+</code> al final para crear uno nuevo. Al seleccionar un objetivo aparecen abajo sus planes (icono + nombre + criterio de cumplimiento). Mantén pulsado un plan para editar / eliminar.</p>
+    <h4>Estadísticas</h4>
+    <p>Tercera pestaña. <strong>Mapa de calor de racha</strong> (estilo GitHub contributions) + <strong>tarjetas de progreso por objetivo</strong> (actividad semanal/mensual). El <code>→</code> superior derecho abre <strong>Inspiración</strong> — ideas que quieres hacer pero aún no has formalizado; se pueden promover a objetivos reales.</p>
+    <h4>Ajustes</h4>
+    <p>Cuarta pestaña. Tema / color principal / duraciones de Pomodoro / interruptor Dynamic Island / estado de sincronización con iCloud / Suscribirse / Idioma / Ayuda / Reportar problema / Promoción / Compartir / Valorar.</p>
+    <h4>Pomodoro</h4>
+    <p>Quinta pestaña (especial). Al tocar no cambia de página, sino que superpone una capa sobre la página actual. Centro: gran cuenta atrás. Arriba: dos pills para alternar <strong>Foco / Descanso</strong> (por defecto 45 / 5 min, personalizable). Abajo: ▶ Iniciar / ⏸ Pausar / ↻ Reiniciar. La <strong>Dynamic Island</strong> refleja la cuenta atrás y el anillo de progreso; la <strong>pantalla bloqueada</strong> también muestra una tarjeta Pomodoro. Durante la sesión, la cápsula inferior se transforma en un botón de volver.</p>
+    <h3>Funciones clave</h3>
+    <h4>Sincronización con Recordatorios de iOS</h4>
+    <p>En la sección Hora del pendiente hay a la derecha un <strong>icono de calendario multicolor</strong> (calendar.badge): punto gris = sin sincronizar; punto verde = sincronizado. Toca el gris: la primera vez se solicita permiso; después se sincroniza el pendiente actual al instante en la <strong>lista de Recordatorios predeterminada</strong>. El sistema enviará una notificación a la hora programada. Toca el verde: lo quita de Recordatorios.</p>
+    <div class="tip">⚠ Eliminar un pendiente en DynamicTask elimina <strong>en cascada</strong> el recordatorio del sistema correspondiente (con una sola eliminación se borran ambos); borrar la hora programada cancela la sincronización automáticamente.</div>
+    <h4>Sincronización con iCloud</h4>
+    <p>Activada <strong>automáticamente</strong> en el primer arranque (sin diálogo). Todos los datos (dimensiones/objetivos/planes/pendientes/inspiraciones) se sincronizan entre dispositivos a través de tu base de datos privada de iCloud. Estrategia de conflictos: <strong>gana la última escritura</strong>. Funciona siempre que tu iPhone esté conectado a iCloud con iCloud Drive activado — sin configuración adicional.</p>
+    <h4>Widget (pantalla de inicio)</h4>
+    <p><strong>Mapa de calor de racha</strong>: la misma vista que en la página Estadísticas, disponible en tamaño pequeño / mediano / grande. Mantén pulsada la pantalla de inicio → Añadir widget → busca «DynamicTask».</p>
+    <h4>Actividad en directo (Dynamic Island + pantalla bloqueada)</h4>
+    <p>Alterna automáticamente entre dos modos:</p>
+    <ul>
+      <li><strong>Resumen de pendientes</strong>: cuando no hay un Pomodoro activo, la Dynamic Island muestra el primer pendiente sin completar + el progreso total; la tarjeta de pantalla bloqueada muestra los 3 primeros pendientes sin completar</li>
+      <li><strong>Pomodoro</strong>: durante una sesión Pomodoro muestra la cuenta atrás y el anillo de progreso</li>
+    </ul>
+    <p>Mantén pulsada la Dynamic Island para expandir la tarjeta completa.</p>
+    <h3>Suscripción</h3>
+    <p>Cuatro niveles. Los precios reales los muestra el App Store en tiempo real:</p>
+    <ul>
+      <li><strong>Miembro de prueba</strong>: 7 días gratis; al caducar pasa automáticamente a mensual</li>
+      <li><strong>Mensual</strong></li>
+      <li><strong>Anual</strong>: mejor relación calidad-precio que la mensual</li>
+      <li><strong>De por vida</strong>: <strong>incluye todas las funciones futuras</strong>, idéntica a las suscripciones salvo en la duración (insignia «Mejor oferta»)</li>
+    </ul>
+    <p>Los tres niveles de pago (mensual / anual / de por vida) ofrecen las mismas funciones; solo varía la duración. Mensual y anual pertenecen al mismo Subscription Group, así que puedes pasar de uno a otro libremente desde los ajustes de suscripciones de iOS (Apple ajusta el reembolso proporcionalmente). La elegibilidad para la prueba se determina por ID de Apple; cada ID de Apple puede usar la prueba una vez por Subscription Group. Cancela cuando quieras desde Ajustes del sistema → ID de Apple → Suscripciones; cancelar durante la prueba no tiene coste.</p>
+    <p>Tras cambiar de dispositivo o reinstalar: <strong>Ajustes → Suscribirse → Restaurar compras</strong> recupera todas las compras anteriores.</p>
+    <h3>Privacidad</h3>
+    <p>DynamicTask <strong>no recopila ningún dato de usuario</strong> en nuestros servidores. Todos los datos se almacenan localmente y se sincronizan a través de tu base de datos privada de iCloud; solo tú y Apple podéis verlos. Más información en la <a href="index.html">Política de privacidad</a>.</p>
+    <h3>Comentarios y contacto</h3>
+    <p>Informes de errores / solicitudes de funciones / colaboraciones: <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>. También puedes usar Ajustes → Reportar problema dentro de la app para redactar un correo directamente. Para preguntas frecuentes y resolución de problemas, consulta <a href="support.html">Soporte</a>.</p>
+    <p class="nav">← <a href="index.html">Política de privacidad</a> &nbsp;·&nbsp; <a href="support.html">Soporte</a></p>
+  </section>
 
-  <h3>主要界面</h3>
+  <section class="lang-block" data-lang="it" data-title="Guida d'uso - DynamicTask">
+    <h1>Guida d'uso</h1>
+    <p class="meta">Ultimo aggiornamento: 20/05/2026</p>
+    <p class="lead">DynamicTask in 5 minuti — filosofia, modello a quattro livelli e funzioni principali.</p>
+    <h3>Non è l'ennesima lista di cose da fare</h3>
+    <p>L'idea cardine di DynamicTask: <strong>far evolvere le tue attività da un elenco piatto a un modello di vita a quattro livelli</strong>.</p>
+    <p>Le app per le attività ti fanno annotare «cosa fare oggi»; DynamicTask ti invita a pensare con chiarezza:</p>
+    <ul>
+      <li><strong>Dimensione</strong>: come è suddivisa la tua vita? (matrice di Eisenhower, o personalizzata)</li>
+      <li><strong>Obiettivo (Goal)</strong>: cosa vuoi raggiungere? (leggere libri / metterti in forma / imparare uno strumento)</li>
+      <li><strong>Piano</strong>: quali attività servono per raggiungere l'obiettivo? (3 sessioni di forza a settimana)</li>
+      <li><strong>Attività (Todo)</strong>: qual è il passo concreto di oggi? (panca piana 4×8)</li>
+    </ul>
+    <p>Con questa struttura le tue attività non sono più un mucchio, ma compongono un <strong>chiaro percorso di vita</strong>.</p>
+    <h3>I quattro livelli spiegati</h3>
+    <div class="layer-card">
+      <strong>1. Dimensione</strong> — sistema di riferimento della tua vita.<br>
+      Quattro valori predefiniti in base alla matrice di Eisenhower: Importanza alta / Importanza bassa / Urgenza alta / Urgenza bassa. Puoi aggiungere dimensioni personalizzate (colore + nome) dalla scheda «Nuovo obiettivo». Ogni obiettivo può essere collegato a più dimensioni.
+    </div>
+    <div class="layer-card">
+      <strong>2. Obiettivo (Goal)</strong> — ciò che vuoi raggiungere.<br>
+      Esempi: «Superare l'esame da architetto», «Leggere 30 libri», «Imparare Hotel California alla chitarra». Ogni obiettivo è associato a un <strong>colore</strong> (11 preset + selettore di sistema) che si propaga a cascata fino alle sue attività. <strong>Le dimensioni sono facoltative</strong> — collegale per organizzare gli obiettivi per area di vita. Per chi non vuole categorizzare, è disponibile un «Obiettivo predefinito» (collegato a Importanza alta + Urgenza alta).
+    </div>
+    <div class="layer-card">
+      <strong>3. Piano</strong> — attività necessarie a raggiungere un obiettivo.<br>
+      Esempio: sotto l'obiettivo «Leggere 30 libri», un piano = «2 romanzi classici al mese». Ogni piano ha un'<strong>icona</strong> (da una libreria di 800+) e un <strong>criterio di completamento</strong> (testo libero). Il piano non è un'attività in sé — ciò che fai sono le attività sotto di esso.
+    </div>
+    <div class="layer-card">
+      <strong>4. Attività (Todo)</strong> — passaggi eseguibili.<br>
+      Esempio: sotto «2 romanzi classici al mese», un'attività = «"Cent'anni di solitudine", capitolo 3». Deve appartenere a un piano. Può avere da 1 a 4 <strong>sotto-attività</strong>; può avere una <strong>fascia oraria pianificata</strong> (inizio/fine, anello trascinabile). Al completamento si attiva una micro-animazione soddisfacente.
+    </div>
+    <h3>Interfacce principali</h3>
+    <h4>Home (Attività)</h4>
+    <p>Primo tab della barra a capsula in basso, ingresso predefinito. Le attività di oggi sono raggruppate in tre sezioni: <strong>In primo piano → In corso → Completate</strong>.</p>
+    <ul>
+      <li><strong>Gesto di trascinamento verso il basso</strong>: scorri tra elenco → calendario settimanale → calendario mensile</li>
+      <li><strong>Icona calendario in alto a sinistra</strong>: tocca per ciclare gli stessi tre stati</li>
+      <li><strong>Regola per date passate</strong>: le attività non completate di ieri e precedenti migrano automaticamente a oggi; le date passate mostrano solo le completate</li>
+      <li><strong>Interazioni sulla riga</strong>: tocca la riga → scheda di modifica; tocca l'anello → segna come completata; <strong>tieni premuto e trascina</strong> → riordina; la capsula si trasforma in zone «In primo piano / Elimina»</li>
+    </ul>
+    <p>Sotto ogni data del calendario compaiono 1-3 pallini colorati che evidenziano le principali attività della giornata (disattivabile nelle Impostazioni).</p>
+    <h4>Obiettivi</h4>
+    <p>Secondo tab. I tab orizzontali in alto elencano tutti gli obiettivi, con un <code>+</code> finale per crearne di nuovi. Selezionando un obiettivo, sotto compaiono i suoi piani (icona + nome + criterio di completamento). Tieni premuto un piano per modificarlo / eliminarlo.</p>
+    <h4>Statistiche</h4>
+    <p>Terzo tab. <strong>Heatmap delle serie</strong> (stile contributions di GitHub) + <strong>schede di progresso per obiettivo</strong> (attività settimanale/mensile). In alto a destra, <code>→</code> apre <strong>Ispirazione</strong> — idee che vuoi realizzare ma non hai ancora formalizzato; possono essere promosse a veri obiettivi.</p>
+    <h4>Impostazioni</h4>
+    <p>Quarto tab. Tema / colore d'accento / durate Pomodoro / interruttore Dynamic Island / stato della sincronizzazione iCloud / Abbonati / Lingua / Aiuto / Segnala problema / Promozione / Condividi / Valuta.</p>
+    <h4>Pomodoro</h4>
+    <p>Quinto tab (speciale). Toccandolo non si cambia pagina, ma si sovrappone uno strato alla pagina corrente. Al centro: grande conto alla rovescia. In alto: due pill per alternare <strong>Focus / Pausa</strong> (predefinito 45 / 5 min, personalizzabile). In basso: ▶ Avvia / ⏸ Sospendi / ↻ Reimposta. La <strong>Dynamic Island</strong> rispecchia il conto alla rovescia e l'anello di progresso; anche la <strong>schermata di blocco</strong> mostra una scheda Pomodoro. Durante la sessione, la capsula in basso si trasforma in un pulsante indietro.</p>
+    <h3>Funzioni chiave</h3>
+    <h4>Sincronizzazione con Promemoria di iOS</h4>
+    <p>Nella sezione Ora dell'attività, a destra c'è un'<strong>icona calendario multicolore</strong> (calendar.badge): pallino grigio = non sincronizzato; pallino verde = sincronizzato. Tocca il grigio: la prima volta viene chiesta l'autorizzazione; poi l'attività corrente è subito sincronizzata nell'<strong>elenco Promemoria predefinito</strong>. Il sistema invia una notifica all'orario programmato. Tocca il verde: rimuovi da Promemoria.</p>
+    <div class="tip">⚠ Eliminare un'attività in DynamicTask elimina <strong>a cascata</strong> il promemoria di sistema corrispondente (una sola eliminazione pulisce entrambi); cancellando l'orario programmato la sincronizzazione viene annullata automaticamente.</div>
+    <h4>Sincronizzazione iCloud</h4>
+    <p>Attivata <strong>automaticamente</strong> al primo avvio (senza richieste). Tutti i dati (dimensioni/obiettivi/piani/attività/ispirazioni) si sincronizzano tra i dispositivi attraverso il tuo database iCloud privato. Strategia di conflitto: <strong>vince l'ultima scrittura</strong>. Funziona finché il tuo iPhone è connesso a iCloud con iCloud Drive attivo — senza configurazione aggiuntiva.</p>
+    <h4>Widget (schermata Home)</h4>
+    <p><strong>Heatmap delle serie</strong>: la stessa vista della pagina Statistiche, disponibile in formato piccolo / medio / grande. Tieni premuta la Home → Aggiungi widget → cerca «DynamicTask».</p>
+    <h4>Attività in tempo reale (Dynamic Island + schermata di blocco)</h4>
+    <p>Alterna automaticamente tra due modalità:</p>
+    <ul>
+      <li><strong>Panoramica attività</strong>: quando non c'è un Pomodoro attivo, la Dynamic Island mostra la prima attività non completata + il progresso complessivo; la scheda della schermata di blocco mostra le prime 3 attività non completate</li>
+      <li><strong>Pomodoro</strong>: durante una sessione Pomodoro mostra il conto alla rovescia e l'anello di progresso</li>
+    </ul>
+    <p>Tieni premuta la Dynamic Island per espandere la scheda completa.</p>
+    <h3>Abbonamento</h3>
+    <p>Quattro livelli. I prezzi reali sono mostrati in tempo reale dall'App Store:</p>
+    <ul>
+      <li><strong>Membro di prova</strong>: 7 giorni di prova gratuita; alla scadenza si converte automaticamente in mensile</li>
+      <li><strong>Mensile</strong></li>
+      <li><strong>Annuale</strong>: rapporto qualità-prezzo migliore rispetto al mensile</li>
+      <li><strong>A vita</strong>: <strong>include tutte le funzioni future</strong>, identico agli abbonamenti tranne che per la durata (badge «Migliore offerta»)</li>
+    </ul>
+    <p>I tre livelli a pagamento (mensile / annuale / a vita) offrono le stesse funzioni; cambia solo la durata. Mensile e annuale fanno parte dello stesso Subscription Group, quindi puoi cambiare liberamente nei tuoi abbonamenti iOS (Apple gestisce il rimborso proporzionale). L'idoneità alla prova è determinata per ID Apple; ogni ID Apple può usare la prova una sola volta per Subscription Group. Annulla in qualsiasi momento da Impostazioni di sistema → ID Apple → Abbonamenti; annullare durante la prova non comporta costi.</p>
+    <p>Dopo cambio di dispositivo / reinstallazione: <strong>Impostazioni → Abbonati → Ripristina acquisti</strong> recupera tutti gli acquisti precedenti.</p>
+    <h3>Privacy</h3>
+    <p>DynamicTask <strong>non raccoglie alcun dato utente</strong> sui nostri server. Tutti i dati sono memorizzati localmente e sincronizzati attraverso il tuo database iCloud privato; solo tu e Apple potete vederli. Per i dettagli vedi l'<a href="index.html">Informativa sulla privacy</a>.</p>
+    <h3>Feedback e contatti</h3>
+    <p>Segnalazioni di bug / richieste di funzioni / collaborazioni: <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>. Puoi anche usare Impostazioni → Segnala problema nell'app per scrivere un'email direttamente. Per FAQ e risoluzione dei problemi, consulta <a href="support.html">Assistenza</a>.</p>
+    <p class="nav">← <a href="index.html">Informativa sulla privacy</a> &nbsp;·&nbsp; <a href="support.html">Assistenza</a></p>
+  </section>
 
-  <h4>首页(待办)</h4>
-  <p>底部胶囊导航第 1 个 tab,默认入口。今日的待办按 <strong>置顶 → 进行中 → 已完成</strong> 三段分组。</p>
-  <ul>
-    <li><strong>下拉手势</strong>:依次切换 列表 → 周日历 → 月日历</li>
-    <li><strong>左上角日历图标</strong>:点击切换同上三态</li>
-    <li><strong>历史日期规则</strong>:昨日及更早未完成的待办自动迁移到今日;查看历史日期只能看已完成</li>
-    <li><strong>待办行交互</strong>:点击行 → 编辑 sheet;点击右侧圆环 → 勾选完成;<strong>长按拖动</strong> → 排序,同时底部胶囊变形为「置顶 + 删除」</li>
-  </ul>
-  <p>日历日期下方有 1-3 个<strong>小圆点</strong>,标记该日待办的颜色(列表前 3 项)。设置页可关。</p>
+  <section class="lang-block" data-lang="pt" data-title="Guia de uso - DynamicTask">
+    <h1>Guia de uso</h1>
+    <p class="meta">Última atualização: 20/05/2026</p>
+    <p class="lead">Comece o DynamicTask em 5 minutos — filosofia, modelo de quatro camadas e funções principais.</p>
+    <h3>Não é só mais uma lista de tarefas</h3>
+    <p>A ideia central do DynamicTask: <strong>elevar suas tarefas de uma lista plana para um modelo de vida em quatro camadas</strong>.</p>
+    <p>Apps de tarefas comuns deixam você anotar «o que fazer hoje»; o DynamicTask convida você a pensar com clareza:</p>
+    <ul>
+      <li><strong>Dimensão</strong>: como sua vida está dividida? (matriz de Eisenhower, ou personalizada)</li>
+      <li><strong>Meta (Goal)</strong>: o que você quer alcançar? (ler livros / ficar em forma / aprender um instrumento)</li>
+      <li><strong>Plano</strong>: quais atividades são necessárias para atingir a meta? (3 treinos de força por semana)</li>
+      <li><strong>Tarefa (Todo)</strong>: qual o passo concreto hoje? (supino reto 4×8)</li>
+    </ul>
+    <p>Com essa estrutura, suas tarefas deixam de ser um amontoado e formam um <strong>caminho de vida claro</strong>.</p>
+    <h3>As quatro camadas explicadas</h3>
+    <div class="layer-card">
+      <strong>1. Dimensão</strong> — referencial de vida.<br>
+      Quatro valores padrão baseados na matriz de Eisenhower: Importância alta / Importância baixa / Urgência alta / Urgência baixa. Você pode adicionar dimensões personalizadas (cor + nome) na folha «Nova meta». Cada meta pode ser vinculada a várias dimensões.
+    </div>
+    <div class="layer-card">
+      <strong>2. Meta (Goal)</strong> — o que você quer alcançar.<br>
+      Exemplos: «Ser aprovado no exame de arquitetura», «Ler 30 livros», «Aprender Hotel California na guitarra». Cada meta é vinculada a uma <strong>cor</strong> (11 predefinições + seletor de cor do sistema) que se propaga em cascata até as suas tarefas. <strong>As dimensões são opcionais</strong> — vincule-as para organizar metas por área da vida. Para quem não quer categorizar, vem uma «Meta padrão» (vinculada a Importância alta + Urgência alta).
+    </div>
+    <div class="layer-card">
+      <strong>3. Plano</strong> — atividades necessárias para atingir uma meta.<br>
+      Exemplo: sob a meta «Ler 30 livros», um plano = «2 romances clássicos por mês». Cada plano tem um <strong>ícone</strong> (de uma biblioteca de 800+) e um <strong>critério de conclusão</strong> (texto livre). O plano em si não é uma tarefa — o que você faz são as tarefas abaixo dele.
+    </div>
+    <div class="layer-card">
+      <strong>4. Tarefa (Todo)</strong> — passos executáveis.<br>
+      Exemplo: sob «2 romances clássicos por mês», uma tarefa = «Cem Anos de Solidão, capítulo 3». Deve pertencer a um plano. Pode ter de 1 a 4 <strong>subtarefas</strong>; pode ter um <strong>horário planejado</strong> (janela de início/fim, anel arrastável). Ao concluir, dispara uma microanimação gratificante.
+    </div>
+    <h3>Interfaces principais</h3>
+    <h4>Início (Tarefas)</h4>
+    <p>Primeira aba da navegação em cápsula na parte inferior, ponto de entrada padrão. As tarefas do dia estão agrupadas em três seções: <strong>Fixadas → Em andamento → Concluídas</strong>.</p>
+    <ul>
+      <li><strong>Gesto de puxar para baixo</strong>: alterna entre lista → calendário semanal → calendário mensal</li>
+      <li><strong>Ícone de calendário no canto superior esquerdo</strong>: toque para passar pelos mesmos três estados</li>
+      <li><strong>Regra para datas passadas</strong>: tarefas não concluídas de ontem e anteriores migram automaticamente para hoje; datas passadas mostram apenas as concluídas</li>
+      <li><strong>Interações na linha</strong>: toque na linha → folha de edição; toque no anel → marcar como concluída; <strong>pressione e arraste</strong> → reordenar; a cápsula se transforma em zonas «Fixar / Excluir»</li>
+    </ul>
+    <p>Abaixo de cada data do calendário aparecem de 1 a 3 pontos coloridos marcando as principais tarefas do dia (desativável nos Ajustes).</p>
+    <h4>Metas</h4>
+    <p>Segunda aba. As abas horizontais no topo listam todas as metas, com um <code>+</code> ao final para criar uma nova. Ao selecionar uma meta, aparecem abaixo seus planos (ícone + nome + critério de conclusão). Pressione um plano para editar / excluir.</p>
+    <h4>Estatísticas</h4>
+    <p>Terceira aba. <strong>Mapa de calor de sequência</strong> (estilo contributions do GitHub) + <strong>cards de progresso por meta</strong> (atividade semanal/mensal). O <code>→</code> no canto superior direito abre <strong>Inspiração</strong> — ideias que você quer realizar mas ainda não formalizou; podem ser promovidas a metas reais.</p>
+    <h4>Ajustes</h4>
+    <p>Quarta aba. Tema / cor de destaque / durações do Pomodoro / interruptor da Ilha Dinâmica / status da sincronização do iCloud / Assinar / Idioma / Ajuda / Relatar problema / Promoção / Compartilhar / Avaliar.</p>
+    <h4>Pomodoro</h4>
+    <p>Quinta aba (especial). Tocar não troca de página, sobrepõe uma camada à página atual. Centro: contagem regressiva grande. Topo: dois pills para alternar <strong>Foco / Descanso</strong> (padrão 45 / 5 min, configurável). Base: ▶ Iniciar / ⏸ Pausar / ↻ Reiniciar. A <strong>Ilha Dinâmica</strong> espelha a contagem e o anel de progresso; a <strong>tela bloqueada</strong> também exibe um card de Pomodoro. Durante a sessão, a cápsula inferior se transforma em um botão de voltar.</p>
+    <h3>Recursos importantes</h3>
+    <h4>Sincronização com Lembretes do iOS</h4>
+    <p>Na seção Hora da tarefa há, à direita, um <strong>ícone de calendário multicolorido</strong> (calendar.badge): ponto cinza = sem sincronização; ponto verde = sincronizado. Toque no cinza: na primeira vez é solicitada a permissão; depois a tarefa atual é sincronizada imediatamente na <strong>lista Lembretes padrão</strong>. O sistema envia uma notificação no horário programado. Toque no verde: remove dos Lembretes.</p>
+    <div class="tip">⚠ Excluir uma tarefa no DynamicTask exclui <strong>em cascata</strong> o lembrete de sistema correspondente (uma única exclusão limpa os dois lados); apagar o horário programado cancela a sincronização automaticamente.</div>
+    <h4>Sincronização com iCloud</h4>
+    <p>Ativada <strong>automaticamente</strong> na primeira execução (sem avisos). Todos os dados (dimensões/metas/planos/tarefas/inspirações) são sincronizados entre os dispositivos pelo seu banco de dados privado do iCloud. Política de conflito: <strong>vence a última gravação</strong>. Funciona desde que seu iPhone esteja conectado ao iCloud com o iCloud Drive ativado — sem configuração extra.</p>
+    <h4>Widget (Tela de Início)</h4>
+    <p><strong>Mapa de calor de sequência</strong>: a mesma visualização da página Estatísticas, disponível nos tamanhos pequeno / médio / grande. Pressione a Tela de Início → Adicionar widget → procure «DynamicTask».</p>
+    <h4>Atividade ao vivo (Ilha Dinâmica + tela bloqueada)</h4>
+    <p>Alterna automaticamente entre dois modos:</p>
+    <ul>
+      <li><strong>Visão geral das tarefas</strong>: quando não há Pomodoro em execução, a Ilha Dinâmica mostra a primeira tarefa não concluída + o progresso geral; o card da tela bloqueada mostra as 3 primeiras tarefas não concluídas</li>
+      <li><strong>Pomodoro</strong>: durante uma sessão Pomodoro, exibe a contagem regressiva e o anel de progresso</li>
+    </ul>
+    <p>Pressione a Ilha Dinâmica para expandir o card completo.</p>
+    <h3>Assinatura</h3>
+    <p>Quatro níveis. Os preços reais são exibidos em tempo real pela App Store:</p>
+    <ul>
+      <li><strong>Membro de teste</strong>: 7 dias de teste gratuito; ao expirar, converte-se automaticamente em mensal</li>
+      <li><strong>Mensal</strong></li>
+      <li><strong>Anual</strong>: melhor custo-benefício que o mensal</li>
+      <li><strong>Vitalício</strong>: <strong>inclui todos os recursos futuros</strong>, idêntico às assinaturas exceto pela duração (selo «Melhor oferta»)</li>
+    </ul>
+    <p>Os três níveis pagos (mensal / anual / vitalício) oferecem as mesmas funções; só a duração muda. Mensal e anual pertencem ao mesmo Subscription Group, então você pode trocar livremente nas configurações de assinaturas do iOS (a Apple reembolsa proporcionalmente). A elegibilidade ao teste é determinada por ID Apple; cada ID Apple pode usar o teste uma vez por Subscription Group. Cancele a qualquer momento em Ajustes do sistema → ID Apple → Assinaturas; cancelar durante o teste não tem custo.</p>
+    <p>Após trocar de dispositivo / reinstalar: <strong>Ajustes → Assinar → Restaurar compras</strong> recupera todas as compras anteriores.</p>
+    <h3>Privacidade</h3>
+    <p>O DynamicTask <strong>não coleta nenhum dado de usuário</strong> em nossos servidores. Todos os dados são armazenados localmente e sincronizados via seu banco de dados privado do iCloud; somente você e a Apple podem vê-los. Consulte a <a href="index.html">Política de Privacidade</a> para detalhes.</p>
+    <h3>Feedback &amp; contato</h3>
+    <p>Relatórios de bugs / pedidos de recursos / parcerias: <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>. Você também pode usar Ajustes → Relatar problema no app para escrever um e-mail diretamente. Para FAQs e resolução de problemas, veja o <a href="support.html">Suporte</a>.</p>
+    <p class="nav">← <a href="index.html">Política de Privacidade</a> &nbsp;·&nbsp; <a href="support.html">Suporte</a></p>
+  </section>
 
-  <h4>计划</h4>
-  <p>底部第 2 个 tab。顶部 tabs 横向滚动列出所有目标,末尾 <code>+</code> 新增目标。选中某目标后下方显示该目标下的所有计划(图标 + 计划名 + 完成标准)。长按计划进入编辑 / 删除。</p>
+  <section class="lang-block" data-lang="ru" data-title="Руководство пользователя - DynamicTask">
+    <h1>Руководство пользователя</h1>
+    <p class="meta">Последнее обновление: 20.05.2026</p>
+    <p class="lead">Начните работу с DynamicTask за 5 минут — основная философия, четырёхуровневая модель и ключевые функции.</p>
+    <h3>Это не очередной список задач</h3>
+    <p>Главная идея DynamicTask: <strong>перевести ваши задачи из плоского списка в четырёхуровневую модель жизни</strong>.</p>
+    <p>Обычные приложения для задач позволяют записать «что сделать сегодня»; DynamicTask просит вас подумать яснее:</p>
+    <ul>
+      <li><strong>Измерение (Dimension)</strong>: на какие оси разделена ваша жизнь? (Матрица Эйзенхауэра или собственная)</li>
+      <li><strong>Цель (Goal)</strong>: чего вы хотите достичь? (Читать книги / Привести себя в форму / Освоить инструмент)</li>
+      <li><strong>План (Plan)</strong>: какие действия нужны для достижения цели? (3 силовые тренировки в неделю)</li>
+      <li><strong>Задача (Todo)</strong>: какой конкретный шаг сегодня? (Жим лёжа 4×8)</li>
+    </ul>
+    <p>С такой структурой ваши задачи перестают быть кучей дел и складываются в <strong>чёткий жизненный путь</strong>.</p>
+    <h3>Четыре уровня по порядку</h3>
+    <div class="layer-card">
+      <strong>1. Измерение (Dimension)</strong> — система координат вашей жизни.<br>
+      Четыре значения по умолчанию на основе матрицы Эйзенхауэра: Высокая важность / Низкая важность / Высокая срочность / Низкая срочность. Вы можете добавлять собственные измерения (цвет + название) из листа «Новая цель». К каждой цели можно привязать несколько измерений.
+    </div>
+    <div class="layer-card">
+      <strong>2. Цель (Goal)</strong> — то, чего вы хотите достичь.<br>
+      Примеры: «Сдать экзамен на архитектора», «Прочитать 30 книг», «Научиться играть Hotel California на гитаре». Каждая цель связана с <strong>цветом</strong> (11 предустановок + системный выбор цвета), который каскадно применяется к её задачам. <strong>Измерения необязательны</strong> — привяжите их, чтобы группировать цели по сферам жизни. Для тех, кто не хочет разбивать на категории, есть «Цель по умолчанию» (связана с Высокая важность + Высокая срочность).
+    </div>
+    <div class="layer-card">
+      <strong>3. План (Plan)</strong> — действия для достижения цели.<br>
+      Пример: под целью «Прочитать 30 книг» план = «2 классических романа в месяц». У каждого плана есть <strong>иконка</strong> (из библиотеки на 800+) и <strong>критерий завершения</strong> (свободный текст). Сам план — не задача; вы выполняете задачи, которые относятся к плану.
+    </div>
+    <div class="layer-card">
+      <strong>4. Задача (Todo)</strong> — выполнимые шаги.<br>
+      Пример: под «2 классических романа в месяц» задача = «‘Сто лет одиночества’, глава 3». Должна принадлежать плану. Может иметь 1–4 <strong>подзадач</strong>; может иметь <strong>запланированное время</strong> (интервал начало/конец, перетаскиваемое кольцо). По завершении срабатывает приятная микро-анимация.
+    </div>
+    <h3>Основные экраны</h3>
+    <h4>Главная (Задачи)</h4>
+    <p>Первая вкладка нижней капсульной навигации, точка входа по умолчанию. Сегодняшние задачи сгруппированы в три раздела: <strong>Закреплённые → В работе → Завершённые</strong>.</p>
+    <ul>
+      <li><strong>Жест «потянуть вниз»</strong>: переключайтесь между списком → неделей → месяцем</li>
+      <li><strong>Иконка календаря в левом верхнем углу</strong>: касанием циклически переключайте те же три состояния</li>
+      <li><strong>Правило прошлых дат</strong>: незавершённые задачи вчерашнего дня и более ранние автоматически переносятся на сегодня; в прошлые дни видны только завершённые</li>
+      <li><strong>Взаимодействие со строкой</strong>: касание строки → лист редактирования; касание кольца → отметить выполненной; <strong>удержание и перетаскивание</strong> → изменить порядок; капсула превращается в зоны «Закрепить / Удалить»</li>
+    </ul>
+    <p>Под каждой датой в календаре отображаются 1–3 цветные точки, обозначающие основные задачи дня (можно отключить в Настройках).</p>
+    <h4>Планы</h4>
+    <p>Вторая вкладка. Горизонтальные вкладки сверху перечисляют все цели, в конце <code>+</code> для создания новой. При выборе цели ниже отображаются её планы (иконка + название плана + критерий завершения). Удерживайте план, чтобы изменить / удалить.</p>
+    <h4>Статистика</h4>
+    <p>Третья вкладка. <strong>Тепловая карта серии</strong> (в стиле contributions GitHub) + <strong>карточки прогресса по целям</strong> (недельная/месячная активность). Стрелка <code>→</code> в правом верхнем углу открывает <strong>Идеи</strong> — задумки, которые вы хотите воплотить, но ещё не оформили; их можно превратить в полноценные цели.</p>
+    <h4>Настройки</h4>
+    <p>Четвёртая вкладка. Тема / акцентный цвет / длительности Pomodoro / переключатель Dynamic Island / состояние синхронизации iCloud / Подписка / Язык / Помощь / Сообщить о проблеме / Партнёрство / Поделиться / Оценить.</p>
+    <h4>Pomodoro</h4>
+    <p>Пятая вкладка (особая). Нажатие не переключает страницу — поверх текущей страницы накладывается слой. В центре: крупный обратный отсчёт. Сверху: два pill для переключения <strong>Концентрация / Отдых</strong> (по умолчанию 45 / 5 мин, настраивается). Снизу: ▶ Старт / ⏸ Пауза / ↻ Сброс. <strong>Dynamic Island</strong> отображает обратный отсчёт и кольцо прогресса; на <strong>экране блокировки</strong> также есть карточка Pomodoro. Во время сессии нижняя капсула превращается в кнопку «Назад».</p>
+    <h3>Ключевые функции</h3>
+    <h4>Синхронизация с «Напоминаниями» iOS</h4>
+    <p>В разделе «Время задачи» справа есть <strong>многоцветная иконка календаря</strong> (calendar.badge): серая точка = не синхронизировано; зелёная точка = синхронизировано. Касание серой: при первом разе будет запрошено разрешение; затем текущая задача сразу синхронизируется в <strong>стандартный список «Напоминания»</strong>. Система отправит уведомление в назначенное время. Касание зелёной: удаляет из «Напоминаний».</p>
+    <div class="tip">⚠ Удаление задачи в DynamicTask <strong>каскадно</strong> удаляет соответствующее системное напоминание (одно удаление очищает обе стороны); удаление запланированного времени автоматически отменяет синхронизацию.</div>
+    <h4>Синхронизация iCloud</h4>
+    <p>Включается <strong>автоматически</strong> при первом запуске (без диалогов). Все данные (измерения / цели / планы / задачи / идеи) синхронизируются между устройствами через вашу частную базу данных iCloud. Стратегия конфликтов: <strong>выигрывает последняя запись</strong>. Работает, пока ваш iPhone авторизован в iCloud, а iCloud Drive включён, — никакой дополнительной настройки.</p>
+    <h4>Виджет (экран «Домой»)</h4>
+    <p><strong>Тепловая карта серии</strong>: то же представление, что и на странице «Статистика», доступно в размерах малый / средний / большой. Удерживайте экран «Домой» → Добавить виджет → найдите «DynamicTask».</p>
+    <h4>Live Activity (Dynamic Island + экран блокировки)</h4>
+    <p>Автоматически переключается между двумя режимами:</p>
+    <ul>
+      <li><strong>Обзор задач</strong>: когда Pomodoro не запущен, Dynamic Island показывает первую незавершённую задачу + общий прогресс; карточка на экране блокировки показывает 3 первых незавершённых задач</li>
+      <li><strong>Pomodoro</strong>: во время сессии Pomodoro показывает обратный отсчёт и кольцо прогресса</li>
+    </ul>
+    <p>Удерживайте Dynamic Island, чтобы развернуть полную карточку.</p>
+    <h3>Подписка</h3>
+    <p>Четыре уровня. Реальные цены App Store показывает в режиме реального времени:</p>
+    <ul>
+      <li><strong>Пробный участник</strong>: 7-дневная бесплатная пробная версия; по истечении автоматически переходит на ежемесячную</li>
+      <li><strong>Ежемесячная</strong></li>
+      <li><strong>Годовая</strong>: выгоднее ежемесячной</li>
+      <li><strong>Пожизненная</strong>: <strong>включает все будущие функции</strong>, идентична подпискам, отличается только сроком (значок «Лучшее предложение»)</li>
+    </ul>
+    <p>Три платных уровня (ежемесячная / годовая / пожизненная) предоставляют одинаковый набор функций — отличается только срок. Ежемесячная и годовая принадлежат одной Subscription Group, поэтому в настройках подписок iOS вы можете свободно повышать/понижать уровень (Apple автоматически делает пропорциональный возврат). Право на пробный период определяется по Apple ID; каждый Apple ID может использовать пробу один раз на Subscription Group. Отменить подписку можно в любой момент через Системные настройки → Apple ID → Подписки; отмена в пробный период бесплатна.</p>
+    <p>После смены устройства / переустановки: <strong>Настройки → Подписка → Восстановить покупки</strong> вернёт все прежние покупки.</p>
+    <h3>Конфиденциальность</h3>
+    <p>DynamicTask <strong>не собирает никаких пользовательских данных</strong> на наших серверах. Все данные хранятся локально и синхронизируются через вашу частную базу данных iCloud; видеть их можете только вы и Apple. Подробнее в <a href="index.html">Политике конфиденциальности</a>.</p>
+    <h3>Отзывы и контакты</h3>
+    <p>Сообщения об ошибках / запросы функций / партнёрские предложения: <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>. Также можно использовать Настройки → Сообщить о проблеме в приложении, чтобы сразу составить письмо. FAQ и устранение неполадок — см. <a href="support.html">Поддержка</a>.</p>
+    <p class="nav">← <a href="index.html">Политика конфиденциальности</a> &nbsp;·&nbsp; <a href="support.html">Поддержка</a></p>
+  </section>
 
-  <h4>统计</h4>
-  <p>底部第 3 个 tab。<strong>连续打卡热力图</strong>(同 GitHub contributions 风格)+ <strong>目标进度卡片</strong>(每个目标显示当周 / 当月活跃度)。右上角 <code>→</code> 进 <strong>灵感页</strong> —— 想做但还没正式立项的想法,可转成正式目标。</p>
-
-  <h4>设置</h4>
-  <p>底部第 4 个 tab。主题 / 主题色 / 番茄钟时长 / 灵动岛开关 / iCloud 同步状态 / 订阅开通 / 语言 / 帮助 / 反馈联系 / 推广合作 / 分享 / 五星好评。</p>
-
-  <h4>番茄钟</h4>
-  <p>底部第 5 个 tab(特殊)。点击不切换页面,而是在当前页面之上叠一层覆盖:中央倒计时大字、上方 pill 切换 <strong>专注 / 休息</strong>(默认 45 / 5 min,设置可改)、底部 ▶ 开始 / ⏸ 暂停 / ↻ 重置。<strong>灵动岛</strong>同步显示倒计时与进度环;<strong>锁屏</strong>也有番茄钟卡片。番茄钟期间底部胶囊变形为返回按钮。</p>
-
-  <h3>重要功能</h3>
-
-  <h4>与 iOS 系统提醒事项同步</h4>
-  <p>待办时间区右侧有个<strong>多色日历图标</strong>(calendar.badge):灰点 = 未同步;绿点 = 已同步。点灰点:首次会请求授权,授权后立即同步当前待办到系统<strong>默认提醒事项列表</strong>。系统会在待办时间到时弹通知。点绿点:从系统提醒事项删除。</p>
-  <div class="tip">⚠ 删除 App 内待办会<strong>级联删除</strong>对应的系统提醒(在哪儿删两边都消失);清空待办时间会自动 unsync。</div>
-
-  <h4>iCloud 同步</h4>
-  <p>首次启动<strong>自动开启</strong>(无需弹窗询问)。所有数据(维度/目标/计划/待办/灵感)通过 iCloud 私有数据库跨设备同步。冲突策略:<strong>最后写入获胜</strong>。只要 iPhone 已登录 iCloud 且 iCloud Drive 开启,数据自动同步。</p>
-
-  <h4>Widget(主屏小组件)</h4>
-  <p><strong>连续打卡热力图</strong>:同统计页的 streak 视图,有 small / medium / large 三档尺寸。长按主屏 → 加 widget → 搜「灵动待办」。</p>
-
-  <h4>Live Activity(灵动岛 + 锁屏卡)</h4>
-  <p>两种 mode 自动切换:</p>
-  <ul>
-    <li><strong>待办概览</strong>:无番茄钟时,灵动岛显示首个未完成待办 + 总进度,锁屏卡显示前 3 个未完成待办</li>
-    <li><strong>番茄钟</strong>:跑番茄钟时,显示倒计时与进度环</li>
-  </ul>
-  <p>灵动岛长按可展开看完整卡片。</p>
-
-  <h3>订阅说明</h3>
-
-  <p>共 4 档,具体价格以 App Store 实时显示为准:</p>
-  <ul>
-    <li><strong>体验会员</strong>:7 天免费试用,试用结束自动转月订阅</li>
-    <li><strong>月订阅</strong></li>
-    <li><strong>年订阅</strong>:相比月订更划算</li>
-    <li><strong>永久买断</strong>:<strong>包含未来全部新功能</strong>,与订阅功能等价(带"最受欢迎"徽章)</li>
-  </ul>
-
-  <p>订阅三档(月 / 年 / 永久)功能完全一致,仅时长不同。月 / 年订阅在同一 Subscription Group,可在系统订阅管理里自由升降级(Apple 自动按比例退费)。试用资格由 Apple ID 自动判断,每个 Apple ID 每个订阅组只能用一次。试用到期前可在 系统设置 → Apple ID → 订阅 取消,不会扣费。</p>
-
-  <p>换设备 / 重装 App 后:<strong>设置 → 订阅开通 → 恢复购买</strong>,即可拉回历史购买。</p>
-
-  <h3>隐私</h3>
-  <p>灵动待办<strong>不收集任何用户数据</strong>到我们的服务器。所有数据本地保存 + iCloud 私有数据库同步,只有你和 Apple 可见。详见 <a href="index.html">隐私政策</a>。</p>
-
-  <h3>反馈与联系</h3>
-  <p>问题反馈 / 功能建议 / 推广合作:<a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>。也可在 App 内 设置 → 反馈问题 直接调起邮件。详细常见问题与故障排查见 <a href="support.html">技术支持</a>。</p>
-
-  <hr>
-
-  <h2>English</h2>
-
-  <p class="lead">5-minute onboarding for DynamicTask — core philosophy, the four-layer model, and main features.</p>
-
-  <h3>Not just another todo list</h3>
-  <p>DynamicTask's core idea: <strong>upgrade your todos from a flat list to a four-layer life model</strong>.</p>
-  <p>Regular todo apps let you write "what to do today"; DynamicTask asks you to think clearly:</p>
-  <ul>
-    <li><strong>Dimension</strong>: How is your life partitioned? (Eisenhower matrix, or custom)</li>
-    <li><strong>Goal</strong>: What do you want to achieve? (Read books / Get fit / Learn an instrument)</li>
-    <li><strong>Plan</strong>: To reach the goal, what activities are required? (3× strength training per week)</li>
-    <li><strong>Todo</strong>: What specific step today? (Bench press 4×8)</li>
-  </ul>
-  <p>With this structure, your todos are no longer a pile of tasks — they form a <strong>clear path through life</strong>.</p>
-
-  <h3>The four layers explained</h3>
-
-  <div class="layer-card">
-    <strong>1. Dimension</strong> — life reference frame.<br>
-    Four defaults based on the Eisenhower matrix: High Importance / Low Importance / High Urgency / Low Urgency. You can add custom dimensions (pick a color + name) from the "New Goal" sheet. Each goal can bind multiple dimensions.
-  </div>
-
-  <div class="layer-card">
-    <strong>2. Goal</strong> — what you want to achieve.<br>
-    Examples: "Pass the architect exam", "Read 30 books", "Learn Hotel California on guitar". Each goal binds a <strong>color</strong> (11 presets + system color picker) which cascades down to its todos. <strong>Dimensions are optional</strong> — bind them to organize goals by life area. A "Default Goal" (bound to High Importance + High Urgency) ships with the app for users who don't want to categorize.
-  </div>
-
-  <div class="layer-card">
-    <strong>3. Plan</strong> — activities required to reach a goal.<br>
-    Example: Under the goal "Read 30 books", a plan = "2 classic novels per month". Each plan has an <strong>icon</strong> (from 800+ library) and a <strong>completion criterion</strong> (free text). A plan itself isn't a todo — you don't "do" the plan, you do the todos under it.
-  </div>
-
-  <div class="layer-card">
-    <strong>4. Todo</strong> — actionable steps.<br>
-    Example: Under "2 classic novels per month", a todo = "100 Years of Solitude, Chapter 3". Must belong to a plan. Can have 1–4 <strong>subtasks</strong>; can have a <strong>scheduled time</strong> (start/end window, draggable ring). Completion triggers a satisfying micro-animation.
-  </div>
-
-  <h3>Main interfaces</h3>
-
-  <h4>Home (Todos)</h4>
-  <p>First tab in the bottom capsule nav, default entry. Today's todos grouped into <strong>Pinned → In Progress → Completed</strong>.</p>
-  <ul>
-    <li><strong>Pull-down gesture</strong>: cycle list → week calendar → month calendar</li>
-    <li><strong>Top-left calendar icon</strong>: tap to cycle the same three states</li>
-    <li><strong>Historical date rule</strong>: yesterday's and earlier unfinished todos auto-migrate to today; historical dates only show completed</li>
-    <li><strong>Row interactions</strong>: tap row → edit sheet; tap ring → mark complete; <strong>long-press drag</strong> → reorder, with the capsule morphing into "Pin / Delete" zones</li>
-  </ul>
-  <p>1–3 colored dots under each calendar date mark that day's top todos (toggleable in Settings).</p>
-
-  <h4>Goals</h4>
-  <p>Second tab. Horizontal tabs at the top list all goals with a trailing <code>+</code> for new ones. Selecting a goal reveals its plans below (icon + plan name + completion criterion). Long-press a plan to edit/delete.</p>
-
-  <h4>Statistics</h4>
-  <p>Third tab. <strong>Streak heatmap</strong> (GitHub contributions style) + <strong>per-goal progress cards</strong> (weekly/monthly activity). Top-right <code>→</code> opens <strong>Inspiration</strong> — ideas you want to do but haven't formalized; can be promoted to real goals.</p>
-
-  <h4>Settings</h4>
-  <p>Fourth tab. Theme / accent color / Pomodoro durations / Dynamic Island toggle / iCloud sync status / Subscribe / Language / Help / Feedback / Promotion / Share / Rate.</p>
-
-  <h4>Pomodoro</h4>
-  <p>Fifth tab (special). Doesn't switch pages — overlays on the current page. Center: large countdown. Top: two pills toggle <strong>Focus / Rest</strong> (default 45 / 5 min, customizable). Bottom: ▶ Start / ⏸ Pause / ↻ Reset. The <strong>Dynamic Island</strong> mirrors the countdown and progress ring; <strong>Lock Screen</strong> also shows a Pomodoro card. The bottom capsule morphs into a back button during sessions.</p>
-
-  <h3>Key features</h3>
-
-  <h4>Sync with iOS Reminders</h4>
-  <p>The Todo Time section has a <strong>multi-color calendar icon</strong> (calendar.badge) on the right: gray dot = unsynced; green dot = synced. Tap gray: first time prompts for permission, then immediately syncs the current todo to the <strong>default Reminders list</strong>. The system will fire a notification at the scheduled time. Tap green: removes from Reminders.</p>
-  <div class="tip">⚠ Deleting a todo in DynamicTask <strong>cascades</strong> to delete the corresponding system reminder (one delete clears both); clearing the scheduled time auto-unsyncs.</div>
-
-  <h4>iCloud sync</h4>
-  <p>Enabled <strong>automatically</strong> on first launch (no prompt). All data (dimensions/goals/plans/todos/inspirations) syncs across devices via your private iCloud database. Conflict policy: <strong>last-write wins</strong>. Works as long as your iPhone is signed in to iCloud with iCloud Drive enabled — no extra setup.</p>
-
-  <h4>Widget (Home Screen)</h4>
-  <p><strong>Streak heatmap</strong>: same view as the Statistics page streak, available in small / medium / large sizes. Long-press the Home Screen → Add Widget → search "DynamicTask".</p>
-
-  <h4>Live Activity (Dynamic Island + Lock Screen)</h4>
-  <p>Auto-switches between two modes:</p>
-  <ul>
-    <li><strong>Todo overview</strong>: when no Pomodoro is running, the Dynamic Island shows the first unfinished todo + overall progress; the Lock Screen card shows the top 3 unfinished todos</li>
-    <li><strong>Pomodoro</strong>: during a Pomodoro session, shows countdown and progress ring</li>
-  </ul>
-  <p>Long-press the Dynamic Island to expand the full card.</p>
-
-  <h3>Subscription</h3>
-
-  <p>Four tiers. Actual prices are shown live by the App Store:</p>
-  <ul>
-    <li><strong>Trial Member</strong>: 7-day free trial, auto-converts to monthly on expiry</li>
-    <li><strong>Monthly</strong></li>
-    <li><strong>Annual</strong>: better value than monthly</li>
-    <li><strong>Lifetime</strong>: <strong>includes all future features</strong>, identical to subscriptions except duration ("Best deal" badge)</li>
-  </ul>
-
-  <p>The three paid tiers (monthly / annual / lifetime) offer identical features — only the duration differs. Monthly and annual share the same Subscription Group, so you can upgrade/downgrade freely in iOS subscription settings (Apple auto-prorates refunds). Trial eligibility is determined per Apple ID; each Apple ID can use the trial once per subscription group. Cancel anytime via System Settings → Apple ID → Subscriptions; cancelling during trial costs nothing.</p>
-
-  <p>After switching devices / reinstalling: <strong>Settings → Subscribe → Restore Purchases</strong> pulls back all historical purchases.</p>
-
-  <h3>Privacy</h3>
-  <p>DynamicTask <strong>collects zero user data</strong> to our servers. All data is stored locally + synced via your private iCloud database; only you and Apple can see it. See the <a href="index.html">Privacy Policy</a> for details.</p>
-
-  <h3>Feedback &amp; contact</h3>
-  <p>Bug reports / feature requests / business inquiries: <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>. You can also use Settings → Feedback inside the app to compose an email directly. For FAQs and troubleshooting, see <a href="support.html">Support</a>.</p>
-
-  <p class="nav">← <a href="index.html">Privacy Policy / 隐私政策</a> &nbsp;·&nbsp; <a href="support.html">Support / 技术支持</a></p>
+  <script>
+    (function () {
+      var LS_KEY = 'dt_legal_lang';
+      var DEFAULT = 'en';
+      var supported = ['en','zh-Hans','zh-Hant','ja','ko','de','fr','es','it','pt','ru'];
+      function getInitial() {
+        try {
+          var stored = localStorage.getItem(LS_KEY);
+          if (stored && supported.indexOf(stored) !== -1) return stored;
+        } catch (e) {}
+        return DEFAULT;
+      }
+      function apply(lang) {
+        document.documentElement.lang = lang;
+        var blocks = document.querySelectorAll('.lang-block');
+        for (var i = 0; i < blocks.length; i++) {
+          blocks[i].classList.toggle('active', blocks[i].dataset.lang === lang);
+        }
+        var pills = document.querySelectorAll('.lang-pill');
+        for (var j = 0; j < pills.length; j++) {
+          pills[j].classList.toggle('active', pills[j].dataset.lang === lang);
+        }
+        var active = document.querySelector('.lang-block.active');
+        if (active && active.dataset.title) document.title = active.dataset.title;
+      }
+      var pills = document.querySelectorAll('.lang-pill');
+      for (var k = 0; k < pills.length; k++) {
+        pills[k].addEventListener('click', function (e) {
+          var lang = e.currentTarget.dataset.lang;
+          try { localStorage.setItem(LS_KEY, lang); } catch (e) {}
+          apply(lang);
+        });
+      }
+      apply(getInitial());
+    })();
+  </script>
 </body>
 </html>

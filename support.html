@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Support — DynamicTask (灵动待办)</title>
+  <title>Support - DynamicTask</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "PingFang SC", "Hiragino Sans GB", sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; line-height: 1.65; color: #323343; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "PingFang SC", "PingFang TC", "Hiragino Sans GB", "Hiragino Sans", "Noto Sans KR", sans-serif; max-width: 720px; margin: 40px auto; padding: 0 20px; line-height: 1.65; color: #323343; }
     h1 { font-size: 28px; margin-bottom: 8px; }
     h2 { font-size: 22px; margin-top: 40px; padding-bottom: 8px; border-bottom: 1px solid #eee; }
     h3 { font-size: 17px; margin-top: 24px; }
     p, li { font-size: 15px; }
-    hr { margin: 48px 0; border: 0; border-top: 1px solid #eee; }
     a { color: #9290ff; text-decoration: none; }
     a:hover { text-decoration: underline; }
     code { background: #f0f4ff; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
@@ -18,122 +17,503 @@
     .nav { color: #8a8aa0; font-size: 13px; margin-top: 48px; padding-top: 24px; border-top: 1px solid #eee; }
     .contact-card { background: #f0f4ff; padding: 16px 20px; border-radius: 8px; margin: 16px 0; }
     .contact-card strong { font-size: 16px; }
+    .lang-switcher { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 32px; padding: 12px; background: #f9fbff; border-radius: 10px; }
+    .lang-pill { padding: 6px 12px; font-size: 13px; background: transparent; color: #323343; border: 0; border-radius: 6px; cursor: pointer; font-family: inherit; }
+    .lang-pill:hover { background: rgba(146, 144, 255, 0.12); }
+    .lang-pill.active { background: #9290ff; color: white; }
+    .lang-block { display: none; }
+    .lang-block.active { display: block; }
     @media (prefers-color-scheme: dark) {
       body { background: #17171c; color: #fdfdfd; }
       h2 { border-bottom-color: #2a2a30; }
       .nav { border-top-color: #2a2a30; }
       code, .contact-card { background: #26262e; }
+      .lang-switcher { background: #1e1e26; }
+      .lang-pill { color: #fdfdfd; }
+      .lang-pill:hover { background: rgba(160, 118, 255, 0.18); }
+      .lang-pill.active { background: #a076ff; color: white; }
     }
   </style>
 </head>
 <body>
-  <h1>Support — DynamicTask (灵动待办)</h1>
-  <p class="meta">Last updated: 2026-05-13</p>
+  <nav class="lang-switcher" role="navigation" aria-label="Language">
+    <button class="lang-pill" data-lang="en">English</button>
+    <button class="lang-pill" data-lang="zh-Hans">简体中文</button>
+    <button class="lang-pill" data-lang="zh-Hant">繁體中文</button>
+    <button class="lang-pill" data-lang="ja">日本語</button>
+    <button class="lang-pill" data-lang="ko">한국어</button>
+    <button class="lang-pill" data-lang="de">Deutsch</button>
+    <button class="lang-pill" data-lang="fr">Français</button>
+    <button class="lang-pill" data-lang="es">Español</button>
+    <button class="lang-pill" data-lang="it">Italiano</button>
+    <button class="lang-pill" data-lang="pt">Português</button>
+    <button class="lang-pill" data-lang="ru">Русский</button>
+  </nav>
 
-  <h2>简体中文</h2>
+  <section class="lang-block" data-lang="en" data-title="Support - DynamicTask">
+    <h1>Support</h1>
+    <p class="meta">Last updated: 2026-05-13</p>
+    <h3>Contact us</h3>
+    <div class="contact-card">
+      <strong>📧 Email:</strong> <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a><br>
+      We typically respond within 1-3 business days.
+    </div>
+    <h3>FAQ</h3>
+    <p><strong>Q: How do I cancel my subscription?</strong></p>
+    <p>iPhone → Settings → Your Apple ID → Subscriptions → DynamicTask Pro → Cancel Subscription. Cancelling during the free trial costs nothing.</p>
+    <p><strong>Q: Dynamic Island / Live Activity isn't showing.</strong></p>
+    <ol>
+      <li>System Settings → DynamicTask → "Allow Live Activities" enabled.</li>
+      <li>In-app Settings → "Dynamic Island" toggle on.</li>
+      <li>Shows only when there's an unfinished todo today or a Pomodoro is running.</li>
+      <li>iOS Live Activity has a ~12-hour limit; the app restarts it when you bring it to the foreground.</li>
+    </ol>
+    <p><strong>Q: Can subtasks sync to iOS Reminders?</strong></p>
+    <p>No. iOS 26 EventKit's public API doesn't expose real subtasks (Apple uses internal SQLite relations not exposed externally). Sync covers title, notes, date, and alarm — not subtasks.</p>
+    <p><strong>Q: Why is the launch screen always in English?</strong></p>
+    <p>iOS doesn't support launch screen text localization (pre-rendered cache mechanism, see Apple Developer Forums thread 86567). All users see the English brand name — this is an Apple platform limitation.</p>
+    <p><strong>Q: iCloud sync doesn't seem to work?</strong></p>
+    <ol>
+      <li>Confirm device is signed in to iCloud with iCloud Drive enabled.</li>
+      <li>iOS Settings → Apple ID → iCloud → DynamicTask toggle must be on.</li>
+      <li>In-app Settings page shows iCloud sync status indicator.</li>
+      <li>Cross-device sync is asynchronous — may take 30s+, larger data sets may take minutes.</li>
+      <li>Your data lives in your private iCloud — sign in to the same Apple ID on any device and it syncs back.</li>
+    </ol>
+    <p><strong>Q: Where is "Restore Purchases"?</strong></p>
+    <p>Settings → Subscribe → ProSheet popup → bottom row "Restore Purchases". Use this after switching devices, reinstalling, or changing Apple ID to recover existing subscriptions and lifetime purchases.</p>
+    <p><strong>Q: How does Family Sharing work?</strong></p>
+    <p>The family organizer buys the lifetime / subscription, then enables "Share with Family" via Settings → Apple ID → Family Sharing. Family members' devices auto-activate Pro, and the Settings page Pro badge shows "Family".</p>
+    <h3>Feedback &amp; suggestions</h3>
+    <p>We value every piece of feedback. Email <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> with subject "DynamicTask Feedback". Or use Settings → Feedback in the app to compose an email directly.</p>
+    <p class="nav">← <a href="index.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="guide.html">User Guide</a></p>
+  </section>
 
-  <h3>联系我们</h3>
-  <div class="contact-card">
-    <strong>📧 邮件:</strong> <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a><br>
-    一般 1-3 个工作日内回复。
-  </div>
+  <section class="lang-block" data-lang="zh-Hans" data-title="技术支持 - 灵动待办">
+    <h1>技术支持</h1>
+    <p class="meta">最后更新:2026-05-13</p>
+    <h3>联系我们</h3>
+    <div class="contact-card">
+      <strong>📧 邮件:</strong> <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a><br>
+      一般 1-3 个工作日内回复。
+    </div>
+    <h3>常见问题</h3>
+    <p><strong>Q:如何取消订阅?</strong></p>
+    <p>iPhone → 设置 → 你的 Apple ID → 订阅 → DynamicTask Pro → 取消订阅。试用期内取消不会扣费。</p>
+    <p><strong>Q:灵动岛 / Live Activity 不显示?</strong></p>
+    <ol>
+      <li>系统设置 → 灵动待办 → 「允许 Live Activities」是否开启</li>
+      <li>App 内 设置 → 「灵动岛」开关是否打开</li>
+      <li>仅当日有未完成待办或番茄钟正运行时才显示</li>
+      <li>iOS Live Activity 有 ~12 小时上限,App 回前台时会自动重新拉起</li>
+    </ol>
+    <p><strong>Q:子任务能同步到 iOS 系统提醒事项吗?</strong></p>
+    <p>不能。iOS 26 EventKit 公开 API 暂不支持真子任务(Apple 内部用 SQLite 关系表实现,未对外暴露)。我们的同步覆盖标题 / 描述 / 日期 / 通知,但不含子任务。</p>
+    <p><strong>Q:启动页为什么只显示英文 "DynamicTask"?</strong></p>
+    <p>iOS 系统不支持启动页文字本地化(预渲染缓存机制,详见 Apple Developer Forums thread 86567)。所有用户看到的都是英文品牌名,这是 Apple 系统的设计限制。</p>
+    <p><strong>Q:iCloud 同步看起来没生效?</strong></p>
+    <ol>
+      <li>确认设备已登录 iCloud 且 iCloud Drive 开启</li>
+      <li>iOS 设置 → Apple ID → iCloud → 灵动待办 开关需启用</li>
+      <li>App 内 设置 页有 iCloud 同步状态指示</li>
+      <li>跨设备同步是异步的,可能 30 秒+ 延迟,大量数据可能数分钟</li>
+      <li>你的数据保存在你私人的 iCloud 中 —— 在任意设备登录同一 Apple ID 即可拉回</li>
+    </ol>
+    <p><strong>Q:恢复购买在哪?</strong></p>
+    <p>设置 → 订阅开通 → ProSheet 弹窗底部 →「恢复购买」。换设备 / 重装 App / 切 Apple ID 后,从这里拉回历史订阅与永久购买 entitlement。</p>
+    <p><strong>Q:家人共享如何使用?</strong></p>
+    <p>家庭组织者购买永久买断 / 订阅后,在 设置 → Apple ID → 家人共享 内启用「与家人共享」。家庭成员的设备会自动激活 Pro,设置页 Pro 徽章显示「家庭共享」。</p>
+    <h3>反馈与建议</h3>
+    <p>我们重视每一份反馈。请发邮件至 <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>,主题写「灵动待办反馈」即可。也可在 App 内 设置 → 反馈问题 直接调起邮件。</p>
+    <p class="nav">← <a href="index.html">隐私政策</a> &nbsp;·&nbsp; <a href="guide.html">使用说明</a></p>
+  </section>
 
-  <h3>常见问题</h3>
+  <section class="lang-block" data-lang="zh-Hant" data-title="技術支援 - 靈動待辦">
+    <h1>技術支援</h1>
+    <p class="meta">最後更新:2026-05-13</p>
+    <h3>聯絡我們</h3>
+    <div class="contact-card">
+      <strong>📧 電子郵件:</strong> <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a><br>
+      一般 1-3 個工作天內回覆。
+    </div>
+    <h3>常見問題</h3>
+    <p><strong>Q:如何取消訂閱?</strong></p>
+    <p>iPhone → 設定 → 你的 Apple ID → 訂閱項目 → DynamicTask Pro → 取消訂閱。試用期內取消不會收費。</p>
+    <p><strong>Q:動態島 / 即時動態 沒有顯示?</strong></p>
+    <ol>
+      <li>系統設定 → 靈動待辦 → 「允許即時動態」是否開啟</li>
+      <li>App 內 設定 → 「動態島」開關是否打開</li>
+      <li>僅當日有未完成待辦或番茄鐘正在執行時才顯示</li>
+      <li>iOS 即時動態有 ~12 小時上限,App 回前景時會自動重新拉起</li>
+    </ol>
+    <p><strong>Q:子任務能同步到 iOS 系統提醒事項嗎?</strong></p>
+    <p>不能。iOS 26 EventKit 公開 API 尚未支援真正的子任務(Apple 內部使用 SQLite 關聯表實現,未對外公開)。我們的同步涵蓋標題 / 備註 / 日期 / 通知,但不含子任務。</p>
+    <p><strong>Q:啟動畫面為什麼只顯示英文 "DynamicTask"?</strong></p>
+    <p>iOS 系統不支援啟動畫面文字本地化(預渲染快取機制,詳見 Apple Developer Forums thread 86567)。所有使用者看到的都是英文品牌名,這是 Apple 系統的設計限制。</p>
+    <p><strong>Q:iCloud 同步看起來沒生效?</strong></p>
+    <ol>
+      <li>確認裝置已登入 iCloud 且 iCloud 雲碟已開啟</li>
+      <li>iOS 設定 → Apple ID → iCloud → 靈動待辦 開關需啟用</li>
+      <li>App 內 設定 頁有 iCloud 同步狀態指示</li>
+      <li>跨裝置同步是非同步的,可能 30 秒以上延遲,大量資料可能需要數分鐘</li>
+      <li>你的資料儲存於你私人的 iCloud —— 在任意裝置登入同一 Apple ID 即可同步回來</li>
+    </ol>
+    <p><strong>Q:回復購買項目 在哪?</strong></p>
+    <p>設定 → 訂閱開通 → ProSheet 彈窗底部 →「回復購買項目」。換裝置 / 重新安裝 App / 切換 Apple ID 後,從這裡取回歷史訂閱與永久購買 entitlement。</p>
+    <p><strong>Q:家人共享如何使用?</strong></p>
+    <p>家人共享發起人購買永久版 / 訂閱後,於 設定 → Apple ID → 家人共享 內啟用「與家人共享」。家庭成員的裝置會自動啟用 Pro,設定頁 Pro 標籤顯示「家人共享」。</p>
+    <h3>意見回饋與建議</h3>
+    <p>我們重視每一份回饋。請來信至 <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>,主旨寫「靈動待辦意見回饋」即可。也可在 App 內 設定 → 回報問題 直接開啟郵件。</p>
+    <p class="nav">← <a href="index.html">隱私政策</a> &nbsp;·&nbsp; <a href="guide.html">使用說明</a></p>
+  </section>
 
-  <p><strong>Q:如何取消订阅?</strong></p>
-  <p>iPhone → 设置 → 你的 Apple ID → 订阅 → DynamicTask Pro → 取消订阅。试用期内取消不会扣费。</p>
+  <section class="lang-block" data-lang="ja" data-title="サポート - DynamicTask">
+    <h1>サポート</h1>
+    <p class="meta">最終更新日:2026-05-13</p>
+    <h3>お問い合わせ</h3>
+    <div class="contact-card">
+      <strong>📧 メール:</strong> <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a><br>
+      通常 1〜3 営業日以内に返信いたします。
+    </div>
+    <h3>よくある質問</h3>
+    <p><strong>Q:サブスクリプションを解約するには?</strong></p>
+    <p>iPhone → 設定 → Apple ID → サブスクリプション → DynamicTask Pro → サブスクリプションをキャンセル。無料トライアル中の解約は無料です。</p>
+    <p><strong>Q:Dynamic Island / Live Activity が表示されません。</strong></p>
+    <ol>
+      <li>システム設定 → DynamicTask →「Live Activitiesを許可」が ON になっているか</li>
+      <li>App 内 設定 →「Dynamic Island」スイッチが ON になっているか</li>
+      <li>当日に未完了の ToDo があるか、ポモドーロが実行中の場合のみ表示されます</li>
+      <li>iOS Live Activity には約 12 時間の上限があり、App をフォアグラウンドに戻すと再起動されます</li>
+    </ol>
+    <p><strong>Q:サブタスクは iOS リマインダーに同期できますか?</strong></p>
+    <p>できません。iOS 26 EventKit の公開 API は本当のサブタスクをサポートしていません(Apple は内部の SQLite リレーションで実装しており、外部には公開されていません)。同期はタイトル / メモ / 日付 / アラームをカバーしますが、サブタスクは含まれません。</p>
+    <p><strong>Q:起動画面が常に英語の "DynamicTask" になっているのはなぜですか?</strong></p>
+    <p>iOS は起動画面のテキストのローカライズに対応していません(プリレンダリングのキャッシュ機構による、Apple Developer Forums thread 86567 を参照)。すべてのユーザーに英語のブランド名が表示されます — これは Apple プラットフォームの仕様です。</p>
+    <p><strong>Q:iCloud 同期が反映されないようです。</strong></p>
+    <ol>
+      <li>デバイスが iCloud にサインインし、iCloud Drive が有効になっていることを確認してください。</li>
+      <li>iOS 設定 → Apple ID → iCloud → DynamicTask スイッチが ON になっている必要があります。</li>
+      <li>App 内 設定 画面に iCloud 同期状態のインジケーターがあります。</li>
+      <li>デバイス間の同期は非同期で、30 秒以上、大規模なデータでは数分かかる場合があります。</li>
+      <li>データはあなたのプライベート iCloud に保存されています — 任意のデバイスで同じ Apple ID にサインインすれば同期されます。</li>
+    </ol>
+    <p><strong>Q:「購入の復元」はどこにありますか?</strong></p>
+    <p>設定 → サブスクリプション開通 → ProSheet の下部 →「購入を復元」。デバイス変更 / 再インストール / Apple ID 切り替え後は、ここから既存のサブスクリプションと買い切り購入を復元できます。</p>
+    <p><strong>Q:ファミリー共有はどう使いますか?</strong></p>
+    <p>ファミリー共有の管理者が買い切り版 / サブスクリプションを購入後、設定 → Apple ID → ファミリー共有 で「ファミリーと共有」を有効にします。家族のデバイスでは Pro が自動で有効化され、設定画面の Pro バッジには「ファミリー共有」と表示されます。</p>
+    <h3>フィードバックと提案</h3>
+    <p>すべてのフィードバックを大切にしています。<a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> へ、件名に「DynamicTask フィードバック」と記載してメールをお送りください。App 内の 設定 → 問題のフィードバック からも直接メールを作成できます。</p>
+    <p class="nav">← <a href="index.html">プライバシーポリシー</a> &nbsp;·&nbsp; <a href="guide.html">使い方ガイド</a></p>
+  </section>
 
-  <p><strong>Q:数据丢失怎么办?</strong></p>
-  <ol>
-    <li>若 iCloud 同步开启,在同一 Apple ID 的另一台设备装 App,数据自动拉回</li>
-    <li>检查 iOS 设置 → Apple ID → iCloud → 灵动待办 是否启用</li>
-    <li>仍未恢复,联系 <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a></li>
-  </ol>
+  <section class="lang-block" data-lang="ko" data-title="지원 - DynamicTask">
+    <h1>지원</h1>
+    <p class="meta">최종 업데이트: 2026-05-13</p>
+    <h3>문의하기</h3>
+    <div class="contact-card">
+      <strong>📧 이메일:</strong> <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a><br>
+      일반적으로 1-3 영업일 이내에 답변드립니다.
+    </div>
+    <h3>자주 묻는 질문</h3>
+    <p><strong>Q: 구독을 어떻게 취소하나요?</strong></p>
+    <p>iPhone → 설정 → 본인 Apple ID → 구독 → DynamicTask Pro → 구독 취소. 무료 체험 기간 중 취소하면 요금이 청구되지 않습니다.</p>
+    <p><strong>Q: Dynamic Island / Live Activity가 표시되지 않습니다.</strong></p>
+    <ol>
+      <li>시스템 설정 → DynamicTask → 'Live Activities 허용'이 켜져 있는지 확인하세요.</li>
+      <li>앱 내 설정 → 'Dynamic Island' 스위치가 켜져 있는지 확인하세요.</li>
+      <li>오늘 미완료된 할 일이 있거나 뽀모도로가 실행 중일 때만 표시됩니다.</li>
+      <li>iOS Live Activity는 약 12시간 제한이 있으며, 앱을 다시 포그라운드로 가져오면 재시작됩니다.</li>
+    </ol>
+    <p><strong>Q: 하위 작업을 iOS 미리 알림에 동기화할 수 있나요?</strong></p>
+    <p>아니요. iOS 26 EventKit 공개 API는 실제 하위 작업을 제공하지 않습니다(Apple은 내부 SQLite 관계로 구현하며 외부에 공개하지 않음). 동기화는 제목 / 노트 / 날짜 / 알람을 다루지만 하위 작업은 포함되지 않습니다.</p>
+    <p><strong>Q: 시작 화면이 왜 항상 영어 "DynamicTask"로 표시되나요?</strong></p>
+    <p>iOS는 시작 화면 텍스트의 현지화를 지원하지 않습니다(미리 렌더링된 캐시 메커니즘, Apple Developer Forums thread 86567 참조). 모든 사용자에게 영어 브랜드 이름이 표시됩니다 — 이는 Apple 플랫폼의 제한입니다.</p>
+    <p><strong>Q: iCloud 동기화가 작동하지 않는 것 같습니다.</strong></p>
+    <ol>
+      <li>기기가 iCloud에 로그인되어 있고 iCloud Drive가 활성화되어 있는지 확인하세요.</li>
+      <li>iOS 설정 → Apple ID → iCloud → DynamicTask 스위치가 켜져 있어야 합니다.</li>
+      <li>앱 내 설정 페이지에 iCloud 동기화 상태 표시가 있습니다.</li>
+      <li>기기 간 동기화는 비동기적이며 30초 이상, 대용량 데이터는 몇 분이 걸릴 수 있습니다.</li>
+      <li>데이터는 본인의 비공개 iCloud에 보관됩니다 — 어떤 기기에서든 동일한 Apple ID로 로그인하면 동기화됩니다.</li>
+    </ol>
+    <p><strong>Q: '구입 복원'은 어디에 있나요?</strong></p>
+    <p>설정 → 구독 시작 → ProSheet 하단 → '구입 복원'. 기기 변경 / 앱 재설치 / Apple ID 변경 후 기존 구독과 평생 구입 entitlement를 복원할 때 사용하세요.</p>
+    <p><strong>Q: 가족 공유는 어떻게 사용하나요?</strong></p>
+    <p>가족 공유 관리자가 평생 / 구독을 구매한 후 설정 → Apple ID → 가족 공유 에서 '가족과 공유'를 활성화합니다. 가족 구성원의 기기에서는 Pro가 자동으로 활성화되고, 설정 페이지의 Pro 배지는 '가족 공유'로 표시됩니다.</p>
+    <h3>피드백 및 제안</h3>
+    <p>모든 피드백을 소중히 여깁니다. <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>으로 제목을 "DynamicTask 피드백"으로 하여 메일을 보내주세요. 앱 내 설정 → 문제 피드백 에서도 직접 메일을 작성할 수 있습니다.</p>
+    <p class="nav">← <a href="index.html">개인정보 처리방침</a> &nbsp;·&nbsp; <a href="guide.html">사용 안내</a></p>
+  </section>
 
-  <p><strong>Q:灵动岛 / Live Activity 不显示?</strong></p>
-  <ol>
-    <li>系统设置 → 灵动待办 → 「允许 Live Activities」是否开启</li>
-    <li>App 内 设置 → 「灵动岛」开关是否打开</li>
-    <li>仅当日有未完成待办或番茄钟正运行时才显示</li>
-    <li>iOS Live Activity 有 ~12 小时上限,App 回前台时会自动重新拉起</li>
-  </ol>
+  <section class="lang-block" data-lang="de" data-title="Support - DynamicTask">
+    <h1>Support</h1>
+    <p class="meta">Zuletzt aktualisiert: 13.05.2026</p>
+    <h3>Kontakt</h3>
+    <div class="contact-card">
+      <strong>📧 E-Mail:</strong> <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a><br>
+      Wir antworten in der Regel innerhalb von 1-3 Werktagen.
+    </div>
+    <h3>Häufige Fragen</h3>
+    <p><strong>F: Wie kündige ich mein Abonnement?</strong></p>
+    <p>iPhone → Einstellungen → Apple-ID → Abonnements → DynamicTask Pro → Abonnement kündigen. Eine Kündigung während der kostenlosen Testphase ist kostenlos.</p>
+    <p><strong>F: Dynamic Island / Live-Aktivität wird nicht angezeigt.</strong></p>
+    <ol>
+      <li>Systemeinstellungen → DynamicTask → „Live-Aktivitäten erlauben" aktiviert.</li>
+      <li>In-App-Einstellungen → „Dynamic Island"-Schalter ein.</li>
+      <li>Wird nur angezeigt, wenn heute eine offene Aufgabe vorhanden ist oder ein Pomodoro läuft.</li>
+      <li>iOS Live-Aktivitäten haben ein Limit von ca. 12 Stunden; die App startet sie neu, sobald sie wieder in den Vordergrund kommt.</li>
+    </ol>
+    <p><strong>F: Können Teilaufgaben mit iOS Erinnerungen synchronisiert werden?</strong></p>
+    <p>Nein. Die öffentliche EventKit-API von iOS 26 bietet keine echten Teilaufgaben (Apple verwendet interne SQLite-Beziehungen, die nicht extern verfügbar sind). Die Synchronisierung deckt Titel, Notizen, Datum und Wecker ab, aber keine Teilaufgaben.</p>
+    <p><strong>F: Warum ist der Startbildschirm immer auf Englisch?</strong></p>
+    <p>iOS unterstützt keine Lokalisierung von Texten auf dem Startbildschirm (vorgerenderter Cache-Mechanismus, siehe Apple Developer Forums Thread 86567). Alle Benutzer sehen den englischen Markennamen — dies ist eine Plattformbeschränkung von Apple.</p>
+    <p><strong>F: Die iCloud-Synchronisierung funktioniert anscheinend nicht?</strong></p>
+    <ol>
+      <li>Stellen Sie sicher, dass das Gerät bei iCloud angemeldet ist und iCloud Drive aktiviert ist.</li>
+      <li>iOS-Einstellungen → Apple-ID → iCloud → Schalter „DynamicTask" muss aktiviert sein.</li>
+      <li>Die In-App-Einstellungsseite zeigt einen iCloud-Synchronisierungsstatus an.</li>
+      <li>Die geräteübergreifende Synchronisierung erfolgt asynchron — sie kann 30 Sekunden oder länger dauern, größere Datenmengen können mehrere Minuten in Anspruch nehmen.</li>
+      <li>Ihre Daten leben in Ihrer privaten iCloud — melden Sie sich auf einem beliebigen Gerät mit derselben Apple-ID an, und sie werden zurück synchronisiert.</li>
+    </ol>
+    <p><strong>F: Wo finde ich „Käufe wiederherstellen"?</strong></p>
+    <p>Einstellungen → Abonnement → ProSheet-Popup → unten „Käufe wiederherstellen". Verwenden Sie diese Option nach Gerätewechsel, Neuinstallation oder Apple-ID-Wechsel, um vorhandene Abonnements und Einmalkäufe wiederherzustellen.</p>
+    <p><strong>F: Wie funktioniert die Familienfreigabe?</strong></p>
+    <p>Der Familienorganisator kauft die Einmal-Lizenz / das Abonnement und aktiviert dann „Mit Familie teilen" über Einstellungen → Apple-ID → Familienfreigabe. Auf den Geräten der Familienmitglieder wird Pro automatisch aktiviert, und der Pro-Hinweis auf der Einstellungsseite zeigt „Familie" an.</p>
+    <h3>Feedback &amp; Vorschläge</h3>
+    <p>Jede Rückmeldung ist uns wichtig. Schreiben Sie an <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> mit dem Betreff „DynamicTask Feedback". Oder verfassen Sie über Einstellungen → Feedback direkt eine E-Mail aus der App heraus.</p>
+    <p class="nav">← <a href="index.html">Datenschutzerklärung</a> &nbsp;·&nbsp; <a href="guide.html">Benutzerhandbuch</a></p>
+  </section>
 
-  <p><strong>Q:子任务能同步到 iOS 系统提醒事项吗?</strong></p>
-  <p>不能。iOS 26 EventKit 公开 API 暂不支持真子任务(Apple 内部用 SQLite 关系表实现,未对外暴露)。我们的同步覆盖标题 / 描述 / 日期 / 通知,但不含子任务。</p>
+  <section class="lang-block" data-lang="fr" data-title="Assistance - DynamicTask">
+    <h1>Assistance</h1>
+    <p class="meta">Dernière mise à jour : 13/05/2026</p>
+    <h3>Nous contacter</h3>
+    <div class="contact-card">
+      <strong>📧 E-mail :</strong> <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a><br>
+      Nous répondons généralement sous 1 à 3 jours ouvrés.
+    </div>
+    <h3>FAQ</h3>
+    <p><strong>Q : Comment annuler mon abonnement ?</strong></p>
+    <p>iPhone → Réglages → Identifiant Apple → Abonnements → DynamicTask Pro → Annuler l'abonnement. L'annulation pendant la période d'essai gratuit ne coûte rien.</p>
+    <p><strong>Q : Dynamic Island / Activité en direct ne s'affiche pas.</strong></p>
+    <ol>
+      <li>Réglages système → DynamicTask → « Autoriser les activités en direct » activé.</li>
+      <li>Dans l'app, Réglages → bascule « Dynamic Island » sur ON.</li>
+      <li>Ne s'affiche que lorsqu'il y a une tâche non terminée aujourd'hui ou qu'un Pomodoro est en cours.</li>
+      <li>Les activités en direct iOS ont une limite d'environ 12 heures ; l'app les relance quand vous la repassez au premier plan.</li>
+    </ol>
+    <p><strong>Q : Les sous-tâches peuvent-elles se synchroniser avec Rappels d'iOS ?</strong></p>
+    <p>Non. L'API publique EventKit d'iOS 26 ne propose pas de véritables sous-tâches (Apple utilise des relations SQLite internes, non exposées). La synchronisation couvre le titre, les notes, la date et l'alarme — pas les sous-tâches.</p>
+    <p><strong>Q : Pourquoi l'écran de lancement est-il toujours en anglais ?</strong></p>
+    <p>iOS ne prend pas en charge la localisation du texte de l'écran de lancement (mécanisme de cache pré-rendu, voir Apple Developer Forums thread 86567). Tous les utilisateurs voient le nom de marque en anglais — c'est une limitation de la plate-forme Apple.</p>
+    <p><strong>Q : La synchronisation iCloud ne semble pas fonctionner ?</strong></p>
+    <ol>
+      <li>Vérifiez que l'appareil est connecté à iCloud et que iCloud Drive est activé.</li>
+      <li>Réglages iOS → Identifiant Apple → iCloud → la bascule DynamicTask doit être activée.</li>
+      <li>La page Réglages de l'app affiche un indicateur d'état de la synchronisation iCloud.</li>
+      <li>La synchronisation entre appareils est asynchrone — elle peut prendre plus de 30 secondes, voire plusieurs minutes pour de grands volumes.</li>
+      <li>Vos données vivent dans votre iCloud privé — connectez-vous au même identifiant Apple sur n'importe quel appareil et elles se synchroniseront.</li>
+    </ol>
+    <p><strong>Q : Où se trouve « Restaurer les achats » ?</strong></p>
+    <p>Réglages → S'abonner → fenêtre ProSheet → ligne du bas « Restaurer les achats ». À utiliser après un changement d'appareil, une réinstallation ou un changement d'identifiant Apple pour récupérer les abonnements et achats à vie existants.</p>
+    <p><strong>Q : Comment fonctionne le Partage familial ?</strong></p>
+    <p>L'organisateur familial achète la licence à vie / l'abonnement, puis active « Partager avec la famille » via Réglages → Identifiant Apple → Partage familial. Pro s'active automatiquement sur les appareils des membres de la famille, et l'insigne Pro sur la page Réglages affiche « Famille ».</p>
+    <h3>Retours &amp; suggestions</h3>
+    <p>Chaque retour compte pour nous. Écrivez à <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> avec l'objet « DynamicTask Feedback ». Ou utilisez Réglages → Signaler un problème dans l'app pour rédiger un e-mail directement.</p>
+    <p class="nav">← <a href="index.html">Politique de confidentialité</a> &nbsp;·&nbsp; <a href="guide.html">Guide d'utilisation</a></p>
+  </section>
 
-  <p><strong>Q:启动页为什么只显示英文 "DynamicTask"?</strong></p>
-  <p>iOS 系统不支持启动页文字本地化(预渲染缓存机制,详见 Apple Developer Forums thread 86567)。所有用户看到的都是英文品牌名,这是 Apple 系统的设计限制。</p>
+  <section class="lang-block" data-lang="es" data-title="Soporte - DynamicTask">
+    <h1>Soporte</h1>
+    <p class="meta">Última actualización: 13/05/2026</p>
+    <h3>Contáctanos</h3>
+    <div class="contact-card">
+      <strong>📧 Correo:</strong> <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a><br>
+      Solemos responder en un plazo de 1 a 3 días laborables.
+    </div>
+    <h3>Preguntas frecuentes</h3>
+    <p><strong>P: ¿Cómo cancelo mi suscripción?</strong></p>
+    <p>iPhone → Ajustes → tu ID de Apple → Suscripciones → DynamicTask Pro → Cancelar suscripción. Cancelar durante el periodo de prueba gratuita no tiene coste.</p>
+    <p><strong>P: Dynamic Island / Actividad en directo no aparece.</strong></p>
+    <ol>
+      <li>Ajustes del sistema → DynamicTask → «Permitir actividades en directo» activado.</li>
+      <li>Ajustes dentro de la app → interruptor «Dynamic Island» activado.</li>
+      <li>Solo aparece cuando hay un pendiente sin completar hoy o un Pomodoro en marcha.</li>
+      <li>Las actividades en directo de iOS tienen un límite de ~12 horas; la app las reinicia cuando vuelve al primer plano.</li>
+    </ol>
+    <p><strong>P: ¿Las subtareas se sincronizan con Recordatorios de iOS?</strong></p>
+    <p>No. La API pública EventKit de iOS 26 no expone subtareas reales (Apple las implementa con relaciones SQLite internas, no expuestas). La sincronización cubre título, notas, fecha y alarma — no incluye subtareas.</p>
+    <p><strong>P: ¿Por qué la pantalla de inicio aparece siempre en inglés «DynamicTask»?</strong></p>
+    <p>iOS no admite la localización del texto de la pantalla de inicio (mecanismo de caché pre-renderizado, consulta Apple Developer Forums thread 86567). Todos los usuarios ven el nombre de marca en inglés — es una limitación de la plataforma Apple.</p>
+    <p><strong>P: ¿La sincronización con iCloud parece no funcionar?</strong></p>
+    <ol>
+      <li>Confirma que el dispositivo ha iniciado sesión en iCloud con iCloud Drive activado.</li>
+      <li>Ajustes iOS → ID de Apple → iCloud → el interruptor de DynamicTask debe estar activado.</li>
+      <li>La página de Ajustes en la app muestra un indicador de estado de sincronización con iCloud.</li>
+      <li>La sincronización entre dispositivos es asíncrona — puede tardar 30 s o más; los conjuntos de datos grandes pueden tardar minutos.</li>
+      <li>Tus datos viven en tu iCloud privado — inicia sesión con el mismo ID de Apple en cualquier dispositivo y se sincronizarán.</li>
+    </ol>
+    <p><strong>P: ¿Dónde está «Restaurar compras»?</strong></p>
+    <p>Ajustes → Suscribirse → ventana ProSheet → fila inferior «Restaurar compras». Úsala después de cambiar de dispositivo, reinstalar o cambiar de ID de Apple para recuperar suscripciones y compras únicas existentes.</p>
+    <p><strong>P: ¿Cómo funciona En Familia?</strong></p>
+    <p>El organizador familiar compra la versión definitiva / suscripción y activa «Compartir con la familia» en Ajustes → ID de Apple → En Familia. Los dispositivos de los miembros activan Pro automáticamente y la etiqueta Pro en la página de Ajustes muestra «En familia».</p>
+    <h3>Comentarios y sugerencias</h3>
+    <p>Cada comentario nos importa. Escríbenos a <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> con asunto «DynamicTask Feedback». También puedes usar Ajustes → Reportar problema dentro de la app para redactar un correo directamente.</p>
+    <p class="nav">← <a href="index.html">Política de privacidad</a> &nbsp;·&nbsp; <a href="guide.html">Guía de uso</a></p>
+  </section>
 
-  <p><strong>Q:iCloud 同步看起来没生效?</strong></p>
-  <ol>
-    <li>确认设备已登录 iCloud 且 iCloud Drive 开启</li>
-    <li>iOS 设置 → Apple ID → iCloud → 灵动待办 开关需启用</li>
-    <li>App 内 设置 页有 iCloud 同步状态指示</li>
-    <li>跨设备同步是异步的,可能 30 秒+ 延迟,大量数据可能数分钟</li>
-  </ol>
+  <section class="lang-block" data-lang="it" data-title="Assistenza - DynamicTask">
+    <h1>Assistenza</h1>
+    <p class="meta">Ultimo aggiornamento: 13/05/2026</p>
+    <h3>Contattaci</h3>
+    <div class="contact-card">
+      <strong>📧 Email:</strong> <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a><br>
+      In genere rispondiamo entro 1-3 giorni lavorativi.
+    </div>
+    <h3>Domande frequenti</h3>
+    <p><strong>D: Come annullo l'abbonamento?</strong></p>
+    <p>iPhone → Impostazioni → ID Apple → Abbonamenti → DynamicTask Pro → Annulla abbonamento. L'annullamento durante la prova gratuita non comporta costi.</p>
+    <p><strong>D: Dynamic Island / Attività in tempo reale non viene visualizzata.</strong></p>
+    <ol>
+      <li>Impostazioni di sistema → DynamicTask → «Consenti attività in tempo reale» attivato.</li>
+      <li>Impostazioni nell'app → interruttore «Dynamic Island» attivato.</li>
+      <li>Viene mostrata solo quando c'è un'attività non completata oggi o è in corso un Pomodoro.</li>
+      <li>Le attività in tempo reale di iOS hanno un limite di circa 12 ore; l'app le riavvia quando la riporti in primo piano.</li>
+    </ol>
+    <p><strong>D: Le sotto-attività possono sincronizzarsi con Promemoria di iOS?</strong></p>
+    <p>No. L'API pubblica EventKit di iOS 26 non espone vere sotto-attività (Apple le implementa con relazioni SQLite interne non esposte). La sincronizzazione copre titolo, note, data e sveglia — non le sotto-attività.</p>
+    <p><strong>D: Perché la schermata di avvio è sempre in inglese «DynamicTask»?</strong></p>
+    <p>iOS non supporta la localizzazione del testo nella schermata di avvio (meccanismo di cache pre-renderizzato, vedi Apple Developer Forums thread 86567). Tutti gli utenti vedono il nome del marchio in inglese — è un limite della piattaforma Apple.</p>
+    <p><strong>D: La sincronizzazione iCloud sembra non funzionare?</strong></p>
+    <ol>
+      <li>Verifica che il dispositivo sia connesso a iCloud con iCloud Drive attivo.</li>
+      <li>Impostazioni iOS → ID Apple → iCloud → l'interruttore DynamicTask deve essere attivo.</li>
+      <li>La pagina Impostazioni nell'app mostra un indicatore di stato della sincronizzazione iCloud.</li>
+      <li>La sincronizzazione tra dispositivi è asincrona — può richiedere oltre 30 secondi; con dati molto consistenti anche alcuni minuti.</li>
+      <li>I tuoi dati vivono nel tuo iCloud privato — accedi con lo stesso ID Apple su qualunque dispositivo e si sincronizzeranno.</li>
+    </ol>
+    <p><strong>D: Dove si trova «Ripristina acquisti»?</strong></p>
+    <p>Impostazioni → Abbonati → finestra ProSheet → riga in basso «Ripristina acquisti». Usalo dopo il cambio di dispositivo, una nuova installazione o il cambio di ID Apple per recuperare abbonamenti e acquisti a vita esistenti.</p>
+    <p><strong>D: Come funziona In Famiglia?</strong></p>
+    <p>L'organizzatore della famiglia acquista la versione a vita / l'abbonamento, quindi attiva «Condividi con la famiglia» da Impostazioni → ID Apple → In Famiglia. Sui dispositivi dei familiari Pro si attiva automaticamente e l'etichetta Pro nella pagina Impostazioni mostra «In famiglia».</p>
+    <h3>Feedback e suggerimenti</h3>
+    <p>Ogni feedback conta. Scrivici a <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> con oggetto «DynamicTask Feedback». Oppure usa Impostazioni → Segnala problema nell'app per comporre un'email direttamente.</p>
+    <p class="nav">← <a href="index.html">Informativa sulla privacy</a> &nbsp;·&nbsp; <a href="guide.html">Guida d'uso</a></p>
+  </section>
 
-  <p><strong>Q:恢复购买在哪?</strong></p>
-  <p>设置 → 订阅开通 → ProSheet 弹窗底部 →「恢复购买」。换设备 / 重装 App / 切 Apple ID 后,从这里拉回历史订阅与永久购买 entitlement。</p>
+  <section class="lang-block" data-lang="pt" data-title="Suporte - DynamicTask">
+    <h1>Suporte</h1>
+    <p class="meta">Última atualização: 13/05/2026</p>
+    <h3>Fale conosco</h3>
+    <div class="contact-card">
+      <strong>📧 E-mail:</strong> <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a><br>
+      Normalmente respondemos em 1 a 3 dias úteis.
+    </div>
+    <h3>Perguntas frequentes</h3>
+    <p><strong>P: Como cancelo a assinatura?</strong></p>
+    <p>iPhone → Ajustes → seu ID Apple → Assinaturas → DynamicTask Pro → Cancelar assinatura. Cancelar durante o teste gratuito não tem custo.</p>
+    <p><strong>P: A Ilha Dinâmica / Atividade ao vivo não aparece.</strong></p>
+    <ol>
+      <li>Ajustes do sistema → DynamicTask → «Permitir atividades ao vivo» ativado.</li>
+      <li>Ajustes do app → interruptor «Ilha Dinâmica» ligado.</li>
+      <li>Só é exibida quando há uma tarefa não concluída hoje ou um Pomodoro em andamento.</li>
+      <li>As Atividades ao vivo do iOS têm um limite de ~12 horas; o app as reinicia quando volta para o primeiro plano.</li>
+    </ol>
+    <p><strong>P: As subtarefas podem sincronizar com os Lembretes do iOS?</strong></p>
+    <p>Não. A API pública EventKit do iOS 26 não expõe subtarefas reais (a Apple usa relações SQLite internas não publicadas). A sincronização cobre título, notas, data e alarme — sem subtarefas.</p>
+    <p><strong>P: Por que a tela de inicialização aparece sempre em inglês «DynamicTask»?</strong></p>
+    <p>O iOS não oferece suporte à localização de textos da tela de inicialização (mecanismo de cache pré-renderizado, ver Apple Developer Forums thread 86567). Todos os usuários veem o nome da marca em inglês — é uma limitação da plataforma Apple.</p>
+    <p><strong>P: A sincronização do iCloud parece não estar funcionando?</strong></p>
+    <ol>
+      <li>Confirme que o dispositivo está conectado ao iCloud com o iCloud Drive ativado.</li>
+      <li>Ajustes iOS → ID Apple → iCloud → o interruptor do DynamicTask deve estar ativo.</li>
+      <li>A página de Ajustes no app mostra um indicador de status da sincronização do iCloud.</li>
+      <li>A sincronização entre dispositivos é assíncrona — pode levar mais de 30s e, com muitos dados, alguns minutos.</li>
+      <li>Seus dados ficam no seu iCloud privado — entre com o mesmo ID Apple em qualquer dispositivo e eles serão sincronizados.</li>
+    </ol>
+    <p><strong>P: Onde está «Restaurar compras»?</strong></p>
+    <p>Ajustes → Assinar → janela ProSheet → linha inferior «Restaurar compras». Use após trocar de dispositivo, reinstalar ou alterar o ID Apple para recuperar assinaturas e compras vitalícias existentes.</p>
+    <p><strong>P: Como funciona o Compartilhamento Familiar?</strong></p>
+    <p>O organizador da família compra a versão vitalícia / assinatura e ativa «Compartilhar com a família» em Ajustes → ID Apple → Compartilhamento Familiar. Nos dispositivos dos membros, o Pro é ativado automaticamente, e o selo Pro na página de Ajustes exibe «Família».</p>
+    <h3>Comentários &amp; sugestões</h3>
+    <p>Cada opinião conta. Envie um e-mail para <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> com o assunto «DynamicTask Feedback». Ou use Ajustes → Relatar problema no app para escrever um e-mail diretamente.</p>
+    <p class="nav">← <a href="index.html">Política de Privacidade</a> &nbsp;·&nbsp; <a href="guide.html">Guia de uso</a></p>
+  </section>
 
-  <p><strong>Q:家庭共享如何使用?</strong></p>
-  <p>家庭组织者购买永久买断 / 订阅后,在 设置 → Apple ID → 家庭共享 内启用「与家庭共享」。家庭成员的设备会自动激活 Pro,设置页 Pro 徽章显示「家庭共享」。</p>
+  <section class="lang-block" data-lang="ru" data-title="Поддержка - DynamicTask">
+    <h1>Поддержка</h1>
+    <p class="meta">Последнее обновление: 13.05.2026</p>
+    <h3>Свяжитесь с нами</h3>
+    <div class="contact-card">
+      <strong>📧 Эл. почта:</strong> <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a><br>
+      Обычно отвечаем в течение 1–3 рабочих дней.
+    </div>
+    <h3>Частые вопросы</h3>
+    <p><strong>В: Как отменить подписку?</strong></p>
+    <p>iPhone → Настройки → Ваш Apple ID → Подписки → DynamicTask Pro → Отменить подписку. Отмена во время бесплатного пробного периода — бесплатно.</p>
+    <p><strong>В: Dynamic Island / «Активность в реальном времени» не отображается.</strong></p>
+    <ol>
+      <li>Системные настройки → DynamicTask → «Разрешить активности в реальном времени» включено.</li>
+      <li>В приложении: Настройки → переключатель «Dynamic Island» включён.</li>
+      <li>Отображается только при наличии незавершённой задачи на сегодня или запущенного Pomodoro.</li>
+      <li>iOS Live Activity имеет ограничение около 12 часов; приложение перезапускает её при возврате на передний план.</li>
+    </ol>
+    <p><strong>В: Можно ли синхронизировать подзадачи с «Напоминаниями» iOS?</strong></p>
+    <p>Нет. Публичный API EventKit в iOS 26 не предоставляет настоящих подзадач (Apple использует внутренние связи SQLite, не выставленные наружу). Синхронизация охватывает заголовок, заметки, дату и будильник — без подзадач.</p>
+    <p><strong>В: Почему стартовый экран всегда на английском «DynamicTask»?</strong></p>
+    <p>iOS не поддерживает локализацию текста на стартовом экране (механизм предварительного кеширования, см. Apple Developer Forums thread 86567). Все пользователи видят бренд на английском — это ограничение платформы Apple.</p>
+    <p><strong>В: Синхронизация iCloud не работает?</strong></p>
+    <ol>
+      <li>Убедитесь, что устройство вошло в iCloud и включён iCloud Drive.</li>
+      <li>Настройки iOS → Apple ID → iCloud → переключатель DynamicTask должен быть включён.</li>
+      <li>На странице Настройки в приложении есть индикатор состояния синхронизации iCloud.</li>
+      <li>Синхронизация между устройствами асинхронна — может занять более 30 с, а при больших объёмах данных — несколько минут.</li>
+      <li>Ваши данные хранятся в вашем личном iCloud — войдите с тем же Apple ID на любом устройстве, и они синхронизируются обратно.</li>
+    </ol>
+    <p><strong>В: Где «Восстановить покупки»?</strong></p>
+    <p>Настройки → Подписка → всплывающее окно ProSheet → нижняя строка «Восстановить покупки». Используйте после смены устройства, переустановки или смены Apple ID, чтобы вернуть существующие подписки и пожизненные покупки.</p>
+    <p><strong>В: Как работает Семейный доступ?</strong></p>
+    <p>Организатор семьи покупает пожизненную версию / подписку, затем включает «Поделиться с семьёй» в Настройки → Apple ID → Семейный доступ. На устройствах членов семьи Pro активируется автоматически, а значок Pro на странице Настройки показывает «Семейный доступ».</p>
+    <h3>Отзывы и предложения</h3>
+    <p>Каждый отзыв важен. Напишите на <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> с темой «DynamicTask Feedback». Также можно использовать Настройки → Сообщить о проблеме в приложении, чтобы сразу составить письмо.</p>
+    <p class="nav">← <a href="index.html">Политика конфиденциальности</a> &nbsp;·&nbsp; <a href="guide.html">Руководство пользователя</a></p>
+  </section>
 
-  <h3>反馈与建议</h3>
-  <p>我们重视每一份反馈。请发邮件至 <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>,主题写「DynamicTask 反馈」即可。也可在 App 内 设置 → 反馈问题 直接调起邮件。</p>
-
-  <hr>
-
-  <h2>English</h2>
-
-  <h3>Contact us</h3>
-  <div class="contact-card">
-    <strong>📧 Email:</strong> <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a><br>
-    We typically respond within 1-3 business days.
-  </div>
-
-  <h3>FAQ</h3>
-
-  <p><strong>Q: How do I cancel my subscription?</strong></p>
-  <p>iPhone → Settings → Your Apple ID → Subscriptions → DynamicTask Pro → Cancel Subscription. Cancelling during the free trial costs nothing.</p>
-
-  <p><strong>Q: My data is missing — how do I recover it?</strong></p>
-  <ol>
-    <li>If iCloud sync was on, install the app on another device with the same Apple ID — data will pull in automatically.</li>
-    <li>Check iOS Settings → Apple ID → iCloud → DynamicTask is enabled.</li>
-    <li>Still missing? Email <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a>.</li>
-  </ol>
-
-  <p><strong>Q: Dynamic Island / Live Activity isn't showing.</strong></p>
-  <ol>
-    <li>System Settings → DynamicTask → "Allow Live Activities" enabled.</li>
-    <li>In-app Settings → "Dynamic Island" toggle on.</li>
-    <li>Shows only when there's an unfinished todo today or a Pomodoro is running.</li>
-    <li>iOS Live Activity has a ~12-hour limit; the app restarts it when you bring it to the foreground.</li>
-  </ol>
-
-  <p><strong>Q: Can subtasks sync to iOS Reminders?</strong></p>
-  <p>No. iOS 26 EventKit's public API doesn't expose real subtasks (Apple uses internal SQLite relations not exposed externally). Sync covers title, notes, date, and alarm — not subtasks.</p>
-
-  <p><strong>Q: Why is the launch screen always in English?</strong></p>
-  <p>iOS doesn't support launch screen text localization (pre-rendered cache mechanism, see Apple Developer Forums thread 86567). All users see the English brand name — this is an Apple platform limitation.</p>
-
-  <p><strong>Q: iCloud sync doesn't seem to work?</strong></p>
-  <ol>
-    <li>Confirm device is signed in to iCloud with iCloud Drive enabled.</li>
-    <li>iOS Settings → Apple ID → iCloud → DynamicTask toggle must be on.</li>
-    <li>In-app Settings page shows iCloud sync status indicator.</li>
-    <li>Cross-device sync is asynchronous — may take 30s+, larger data sets may take minutes.</li>
-  </ol>
-
-  <p><strong>Q: Where is "Restore Purchases"?</strong></p>
-  <p>Settings → Subscribe → ProSheet popup → bottom row "Restore Purchases". Use this after switching devices, reinstalling, or changing Apple ID to recover existing subscriptions and lifetime purchases.</p>
-
-  <p><strong>Q: How does Family Sharing work?</strong></p>
-  <p>The family organizer buys the lifetime / subscription, then enables "Share with Family" via Settings → Apple ID → Family Sharing. Family members' devices auto-activate Pro, and the Settings page Pro badge shows "Family".</p>
-
-  <h3>Feedback &amp; suggestions</h3>
-  <p>We value every piece of feedback. Email <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> with subject "DynamicTask Feedback". Or use Settings → Feedback in the app to compose an email directly.</p>
-
-  <p class="nav">← <a href="index.html">Privacy Policy / 隐私政策</a> &nbsp;·&nbsp; <a href="guide.html">User Guide / 使用说明</a></p>
+  <script>
+    (function () {
+      var LS_KEY = 'dt_legal_lang';
+      var DEFAULT = 'en';
+      var supported = ['en','zh-Hans','zh-Hant','ja','ko','de','fr','es','it','pt','ru'];
+      function getInitial() {
+        try {
+          var stored = localStorage.getItem(LS_KEY);
+          if (stored && supported.indexOf(stored) !== -1) return stored;
+        } catch (e) {}
+        return DEFAULT;
+      }
+      function apply(lang) {
+        document.documentElement.lang = lang;
+        var blocks = document.querySelectorAll('.lang-block');
+        for (var i = 0; i < blocks.length; i++) {
+          blocks[i].classList.toggle('active', blocks[i].dataset.lang === lang);
+        }
+        var pills = document.querySelectorAll('.lang-pill');
+        for (var j = 0; j < pills.length; j++) {
+          pills[j].classList.toggle('active', pills[j].dataset.lang === lang);
+        }
+        var active = document.querySelector('.lang-block.active');
+        if (active && active.dataset.title) document.title = active.dataset.title;
+      }
+      var pills = document.querySelectorAll('.lang-pill');
+      for (var k = 0; k < pills.length; k++) {
+        pills[k].addEventListener('click', function (e) {
+          var lang = e.currentTarget.dataset.lang;
+          try { localStorage.setItem(LS_KEY, lang); } catch (e) {}
+          apply(lang);
+        });
+      }
+      apply(getInitial());
+    })();
+  </script>
 </body>
 </html>
