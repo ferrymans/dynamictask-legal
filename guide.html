@@ -23,10 +23,10 @@
     .layer-card { background: #f0f4ff; padding: 14px 18px; border-radius: 8px; margin: 10px 0; }
     .layer-card strong { font-size: 16px; color: #323343; }
     .tip { background: #f9fbff; border-left: 3px solid #9290ff; padding: 10px 14px; margin: 16px 0; font-size: 14px; color: #555; }
-    .lang-switcher { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 32px; padding: 12px; background: #f9fbff; border-radius: 10px; }
-    .lang-pill { padding: 6px 12px; font-size: 13px; background: transparent; color: #323343; border: 0; border-radius: 6px; cursor: pointer; font-family: inherit; }
-    .lang-pill:hover { background: rgba(146, 144, 255, 0.12); }
-    .lang-pill.active { background: #9290ff; color: white; }
+    .lang-select-wrap { position: fixed; top: 16px; right: 16px; z-index: 100; display: flex; align-items: center; gap: 6px; padding: 6px 8px 6px 12px; background: rgba(249, 251, 255, 0.92); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-radius: 10px; box-shadow: 0 2px 12px rgba(50, 51, 67, 0.08); font-size: 13px; }
+    .lang-select-wrap::before { content: "🌐"; font-size: 14px; line-height: 1; }
+    .lang-select { appearance: none; -webkit-appearance: none; background: transparent; border: 0; color: #323343; font: inherit; font-size: 13px; font-family: inherit; padding: 2px 22px 2px 0; margin: 0; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23323343' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 4px center; }
+    .lang-select:focus { outline: none; }
     .lang-block { display: none; }
     .lang-block.active { display: block; }
     @media (prefers-color-scheme: dark) {
@@ -40,27 +40,27 @@
       .layer-card strong { color: #fdfdfd; }
       .tip { color: #b8b8c8; }
       .lead { color: #c8c8d6; }
-      .lang-switcher { background: #1e1e26; }
-      .lang-pill { color: #fdfdfd; }
-      .lang-pill:hover { background: rgba(160, 118, 255, 0.18); }
-      .lang-pill.active { background: #a076ff; color: white; }
+      .lang-select-wrap { background: rgba(30, 30, 38, 0.92); box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+      .lang-select { color: #fdfdfd; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23fdfdfd' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
     }
   </style>
 </head>
 <body>
-  <nav class="lang-switcher" role="navigation" aria-label="Language">
-    <button class="lang-pill" data-lang="en">English</button>
-    <button class="lang-pill" data-lang="zh-Hans">简体中文</button>
-    <button class="lang-pill" data-lang="zh-Hant">繁體中文</button>
-    <button class="lang-pill" data-lang="ja">日本語</button>
-    <button class="lang-pill" data-lang="ko">한국어</button>
-    <button class="lang-pill" data-lang="de">Deutsch</button>
-    <button class="lang-pill" data-lang="fr">Français</button>
-    <button class="lang-pill" data-lang="es">Español</button>
-    <button class="lang-pill" data-lang="it">Italiano</button>
-    <button class="lang-pill" data-lang="pt">Português</button>
-    <button class="lang-pill" data-lang="ru">Русский</button>
-  </nav>
+  <div class="lang-select-wrap">
+    <select class="lang-select" id="lang-select" aria-label="Language">
+      <option value="en">English</option>
+      <option value="zh-Hans">简体中文</option>
+      <option value="zh-Hant">繁體中文</option>
+      <option value="ja">日本語</option>
+      <option value="ko">한국어</option>
+      <option value="de">Deutsch</option>
+      <option value="fr">Français</option>
+      <option value="es">Español</option>
+      <option value="it">Italiano</option>
+      <option value="pt">Português</option>
+      <option value="ru">Русский</option>
+    </select>
+  </div>
 
   <section class="lang-block" data-lang="en" data-title="User Guide - DynamicTask">
     <h1>User Guide</h1>
@@ -971,17 +971,15 @@
         for (var i = 0; i < blocks.length; i++) {
           blocks[i].classList.toggle('active', blocks[i].dataset.lang === lang);
         }
-        var pills = document.querySelectorAll('.lang-pill');
-        for (var j = 0; j < pills.length; j++) {
-          pills[j].classList.toggle('active', pills[j].dataset.lang === lang);
-        }
+        var select = document.getElementById('lang-select');
+        if (select) select.value = lang;
         var active = document.querySelector('.lang-block.active');
         if (active && active.dataset.title) document.title = active.dataset.title;
       }
-      var pills = document.querySelectorAll('.lang-pill');
-      for (var k = 0; k < pills.length; k++) {
-        pills[k].addEventListener('click', function (e) {
-          var lang = e.currentTarget.dataset.lang;
+      var select = document.getElementById('lang-select');
+      if (select) {
+        select.addEventListener('change', function (e) {
+          var lang = e.target.value;
           try { localStorage.setItem(LS_KEY, lang); } catch (e) {}
           apply(lang);
         });
