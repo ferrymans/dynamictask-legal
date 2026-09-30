@@ -50,9 +50,9 @@
 
   <section class="lang-block" data-lang="en" data-title="Privacy Policy - DynamicTask">
     <h1>Privacy Policy</h1>
-    <p class="meta">Last updated: 2026-05-24</p>
+    <p class="meta">Last updated: 2026-08-10</p>
     <h3>What data we collect</h3>
-    <p><strong>Zero data.</strong> DynamicTask collects no user data to our servers, and transmits no data to any third party.</p>
+    <p>We do not collect your todos, goals, plans, dimensions, or inspirations to our servers, and we do not transmit them to any third party. <strong>The one exception is the AI Assistant feature</strong>: only when you actively use it (sending a text message, or using press-and-hold to speak) is the text you type — or the text transcribed on-device from your voice — sent to the third-party AI model provider you've selected in Settings, so it can generate a reply. If you don't use this feature, this data flow simply doesn't happen, and we don't read, collect, or store this content ourselves either.</p>
     <h3>How data is stored</h3>
     <ul>
       <li><strong>On-device</strong>: All todos, goals, plans, dimensions, and inspirations are stored locally in your iOS device's SwiftData database.</li>
@@ -61,6 +61,7 @@
     <h3>System permissions</h3>
     <ul>
       <li><strong>Reminders (optional)</strong>: We only write todos to iOS Reminders after you explicitly tap the sync button and grant permission. Revoke anytime via Settings → Privacy → Reminders.</li>
+      <li><strong>Microphone & Speech Recognition (optional)</strong>: When you press and hold the AI Assistant input row to speak, we request these permissions to transcribe your voice to text <strong>entirely on-device</strong>. Your audio itself is never uploaded or stored — only the transcribed text is used, and only for the AI Assistant conversation. Revoke anytime via Settings → Privacy.</li>
       <li><strong>Notifications</strong>: Local notifications when Pomodoro sessions complete. Runs entirely on-device.</li>
       <li><strong>iCloud (automatic)</strong>: Enabled on first launch for cross-device sync.</li>
     </ul>
@@ -69,6 +70,7 @@
       <li><strong>Apple iCloud / CloudKit</strong>: Cross-device data sync. See <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy</a>.</li>
       <li><strong>Apple StoreKit</strong>: Subscription and purchase processing. We never see your payment information.</li>
       <li><strong>Apple EventKit (optional)</strong>: Invoked only when you authorize and explicitly sync a todo. Writes only to iOS Reminders, no external server communication.</li>
+      <li><strong>AI model providers (optional, e.g. MiniMax, DeepSeek, or another provider you select)</strong>: Only when you actively use the AI Assistant, the text of your message is sent to your selected provider to generate a reply. This content is not used for advertising or tracking, and is not linked to your identity.</li>
     </ul>
     <h3>Family Sharing</h3>
     <p>If you or a family organizer enables Family Sharing for the subscription / lifetime purchase, family members can use Pro features via shared entitlement. Payment information is visible only to the family organizer.</p>
@@ -83,9 +85,9 @@
 
   <section class="lang-block" data-lang="zh-Hans" data-title="隐私政策 - 灵动待办">
     <h1>隐私政策</h1>
-    <p class="meta">最后更新:2026-05-24</p>
+    <p class="meta">最后更新:2026-08-10</p>
     <h3>我们收集什么数据</h3>
-    <p><strong>零数据。</strong>灵动待办不收集任何用户数据到我们的服务器,也不传送给任何第三方。</p>
+    <p>你的待办、目标、计划、维度、灵感数据,我们不收集到自己的服务器,也不传送给任何第三方。<strong>唯一的例外是 AI 助手功能</strong>:仅当你主动使用 AI 助手(发送文字消息,或使用按住说话)时,你输入的文字(或语音在设备本机识别出的文字)才会发送给你在设置里选择的第三方 AI 模型服务商,用于生成回复。不使用这一功能则不产生这条数据流,我们自己也不会读取、收集或存储这些内容。</p>
     <h3>数据如何存储</h3>
     <ul>
       <li><strong>本地存储</strong>:所有待办、目标、计划、维度、灵感数据保存在你 iOS 设备的 SwiftData 数据库中。</li>
@@ -94,6 +96,7 @@
     <h3>系统权限</h3>
     <ul>
       <li><strong>提醒事项(可选)</strong>:在你主动点击同步按钮且授权后,我们才会将待办写入 iOS「提醒事项」App。可在 设置 → 隐私 → 提醒事项 内随时撤销。</li>
+      <li><strong>麦克风与语音识别(可选)</strong>:在 AI 助手界面按住输入区说话时,我们请求这两项权限,把你的语音**在设备本机**转换成文字。你的录音本身不会被上传或保存,只有转写出的文字会被用于 AI 助手对话。可在 设置 → 隐私 内随时撤销。</li>
       <li><strong>通知</strong>:番茄钟完成时发送本地通知,完全在你设备内运行。</li>
       <li><strong>iCloud(自动)</strong>:首次启动自动开启,用于跨设备同步。</li>
     </ul>
@@ -102,6 +105,7 @@
       <li><strong>Apple iCloud / CloudKit</strong>:数据在你的设备间同步。详见 <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple 隐私政策</a>。</li>
       <li><strong>Apple StoreKit</strong>:订阅与购买处理。我们永远看不到你的支付信息。</li>
       <li><strong>Apple EventKit(可选)</strong>:仅在你授权且主动同步待办时调用,仅写入 iOS 提醒事项 App,不与外部服务器通信。</li>
+      <li><strong>AI 模型服务商(可选,如 MiniMax、DeepSeek 或你选择的其他服务商)</strong>:仅当你主动使用 AI 助手时,你发送的消息文字会被转发给该服务商用于生成回复。这些内容不会被用于广告或追踪,也不会与你的身份绑定。</li>
     </ul>
     <h3>家庭共享</h3>
     <p>若你或家庭组织者为订阅 / 永久买断启用 家人共享,家庭成员可通过共享 entitlement 使用 Pro 功能。支付信息仅家庭组织者可见。</p>
