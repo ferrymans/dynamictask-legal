@@ -50,368 +50,254 @@
 
   <section class="lang-block" data-lang="en" data-title="Privacy Policy - DynamicTask">
     <h1>Privacy Policy</h1>
-    <p class="meta">Last updated: 2026-08-10</p>
-    <h3>What data we collect</h3>
-    <p>We do not collect your todos, goals, plans, dimensions, or inspirations to our servers, and we do not transmit them to any third party. <strong>The one exception is the AI Assistant feature</strong>: only when you actively use it (sending a text message, or using press-and-hold to speak) is the text you type — or the text transcribed on-device from your voice — sent to the third-party AI model provider you've selected in Settings, so it can generate a reply. If you don't use this feature, this data flow simply doesn't happen, and we don't read, collect, or store this content ourselves either.</p>
-    <h3>How data is stored</h3>
-    <ul>
-      <li><strong>On-device</strong>: All todos, goals, plans, dimensions, and inspirations are stored locally in your iOS device's SwiftData database.</li>
-      <li><strong>iCloud Sync</strong>: If you're signed in to iCloud with iCloud Drive enabled, your data syncs across your own devices via Apple CloudKit <strong>private database</strong>. Only you and Apple can access this data — the DynamicTask developer and any third party cannot.</li>
-    </ul>
-    <h3>System permissions</h3>
-    <ul>
-      <li><strong>Reminders (optional)</strong>: We only write todos to iOS Reminders after you explicitly tap the sync button and grant permission. Revoke anytime via Settings → Privacy → Reminders.</li>
-      <li><strong>Microphone & Speech Recognition (optional)</strong>: When you press and hold the AI Assistant input row to speak, we request these permissions to transcribe your voice to text <strong>entirely on-device</strong>. Your audio itself is never uploaded or stored — only the transcribed text is used, and only for the AI Assistant conversation. Revoke anytime via Settings → Privacy.</li>
-      <li><strong>Notifications</strong>: Local notifications when Pomodoro sessions complete. Runs entirely on-device.</li>
-      <li><strong>iCloud (automatic)</strong>: Enabled on first launch for cross-device sync.</li>
-    </ul>
-    <h3>Third-party services</h3>
-    <ul>
-      <li><strong>Apple iCloud / CloudKit</strong>: Cross-device data sync. See <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy</a>.</li>
-      <li><strong>Apple StoreKit</strong>: Subscription and purchase processing. We never see your payment information.</li>
-      <li><strong>Apple EventKit (optional)</strong>: Invoked only when you authorize and explicitly sync a todo. Writes only to iOS Reminders, no external server communication.</li>
-      <li><strong>AI model providers (optional, e.g. MiniMax, DeepSeek, or another provider you select)</strong>: Only when you actively use the AI Assistant, the text of your message is sent to your selected provider to generate a reply. This content is not used for advertising or tracking, and is not linked to your identity.</li>
-    </ul>
-    <h3>Family Sharing</h3>
-    <p>If you or a family organizer enables Family Sharing for the subscription / lifetime purchase, family members can use Pro features via shared entitlement. Payment information is visible only to the family organizer.</p>
-    <h3>Children</h3>
-    <p>DynamicTask is rated 4+ and suitable for all ages. We do not knowingly collect data from anyone, regardless of age.</p>
-    <h3>Policy changes</h3>
-    <p>Material changes to this Privacy Policy will be announced via in-app notification or new version release notes.</p>
-    <h3>Contact</h3>
-    <p>Privacy-related questions: <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a></p>
+    <p class="meta">2026-10-09</p>
+    <h3 data-topic="0">Storage and sync</h3>
+    <p>Todos, plans, goals, tags and inspirations are stored on your device. Apple CloudKit private databases sync them across your own iCloud devices. The public database only supplies membership configuration, not personal tasks. Trial dates use iCloud key-value storage, Keychain and local preferences. AI consent is stored locally.</p>
+    <h3 data-topic="1">AI data and recipients</h3>
+    <p>The default online model is Alibaba Cloud Model Studio (Qwen). The app connects directly over HTTPS to its Beijing API. Other configured providers include MiniMax and DeepSeek. Online conversations may include earlier messages and results of tools querying relevant app data. Selected attachments are processed locally; extracted text, not the original file, is sent. Unselected files are not read.</p>
+    <p>To generate replies, your messages and conversation context, voice transcripts, selected attachment text, and relevant todos, plans, goals, tags, inspirations, statistics and tool query results will be sent to Alibaba Cloud Model Studio (Qwen) for processing.</p>
+    <p>Speech is transcribed on your device; recordings are not sent. Adding, editing or deleting items still requires your confirmation.</p>
+    <h3 data-topic="2">Authentication and service records</h3>
+    <p>The authentication service at core.pixelyang.com, hosted in Chengdu, receives Apple App Attest proofs and retains registration identifiers, public keys, environment, counters, creation/last-use times and quota records. IP-derived hashes support abuse prevention. It does not receive conversations or attachments. Temporary model keys last up to 300 seconds and remain only in app memory. Diagnostics contain fixed stages, status and duration, not keys, proofs or conversation content. Registrations are kept for the service lifetime; contact us to disable or delete an identifiable registration. Expired challenges and quota windows are periodically removed, normally within about 1–3 days; technical logs follow server rotation rules.</p>
+    <h3 data-topic="3">Consent, retention and deletion</h3>
+    <p>Before the first online send, you can agree or decline. Declining or dismissing preserves the draft and attachment and leaves other features available. Settings → AI data consent lets you withdraw consent and cancel active requests and future sends. On-device models need no online consent. App conversation history stays in memory and ends when you close the assistant. Withdrawal cannot recall data already sent. Model Studio retains model/application call data as required by applicable law; providers handle retention and deletion under their agreements and privacy notices. We do not promise zero retention. Deleting app items syncs deletion through your private CloudKit database; uninstalling does not delete all cloud or provider records.</p>
+    <h3 data-topic="4">System services and purpose</h3>
+    <p>Apple StoreKit handles purchases and Family Sharing; we do not receive card details. Reminders sync requires your permission and an explicit action. Microphone and speech permissions can be revoked in iOS Settings. Pomodoro notifications are local. Data is processed to provide the assistant, authentication, security and quotas, not advertising or tracking. We do not sell your task data. Content may identify you or others; lack of an app account does not make it anonymous. Authentication identifiers are not inserted into model prompts.</p>
+    <h3 data-topic="5">Children and sensitive information</h3>
+    <p>Avoid unnecessary sensitive information or other people’s personal data in messages and attachments. Users below the local age for independent consent should have a guardian decide whether to enable online AI.</p>
+    <h3 data-topic="6">Contact and policy changes</h3>
+    <p>Privacy requests: pixelyang@icloud.com. If you email us, we use the information you provide to handle your request. Material policy changes are announced in the app or release notes; an expanded data scope or changed recipient/endpoint requires renewed consent.</p>
+    <p><a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> · <a href="https://help.aliyun.com/zh/model-studio/privacy-notice">Alibaba Cloud Model Studio (Qwen)</a> · <a href="https://www.apple.com/legal/privacy/">Apple</a></p>
     <p class="nav">→ <a href="guide.html">User Guide</a> &nbsp;·&nbsp; <a href="support.html">Support</a></p>
   </section>
 
   <section class="lang-block" data-lang="zh-Hans" data-title="隐私政策 - 灵动待办">
     <h1>隐私政策</h1>
-    <p class="meta">最后更新:2026-08-10</p>
-    <h3>我们收集什么数据</h3>
-    <p>你的待办、目标、计划、维度、灵感数据,我们不收集到自己的服务器,也不传送给任何第三方。<strong>唯一的例外是 AI 助手功能</strong>:仅当你主动使用 AI 助手(发送文字消息,或使用按住说话)时,你输入的文字(或语音在设备本机识别出的文字)才会发送给你在设置里选择的第三方 AI 模型服务商,用于生成回复。不使用这一功能则不产生这条数据流,我们自己也不会读取、收集或存储这些内容。</p>
-    <h3>数据如何存储</h3>
-    <ul>
-      <li><strong>本地存储</strong>:所有待办、目标、计划、维度、灵感数据保存在你 iOS 设备的 SwiftData 数据库中。</li>
-      <li><strong>iCloud 同步</strong>:若你登录 iCloud 并启用 iCloud Drive,数据通过 Apple CloudKit <strong>私有数据库</strong>在你自己的设备间同步。只有你和 Apple 可访问该数据,灵动待办开发者和任何第三方都无法访问。</li>
-    </ul>
-    <h3>系统权限</h3>
-    <ul>
-      <li><strong>提醒事项(可选)</strong>:在你主动点击同步按钮且授权后,我们才会将待办写入 iOS「提醒事项」App。可在 设置 → 隐私 → 提醒事项 内随时撤销。</li>
-      <li><strong>麦克风与语音识别(可选)</strong>:在 AI 助手界面按住输入区说话时,我们请求这两项权限,把你的语音**在设备本机**转换成文字。你的录音本身不会被上传或保存,只有转写出的文字会被用于 AI 助手对话。可在 设置 → 隐私 内随时撤销。</li>
-      <li><strong>通知</strong>:番茄钟完成时发送本地通知,完全在你设备内运行。</li>
-      <li><strong>iCloud(自动)</strong>:首次启动自动开启,用于跨设备同步。</li>
-    </ul>
-    <h3>第三方服务</h3>
-    <ul>
-      <li><strong>Apple iCloud / CloudKit</strong>:数据在你的设备间同步。详见 <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple 隐私政策</a>。</li>
-      <li><strong>Apple StoreKit</strong>:订阅与购买处理。我们永远看不到你的支付信息。</li>
-      <li><strong>Apple EventKit(可选)</strong>:仅在你授权且主动同步待办时调用,仅写入 iOS 提醒事项 App,不与外部服务器通信。</li>
-      <li><strong>AI 模型服务商(可选,如 MiniMax、DeepSeek 或你选择的其他服务商)</strong>:仅当你主动使用 AI 助手时,你发送的消息文字会被转发给该服务商用于生成回复。这些内容不会被用于广告或追踪,也不会与你的身份绑定。</li>
-    </ul>
-    <h3>家庭共享</h3>
-    <p>若你或家庭组织者为订阅 / 永久买断启用 家人共享,家庭成员可通过共享 entitlement 使用 Pro 功能。支付信息仅家庭组织者可见。</p>
-    <h3>儿童</h3>
-    <p>灵动待办分级为 4+,适合所有年龄。我们不会知晓地收集任何人的数据,无论年龄。</p>
-    <h3>政策变更</h3>
-    <p>本隐私政策若有重大变更,我们将通过 App 内通知或新版本更新说明告知。</p>
-    <h3>联系我们</h3>
-    <p>隐私相关问题:<a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a></p>
+    <p class="meta">2026-10-09</p>
+    <h3 data-topic="0">存储与同步</h3>
+    <p>待办、计划、目标、标签和灵感保存在设备本地，通过 Apple CloudKit 私有数据库在自己的 iCloud 设备间同步。公共数据库只提供会员配置，不存个人任务。体验期时间使用 iCloud KV、钥匙串和本地偏好保存；AI 授权只保存在本地。</p>
+    <h3 data-topic="1">AI 数据与接收方</h3>
+    <p>默认在线模型为阿里云百炼（千问），App 通过 HTTPS 直接访问北京地域 API；其他配置的服务商包括 MiniMax、DeepSeek。在线对话可能包含历史消息及查询相关 App 数据的工具结果。选中的附件在本地提取文字，发送的是提取内容，不是原文件；未选择的文件不会被读取。</p>
+    <p>为生成回复，你的消息与对话上下文、语音转写文字、所选附件内容，以及回答所需的待办、计划、目标、标签、灵感、统计和工具查询结果，将发送至 阿里云百炼（千问） 处理。</p>
+    <p>语音在设备上转写，录音不会发送。AI 对项目的新增、修改和删除仍需你确认。</p>
+    <h3 data-topic="2">认证与服务记录</h3>
+    <p>位于成都的 core.pixelyang.com 认证服务接收 Apple App Attest 证明，保留注册标识、公钥、环境、计数、创建和最近使用时间及配额记录，使用 IP 派生哈希防止滥用。Core 不接收对话或附件。临时模型 Key 最长 300 秒，仅存 App 内存。诊断仅含固定阶段、状态与耗时，不含密钥、证明或对话。注册记录在服务期间保留，可联系我们停用或删除能识别的注册。过期挑战与配额窗口定期清理，通常约 1–3 天；技术日志按服务器轮转规则处理。</p>
+    <h3 data-topic="3">授权、保留与删除</h3>
+    <p>首次在线发送前可同意或拒绝。拒绝或关闭弹窗会保留草稿和附件，其他功能可继续使用。在“设置 → AI 数据授权”撤回后，会取消进行中的请求并阻止后续发送。端上模型无需网络授权。App 对话历史只在内存中，关闭助手后结束。撤回无法收回已经发送的数据。百炼依法保留模型及应用调用数据；服务商按其协议和隐私说明处理保留、删除，不承诺零留存。删除 App 项目会同步至私有 CloudKit；卸载不会删除全部云端或服务商记录。</p>
+    <h3 data-topic="4">系统服务与用途</h3>
+    <p>Apple StoreKit 处理购买与家庭共享，我们不接收银行卡信息。提醒事项同步需授权并主动操作。麦克风及语音权限可在 iOS 设置撤回；番茄钟通知在本地运行。数据用于助手、认证、安全及配额，不用于广告或追踪，不出售任务数据。内容可能识别本人或他人，没有 App 账号不代表匿名。认证标识不会加入模型提示词。</p>
+    <h3 data-topic="5">儿童与敏感信息</h3>
+    <p>请避免在消息或附件中发送不必要的敏感信息或他人个人资料。未达到当地自主同意年龄的用户，应由监护人决定是否启用在线 AI。</p>
+    <h3 data-topic="6">联系与政策变更</h3>
+    <p>隐私请求请联系 pixelyang@icloud.com；来信提供的信息只用于处理请求。重大政策变更通过 App 或版本说明告知；数据范围扩大、接收方或接口变更时须重新授权。</p>
+    <p><a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> · <a href="https://help.aliyun.com/zh/model-studio/privacy-notice">Alibaba Cloud Model Studio (Qwen)</a> · <a href="https://www.apple.com/legal/privacy/">Apple</a></p>
     <p class="nav">→ <a href="guide.html">使用说明</a> &nbsp;·&nbsp; <a href="support.html">技术支持</a></p>
   </section>
 
   <section class="lang-block" data-lang="zh-Hant" data-title="隱私政策 - 靈動待辦">
     <h1>隱私政策</h1>
-    <p class="meta">最後更新:2026-05-24</p>
-    <h3>我們收集什麼資料</h3>
-    <p><strong>零資料。</strong>靈動待辦不收集任何使用者資料到我們的伺服器,也不傳送給任何第三方。</p>
-    <h3>資料如何儲存</h3>
-    <ul>
-      <li><strong>本機儲存</strong>:所有待辦、目標、計畫、維度、靈感資料儲存在你 iOS 裝置的 SwiftData 資料庫中。</li>
-      <li><strong>iCloud 同步</strong>:若你已登入 iCloud 並啟用 iCloud 雲碟,資料透過 Apple CloudKit <strong>私人資料庫</strong>在你自己的裝置間同步。只有你和 Apple 可存取該資料,靈動待辦開發者和任何第三方皆無法存取。</li>
-    </ul>
-    <h3>系統權限</h3>
-    <ul>
-      <li><strong>提醒事項(選用)</strong>:在你主動點擊同步按鈕且授權後,我們才會將待辦寫入 iOS「提醒事項」App。可在 設定 → 隱私權與安全性 → 提醒事項 內隨時撤銷。</li>
-      <li><strong>通知</strong>:番茄鐘完成時傳送本機通知,完全在你裝置內執行。</li>
-      <li><strong>iCloud(自動)</strong>:首次啟動自動開啟,用於跨裝置同步。</li>
-    </ul>
-    <h3>第三方服務</h3>
-    <ul>
-      <li><strong>Apple iCloud / CloudKit</strong>:資料在你的裝置間同步。詳見 <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple 隱私權政策</a>。</li>
-      <li><strong>Apple StoreKit</strong>:訂閱與購買處理。我們永遠看不到你的付款資訊。</li>
-      <li><strong>Apple EventKit(選用)</strong>:僅在你授權且主動同步待辦時呼叫,僅寫入 iOS 提醒事項 App,不與外部伺服器通訊。</li>
-    </ul>
-    <h3>家人共享</h3>
-    <p>若你或家人共享發起人為訂閱 / 永久購買啟用 家人共享,家庭成員可透過共享的 entitlement 使用 Pro 功能。付款資訊僅家人共享發起人可見。</p>
-    <h3>兒童</h3>
-    <p>靈動待辦分級為 4+,適合所有年齡。我們不會在已知情況下收集任何人的資料,無論年齡。</p>
-    <h3>政策變更</h3>
-    <p>本隱私政策若有重大變更,我們將透過 App 內通知或新版本更新說明告知。</p>
-    <h3>聯絡我們</h3>
-    <p>隱私相關問題:<a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a></p>
+    <p class="meta">2026-10-09</p>
+    <h3 data-topic="0">儲存與同步</h3>
+    <p>待辦、計畫、目標、標籤及靈感儲存在裝置本機，透過 Apple CloudKit 私有資料庫在自己的 iCloud 裝置間同步。公共資料庫只提供會員設定，不存個人任務。體驗期時間使用 iCloud KV、鑰匙圈和本機偏好儲存；AI 授權只存於本機。</p>
+    <h3 data-topic="1">AI 資料與接收方</h3>
+    <p>預設線上模型為阿里雲百煉（千問），App 透過 HTTPS 直接存取北京地域 API；其他設定的服務商包括 MiniMax、DeepSeek。線上對話可能包含歷史訊息及查詢相關 App 資料的工具結果。選取的附件在本機擷取文字，傳送的是擷取內容而非原檔；未選取的檔案不會讀取。</p>
+    <p>為產生回覆，你的訊息與對話上下文、語音轉寫文字、所選附件內容，以及回答所需的待辦、計畫、目標、標籤、靈感、統計和工具查詢結果，將傳送至 阿里雲百煉（千問） 處理。</p>
+    <p>語音在裝置上轉寫，錄音不會傳送。AI 新增、修改或刪除項目仍需你確認。</p>
+    <h3 data-topic="2">認證與服務紀錄</h3>
+    <p>位於成都的 core.pixelyang.com 認證服務接收 Apple App Attest 證明，保留註冊識別、公鑰、環境、計數、建立和最近使用時間及配額紀錄，使用 IP 衍生雜湊防止濫用。Core 不接收對話或附件。臨時模型 Key 最長 300 秒，僅存 App 記憶體。診斷僅含固定階段、狀態與耗時，不含金鑰、證明或對話。註冊紀錄在服務期間保留，可聯絡我們停用或刪除能識別的註冊。過期挑戰與配額窗口定期清理，通常約 1–3 天；技術日誌按伺服器輪替規則處理。</p>
+    <h3 data-topic="3">授權、保留與刪除</h3>
+    <p>首次線上傳送前可同意或拒絕。拒絕或關閉彈窗會保留草稿和附件，其他功能可繼續使用。在「設定 → AI 資料授權」撤回後，會取消進行中的請求並阻止後續傳送。端上模型無需網路授權。App 對話歷史只在記憶體，關閉助手後結束。撤回無法收回已傳送資料。百煉依法保留模型及應用呼叫資料；服務商依其協議和隱私說明處理保留與刪除，不承諾零留存。刪除 App 項目會同步至私有 CloudKit；移除 App 不會刪除全部雲端或服務商紀錄。</p>
+    <h3 data-topic="4">系統服務與用途</h3>
+    <p>Apple StoreKit 處理購買與家庭共享，我們不接收銀行卡資訊。提醒事項同步需授權並主動操作。麥克風及語音權限可在 iOS 設定撤回；番茄鐘通知在本機執行。資料用於助手、認證、安全及配額，不用於廣告或追蹤，不出售任務資料。內容可能識別本人或他人，沒有 App 帳號不代表匿名。認證識別不加入模型提示詞。</p>
+    <h3 data-topic="5">兒童與敏感資訊</h3>
+    <p>請避免在訊息或附件傳送不必要的敏感資訊或他人個人資料。未達當地自主同意年齡的使用者，應由監護人決定是否啟用線上 AI。</p>
+    <h3 data-topic="6">聯絡與政策變更</h3>
+    <p>隱私請求請聯絡 pixelyang@icloud.com；來信提供的資訊只用於處理請求。重大政策變更透過 App 或版本說明告知；資料範圍擴大、接收方或介面變更時須重新授權。</p>
+    <p><a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> · <a href="https://help.aliyun.com/zh/model-studio/privacy-notice">Alibaba Cloud Model Studio (Qwen)</a> · <a href="https://www.apple.com/legal/privacy/">Apple</a></p>
     <p class="nav">→ <a href="guide.html">使用說明</a> &nbsp;·&nbsp; <a href="support.html">技術支援</a></p>
   </section>
 
   <section class="lang-block" data-lang="ja" data-title="プライバシーポリシー - DynamicTask">
     <h1>プライバシーポリシー</h1>
-    <p class="meta">最終更新日:2026-05-24</p>
-    <h3>収集するデータ</h3>
-    <p><strong>データは一切収集しません。</strong>DynamicTask は、当社のサーバーへユーザーデータを収集することも、第三者へ送信することもありません。</p>
-    <h3>データの保管方法</h3>
-    <ul>
-      <li><strong>デバイス内</strong>:すべての ToDo、目標、計画、次元、ひらめきは、お使いの iOS デバイスの SwiftData データベースにローカル保存されます。</li>
-      <li><strong>iCloud 同期</strong>:iCloud にサインインし、iCloud Drive を有効にしている場合、データは Apple CloudKit の<strong>プライベートデータベース</strong>経由でご自身のデバイス間で同期されます。このデータには、あなたと Apple のみがアクセスでき、DynamicTask の開発者も第三者もアクセスできません。</li>
-    </ul>
-    <h3>システム権限</h3>
-    <ul>
-      <li><strong>リマインダー(任意)</strong>:同期ボタンをタップして許可を与えた場合に限り、ToDo を iOS「リマインダー」App へ書き込みます。設定 → プライバシーとセキュリティ → リマインダー からいつでも取り消せます。</li>
-      <li><strong>通知</strong>:ポモドーロセッション終了時のローカル通知。すべてデバイス内で実行されます。</li>
-      <li><strong>iCloud(自動)</strong>:デバイス間同期のため、初回起動時に自動で有効化されます。</li>
-    </ul>
-    <h3>サードパーティサービス</h3>
-    <ul>
-      <li><strong>Apple iCloud / CloudKit</strong>:デバイス間のデータ同期。<a href="https://www.apple.com/legal/privacy/" target="_blank">Apple プライバシーポリシー</a>をご覧ください。</li>
-      <li><strong>Apple StoreKit</strong>:サブスクリプションおよび購入処理。当社が決済情報を見ることはありません。</li>
-      <li><strong>Apple EventKit(任意)</strong>:許可を与えて ToDo を明示的に同期した場合のみ呼び出され、iOS リマインダー App にのみ書き込みます。外部サーバーとの通信は行いません。</li>
-    </ul>
-    <h3>ファミリー共有</h3>
-    <p>ご自身またはファミリー共有の管理者がサブスクリプション / 買い切り版でファミリー共有を有効化した場合、ご家族は共有された entitlement を通じて Pro 機能を利用できます。決済情報は管理者のみが確認できます。</p>
-    <h3>お子様について</h3>
-    <p>DynamicTask は 4+ に分類されており、すべての年齢層に適しています。年齢に関わらず、いかなる方からも意図的にデータを収集することはありません。</p>
-    <h3>ポリシーの変更</h3>
-    <p>本プライバシーポリシーに重要な変更がある場合、App 内通知または新バージョンのリリースノートでお知らせします。</p>
-    <h3>お問い合わせ</h3>
-    <p>プライバシーに関するお問い合わせ:<a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a></p>
+    <p class="meta">2026-10-09</p>
+    <h3 data-topic="0">保存と同期</h3>
+    <p>タスク、プラン、目標、タグ、アイデアは端末に保存され、Apple CloudKit のプライベートデータベースで自分の iCloud 端末間に同期されます。公開データベースは会員設定のみを提供し、個人のタスクを保存しません。体験期間の日付は iCloud KV、キーチェーンとローカル設定、AI の同意はローカルに保存します。</p>
+    <h3 data-topic="1">AI データと送信先</h3>
+    <p>標準のオンラインモデルは Alibaba Cloud Model Studio（Qwen）です。アプリは HTTPS で北京の API に直接接続します。他の設定済みサービスには MiniMax、DeepSeek があります。会話には過去のメッセージや関連するアプリデータの検索結果が含まれる場合があります。選択した添付は端末内でテキスト抽出し、原本ではなく抽出内容を送信します。未選択のファイルは読みません。</p>
+    <p>回答のため、メッセージと会話の文脈、音声の文字起こし、選択した添付のテキスト、関連するタスク・計画・目標・タグ・アイデア・統計・ツール検索結果を Alibaba Cloud Model Studio（Qwen） に送信します。</p>
+    <p>音声は端末内で文字に変換し、録音は送信しません。項目の追加・変更・削除には引き続き確認が必要です。</p>
+    <h3 data-topic="2">認証とサービス記録</h3>
+    <p>成都の core.pixelyang.com は Apple App Attest 証明を受け取り、登録識別子、公開鍵、環境、カウンタ、作成・最終利用時刻、利用枠を保存します。IP 由来のハッシュで不正利用を防ぎます。Core は会話や添付を受け取りません。一時キーは最長 300 秒で、アプリのメモリにのみ保持します。診断は固定の段階、状態、所要時間のみで、キー、証明、会話は含みません。登録はサービス期間中保持され、識別できる登録の停止・削除はお問い合わせください。期限切れチャレンジと利用枠は定期的に、通常約 1–3 日で削除し、技術ログはサーバーのローテーション規則に従います。</p>
+    <h3 data-topic="3">同意、保持と削除</h3>
+    <p>初回のオンライン送信前に同意または拒否できます。拒否や閉じる操作では下書きと添付を保持し、他の機能は使えます。設定 → AI データの許可から撤回すると、進行中のリクエストを中止し、以後の送信を防ぎます。端末内モデルはオンライン同意不要です。アプリの会話履歴はメモリ内にあり、アシスタントを閉じると終了します。送信済みデータは撤回で回収できません。Model Studio は適用法令に従い呼び出しデータを保持し、各社は契約とプライバシー説明に従い保持・削除します。保持ゼロは約束しません。項目の削除はプライベート CloudKit に同期されますが、アンインストールだけでは全クラウド・サービス記録は削除されません。</p>
+    <h3 data-topic="4">システムサービスと目的</h3>
+    <p>Apple StoreKit が購入とファミリー共有を処理し、カード情報は受け取りません。リマインダー同期には許可と明示的な操作が必要です。マイク・音声の許可は iOS 設定で撤回でき、ポモドーロ通知は端末内です。データはアシスタント、認証、安全、利用枠のために使い、広告・追跡やタスクデータの販売はしません。内容は本人や他人を識別し得ます。アカウントがなくても匿名とは限りません。認証識別子はモデルのプロンプトに含めません。</p>
+    <h3 data-topic="5">子供と機微情報</h3>
+    <p>メッセージや添付には不要な機微情報や他人の個人情報を含めないでください。地域の自己同意年齢未満では、保護者がオンライン AI 利用を判断してください。</p>
+    <h3 data-topic="6">連絡と変更</h3>
+    <p>プライバシー窓口：pixelyang@icloud.com。メールで提供された情報は依頼対応に使います。重要な変更はアプリまたは更新情報で通知し、データ範囲拡大や送信先・エンドポイント変更には再同意が必要です。</p>
+    <p><a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> · <a href="https://help.aliyun.com/zh/model-studio/privacy-notice">Alibaba Cloud Model Studio (Qwen)</a> · <a href="https://www.apple.com/legal/privacy/">Apple</a></p>
     <p class="nav">→ <a href="guide.html">使い方ガイド</a> &nbsp;·&nbsp; <a href="support.html">サポート</a></p>
   </section>
 
   <section class="lang-block" data-lang="ko" data-title="개인정보 처리방침 - DynamicTask">
     <h1>개인정보 처리방침</h1>
-    <p class="meta">최종 업데이트: 2026-05-24</p>
-    <h3>수집하는 데이터</h3>
-    <p><strong>데이터를 수집하지 않습니다.</strong> DynamicTask는 사용자 데이터를 자사 서버에 수집하지 않으며, 어떤 제3자에게도 전송하지 않습니다.</p>
-    <h3>데이터 저장 방식</h3>
-    <ul>
-      <li><strong>기기 내 저장</strong>: 모든 할 일, 목표, 계획, 차원, 영감 데이터는 iOS 기기의 SwiftData 데이터베이스에 로컬로 저장됩니다.</li>
-      <li><strong>iCloud 동기화</strong>: iCloud에 로그인하고 iCloud Drive가 활성화된 경우, Apple CloudKit <strong>개인 데이터베이스</strong>를 통해 본인 소유의 기기 간에 데이터가 동기화됩니다. 본인과 Apple만 이 데이터에 접근할 수 있으며, DynamicTask 개발자나 제3자는 접근할 수 없습니다.</li>
-    </ul>
-    <h3>시스템 권한</h3>
-    <ul>
-      <li><strong>미리 알림(선택)</strong>: 동기화 버튼을 직접 누르고 권한을 부여한 후에만 할 일이 iOS '미리 알림' App에 기록됩니다. 설정 → 개인정보 보호 및 보안 → 미리 알림 에서 언제든지 취소할 수 있습니다.</li>
-      <li><strong>알림</strong>: 뽀모도로 세션이 완료될 때 로컬 알림이 전송됩니다. 모든 처리는 기기 내에서 이루어집니다.</li>
-      <li><strong>iCloud(자동)</strong>: 기기 간 동기화를 위해 첫 실행 시 자동으로 활성화됩니다.</li>
-    </ul>
-    <h3>제3자 서비스</h3>
-    <ul>
-      <li><strong>Apple iCloud / CloudKit</strong>: 기기 간 데이터 동기화. <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple 개인정보 처리방침</a>을 참조하세요.</li>
-      <li><strong>Apple StoreKit</strong>: 구독 및 결제 처리. 당사는 결제 정보를 결코 볼 수 없습니다.</li>
-      <li><strong>Apple EventKit(선택)</strong>: 권한을 부여하고 할 일을 직접 동기화한 경우에만 호출되며, iOS 미리 알림 App에만 기록되고 외부 서버와 통신하지 않습니다.</li>
-    </ul>
-    <h3>가족 공유</h3>
-    <p>본인 또는 가족 공유 관리자가 구독 / 평생 구입에 대해 가족 공유를 활성화한 경우, 가족 구성원은 공유된 entitlement를 통해 Pro 기능을 사용할 수 있습니다. 결제 정보는 가족 공유 관리자에게만 표시됩니다.</p>
-    <h3>아동</h3>
-    <p>DynamicTask는 4+ 등급이며 모든 연령에 적합합니다. 연령에 관계없이 어떤 사용자로부터도 의도적으로 데이터를 수집하지 않습니다.</p>
-    <h3>정책 변경</h3>
-    <p>본 개인정보 처리방침에 중요한 변경 사항이 있을 경우, App 내 알림 또는 신규 버전 릴리스 노트를 통해 안내해 드립니다.</p>
-    <h3>문의</h3>
-    <p>개인정보 관련 문의: <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a></p>
+    <p class="meta">2026-10-09</p>
+    <h3 data-topic="0">저장과 동기화</h3>
+    <p>할 일, 계획, 목표, 태그, 아이디어는 기기에 저장되며 Apple CloudKit 비공개 데이터베이스를 통해 본인의 iCloud 기기 간 동기화됩니다. 공개 데이터베이스는 멤버십 설정만 제공하며 개인 작업은 저장하지 않습니다. 체험 날짜는 iCloud KV, 키체인, 로컬 설정에, AI 동의는 로컬에 저장합니다.</p>
+    <h3 data-topic="1">AI 데이터와 수신자</h3>
+    <p>기본 온라인 모델은 Alibaba Cloud Model Studio(Qwen)이며 앱이 HTTPS로 베이징 API에 직접 접속합니다. 다른 설정된 제공자는 MiniMax와 DeepSeek입니다. 대화에는 이전 메시지와 관련 앱 데이터 조회 결과가 포함될 수 있습니다. 선택한 첨부 파일은 기기에서 텍스트를 추출하여 원본 대신 추출 내용을 보냅니다. 선택하지 않은 파일은 읽지 않습니다.</p>
+    <p>답변을 위해 메시지와 대화 맥락, 음성 전사, 선택한 첨부의 텍스트와 관련 할 일, 계획, 목표, 태그, 아이디어, 통계 및 도구 조회 결과를 Alibaba Cloud Model Studio(Qwen)에 전송합니다.</p>
+    <p>음성은 기기에서 텍스트로 변환되며 녹음은 전송하지 않습니다. 항목 추가, 수정 및 삭제에는 계속 사용자 확인이 필요합니다.</p>
+    <h3 data-topic="2">인증과 서비스 기록</h3>
+    <p>청두의 core.pixelyang.com 인증 서비스는 Apple App Attest 증명을 받고 등록 식별자, 공개 키, 환경, 카운터, 생성·최근 사용 시간과 할당량을 보관합니다. IP에서 파생한 해시로 악용을 방지합니다. Core는 대화나 첨부를 받지 않습니다. 임시 모델 키는 최대 300초 동안 앱 메모리에만 있습니다. 진단에는 고정 단계, 상태, 시간만 포함되며 키, 증명, 대화는 없습니다. 등록은 서비스 기간 동안 보관하며 식별 가능한 등록의 중지·삭제는 문의할 수 있습니다. 만료된 챌린지와 할당량 창은 주기적으로 보통 약 1–3일 안에 삭제하며 기술 로그는 서버 순환 규칙에 따릅니다.</p>
+    <h3 data-topic="3">동의, 보관과 삭제</h3>
+    <p>첫 온라인 전송 전에 동의 또는 거부할 수 있습니다. 거부하거나 닫아도 초안과 첨부는 유지되고 다른 기능은 사용 가능합니다. 설정 → AI 데이터 동의에서 철회하면 진행 중인 요청을 취소하고 이후 전송을 차단합니다. 기기 내 모델은 온라인 동의가 필요 없습니다. 앱 대화 기록은 메모리에 있다가 도우미를 닫으면 끝납니다. 이미 보낸 데이터는 철회로 회수할 수 없습니다. Model Studio는 해당 법에 따라 호출 데이터를 보관하며 제공자는 약관·개인정보 안내에 따라 보관·삭제합니다. 무보관을 약속하지 않습니다. 앱 항목 삭제는 비공개 CloudKit에 동기화되지만 앱 삭제만으로 모든 클라우드·제공자 기록이 삭제되지는 않습니다.</p>
+    <h3 data-topic="4">시스템 서비스와 목적</h3>
+    <p>Apple StoreKit이 구매와 가족 공유를 처리하며 카드 정보는 받지 않습니다. 미리 알림 동기화에는 권한과 명시적인 동작이 필요합니다. 마이크·음성 권한은 iOS 설정에서 철회하고 포모도로 알림은 로컬입니다. 데이터는 도우미, 인증, 보안, 할당량에 사용하며 광고·추적이나 작업 데이터 판매에 사용하지 않습니다. 내용은 본인이나 타인을 식별할 수 있고 앱 계정이 없어도 익명은 아닙니다. 인증 식별자는 모델 프롬프트에 넣지 않습니다.</p>
+    <h3 data-topic="5">아동과 민감 정보</h3>
+    <p>메시지와 첨부에 불필요한 민감 정보나 타인의 개인 정보를 넣지 마세요. 지역의 독립 동의 연령 미만이라면 보호자가 온라인 AI 사용을 결정해야 합니다.</p>
+    <h3 data-topic="6">연락과 정책 변경</h3>
+    <p>개인정보 문의: pixelyang@icloud.com. 이메일로 제공한 정보는 요청 처리에 사용합니다. 중요한 변경은 앱이나 버전 안내로 알리며 데이터 범위 확대, 수신자·엔드포인트 변경 시 다시 동의받습니다.</p>
+    <p><a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> · <a href="https://help.aliyun.com/zh/model-studio/privacy-notice">Alibaba Cloud Model Studio (Qwen)</a> · <a href="https://www.apple.com/legal/privacy/">Apple</a></p>
     <p class="nav">→ <a href="guide.html">사용 안내</a> &nbsp;·&nbsp; <a href="support.html">지원</a></p>
   </section>
 
   <section class="lang-block" data-lang="de" data-title="Datenschutzerklärung - DynamicTask">
     <h1>Datenschutzerklärung</h1>
-    <p class="meta">Zuletzt aktualisiert: 24.05.2026</p>
-    <h3>Welche Daten wir erheben</h3>
-    <p><strong>Keine Daten.</strong> DynamicTask erhebt keine Nutzerdaten auf unseren Servern und übermittelt keine Daten an Dritte.</p>
-    <h3>Wie Daten gespeichert werden</h3>
-    <ul>
-      <li><strong>Auf dem Gerät</strong>: Alle Aufgaben, Ziele, Pläne, Dimensionen und Inspirationen werden lokal in der SwiftData-Datenbank Ihres iOS-Geräts gespeichert.</li>
-      <li><strong>iCloud-Synchronisierung</strong>: Wenn Sie bei iCloud angemeldet sind und iCloud Drive aktiviert ist, werden Ihre Daten über die <strong>private Datenbank</strong> von Apple CloudKit zwischen Ihren eigenen Geräten synchronisiert. Nur Sie und Apple können auf diese Daten zugreifen — der DynamicTask-Entwickler und Dritte können das nicht.</li>
-    </ul>
-    <h3>Systemberechtigungen</h3>
-    <ul>
-      <li><strong>Erinnerungen (optional)</strong>: Aufgaben werden erst dann in die iOS-App „Erinnerungen" geschrieben, wenn Sie ausdrücklich auf die Synchronisierungsschaltfläche tippen und die Berechtigung erteilen. Jederzeit widerrufbar unter Einstellungen → Datenschutz & Sicherheit → Erinnerungen.</li>
-      <li><strong>Mitteilungen</strong>: Lokale Mitteilungen nach Abschluss von Pomodoro-Sitzungen. Läuft vollständig auf dem Gerät.</li>
-      <li><strong>iCloud (automatisch)</strong>: Beim ersten Start für die geräteübergreifende Synchronisierung aktiviert.</li>
-    </ul>
-    <h3>Drittanbieterdienste</h3>
-    <ul>
-      <li><strong>Apple iCloud / CloudKit</strong>: Geräteübergreifende Datensynchronisierung. Siehe <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Datenschutzrichtlinie</a>.</li>
-      <li><strong>Apple StoreKit</strong>: Verarbeitung von Abonnements und Käufen. Wir sehen niemals Ihre Zahlungsinformationen.</li>
-      <li><strong>Apple EventKit (optional)</strong>: Wird nur aufgerufen, wenn Sie eine Aufgabe autorisieren und ausdrücklich synchronisieren. Schreibt nur in die iOS-App „Erinnerungen", keine Kommunikation mit externen Servern.</li>
-    </ul>
-    <h3>Familienfreigabe</h3>
-    <p>Wenn Sie oder ein Familienorganisator die Familienfreigabe für das Abonnement / den einmaligen Kauf aktiviert, können Familienmitglieder Pro-Funktionen über das gemeinsam genutzte Entitlement verwenden. Zahlungsinformationen sind nur für den Familienorganisator sichtbar.</p>
-    <h3>Kinder</h3>
-    <p>DynamicTask hat die Altersfreigabe 4+ und ist für alle Altersgruppen geeignet. Wir erheben wissentlich keine Daten von Personen, unabhängig vom Alter.</p>
-    <h3>Änderungen der Richtlinie</h3>
-    <p>Wesentliche Änderungen dieser Datenschutzerklärung werden über eine In-App-Mitteilung oder die Versionshinweise einer neuen Version bekannt gegeben.</p>
-    <h3>Kontakt</h3>
-    <p>Fragen zum Datenschutz: <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a></p>
+    <p class="meta">2026-10-09</p>
+    <h3 data-topic="0">Speicherung und Synchronisierung</h3>
+    <p>Aufgaben, Pläne, Ziele, Tags und Ideen liegen auf dem Gerät. Private Apple-CloudKit-Datenbanken synchronisieren sie zwischen Ihren iCloud-Geräten. Die öffentliche Datenbank enthält nur Mitgliedschaftseinstellungen, keine persönlichen Aufgaben. Testzeiträume werden in iCloud-KV, Schlüsselbund und lokalen Einstellungen gespeichert; die KI-Einwilligung bleibt lokal.</p>
+    <h3 data-topic="1">KI-Daten und Empfänger</h3>
+    <p>Standard ist Alibaba Cloud Model Studio (Qwen); die App verbindet sich per HTTPS direkt mit der API in Peking. Weitere konfigurierte Anbieter sind MiniMax und DeepSeek. Onlinegespräche können frühere Nachrichten und Ergebnisse von Abfragen relevanter App-Daten enthalten. Aus gewählten Anhängen wird lokal Text extrahiert und gesendet, nicht die Originaldatei. Ungewählte Dateien werden nicht gelesen.</p>
+    <p>Für Antworten werden deine Nachrichten und der Gesprächskontext, Sprachtranskripte, Text ausgewählter Anhänge sowie relevante Aufgaben, Pläne, Ziele, Tags, Ideen, Statistiken und Werkzeug-Abfrageergebnisse an Alibaba Cloud Model Studio (Qwen) übermittelt.</p>
+    <p>Sprache wird auf deinem Gerät transkribiert; Aufnahmen werden nicht gesendet. Neue, geänderte oder gelöschte Einträge erfordern weiterhin deine Bestätigung.</p>
+    <h3 data-topic="2">Authentifizierung und Dienstprotokolle</h3>
+    <p>core.pixelyang.com in Chengdu empfängt Nachweise von Apple App Attest und speichert Registrierungskennungen, öffentliche Schlüssel, Umgebung, Zähler, Erstellungs-/Nutzungszeiten und Kontingente. IP-abgeleitete Hashes verhindern Missbrauch. Core empfängt keine Gespräche oder Anhänge. Modellschlüssel gelten bis zu 300 Sekunden und bleiben im App-Arbeitsspeicher. Diagnosen enthalten feste Phasen, Status und Dauer, keine Schlüssel, Nachweise oder Gesprächsinhalte. Registrierungen bleiben während des Dienstbetriebs; kontaktieren Sie uns zur Sperrung oder Löschung einer identifizierbaren Registrierung. Abgelaufene Challenges und Kontingentfenster werden regelmäßig, normalerweise nach etwa 1–3 Tagen, entfernt; technische Logs unterliegen der Serverrotation.</p>
+    <h3 data-topic="3">Einwilligung, Aufbewahrung und Löschung</h3>
+    <p>Vor dem ersten Onlineversand können Sie zustimmen oder ablehnen. Ablehnen oder Schließen erhält Entwurf und Anhang; andere Funktionen bleiben verfügbar. Unter Einstellungen → KI-Datenfreigabe können Sie widerrufen; laufende Anfragen werden abgebrochen und weitere Sendungen gesperrt. Lokale Modelle benötigen keine Onlineeinwilligung. Der App-Gesprächsverlauf bleibt im Speicher bis zum Schließen des Assistenten. Bereits gesendete Daten sind nicht rückholbar. Model Studio bewahrt Aufrufdaten entsprechend geltendem Recht auf; Anbieter regeln Aufbewahrung und Löschung in ihren Verträgen und Datenschutzhinweisen. Wir versprechen keine Speicherung von null Tagen. Löschen von App-Einträgen synchronisiert die Löschung in privatem CloudKit; Deinstallation löscht nicht alle Cloud- oder Anbieterprotokolle.</p>
+    <h3 data-topic="4">Systemdienste und Zweck</h3>
+    <p>Apple StoreKit verarbeitet Käufe und Familienfreigabe; wir erhalten keine Kartendaten. Erinnerungsabgleich erfordert Erlaubnis und eine ausdrückliche Aktion. Mikrofon-/Sprachrechte lassen sich in iOS widerrufen; Pomodoro-Mitteilungen sind lokal. Verarbeitung dient Assistent, Authentifizierung, Sicherheit und Kontingenten, nicht Werbung oder Tracking. Wir verkaufen keine Aufgabendaten. Inhalte können Personen identifizieren; ohne App-Konto sind sie nicht automatisch anonym. Authentifizierungskennungen stehen nicht in Modellprompts.</p>
+    <h3 data-topic="5">Kinder und sensible Informationen</h3>
+    <p>Vermeiden Sie unnötige sensible Daten oder persönliche Angaben anderer in Nachrichten und Anhängen. Unterhalb des örtlichen Einwilligungsalters sollte eine erziehungsberechtigte Person über Online-KI entscheiden.</p>
+    <h3 data-topic="6">Kontakt und Änderungen</h3>
+    <p>Datenschutzanfragen: pixelyang@icloud.com. Angaben in Ihrer E-Mail nutzen wir zur Bearbeitung. Wesentliche Änderungen erscheinen in der App oder Versionshinweisen. Erweiterter Datenumfang oder geänderte Empfänger/Endpunkte erfordern neue Einwilligung.</p>
+    <p><a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> · <a href="https://help.aliyun.com/zh/model-studio/privacy-notice">Alibaba Cloud Model Studio (Qwen)</a> · <a href="https://www.apple.com/legal/privacy/">Apple</a></p>
     <p class="nav">→ <a href="guide.html">Benutzerhandbuch</a> &nbsp;·&nbsp; <a href="support.html">Support</a></p>
   </section>
 
   <section class="lang-block" data-lang="fr" data-title="Politique de confidentialité - DynamicTask">
     <h1>Politique de confidentialité</h1>
-    <p class="meta">Dernière mise à jour : 24/05/2026</p>
-    <h3>Données collectées</h3>
-    <p><strong>Aucune donnée.</strong> DynamicTask ne collecte aucune donnée utilisateur sur nos serveurs et n'en transmet aucune à des tiers.</p>
-    <h3>Stockage des données</h3>
-    <ul>
-      <li><strong>Sur l'appareil</strong> : toutes les tâches, objectifs, plans, dimensions et inspirations sont stockés localement dans la base de données SwiftData de votre appareil iOS.</li>
-      <li><strong>Synchronisation iCloud</strong> : si vous êtes connecté à iCloud avec iCloud Drive activé, vos données sont synchronisées entre vos appareils via la <strong>base de données privée</strong> Apple CloudKit. Vous et Apple êtes les seuls à pouvoir y accéder — ni le développeur de DynamicTask ni aucun tiers ne le peut.</li>
-    </ul>
-    <h3>Autorisations système</h3>
-    <ul>
-      <li><strong>Rappels (facultatif)</strong> : nous n'écrivons les tâches dans l'app « Rappels » d'iOS qu'après votre appui explicite sur le bouton de synchronisation et l'octroi de l'autorisation. Révocable à tout moment via Réglages → Confidentialité et sécurité → Rappels.</li>
-      <li><strong>Notifications</strong> : notifications locales à la fin des sessions Pomodoro. Tout se passe sur l'appareil.</li>
-      <li><strong>iCloud (automatique)</strong> : activé au premier lancement pour la synchronisation entre appareils.</li>
-    </ul>
-    <h3>Services tiers</h3>
-    <ul>
-      <li><strong>Apple iCloud / CloudKit</strong> : synchronisation des données entre appareils. Voir la <a href="https://www.apple.com/legal/privacy/" target="_blank">Politique de confidentialité d'Apple</a>.</li>
-      <li><strong>Apple StoreKit</strong> : traitement des abonnements et des achats. Nous ne voyons jamais vos informations de paiement.</li>
-      <li><strong>Apple EventKit (facultatif)</strong> : invoqué uniquement lorsque vous autorisez et synchronisez explicitement une tâche. N'écrit que dans l'app Rappels d'iOS, sans communication avec un serveur externe.</li>
-    </ul>
-    <h3>Partage familial</h3>
-    <p>Si vous ou un organisateur familial activez le Partage familial pour l'abonnement ou l'achat unique, les membres de la famille peuvent utiliser les fonctionnalités Pro via le entitlement partagé. Les informations de paiement ne sont visibles que par l'organisateur.</p>
-    <h3>Enfants</h3>
-    <p>DynamicTask est classé 4+ et convient à tous les âges. Nous ne collectons sciemment aucune donnée auprès de qui que ce soit, quel que soit son âge.</p>
-    <h3>Modifications de la politique</h3>
-    <p>Toute modification importante de cette politique sera annoncée via une notification intégrée ou les notes de version d'une nouvelle version.</p>
-    <h3>Contact</h3>
-    <p>Questions relatives à la confidentialité : <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a></p>
+    <p class="meta">2026-10-09</p>
+    <h3 data-topic="0">Stockage et synchronisation</h3>
+    <p>Tâches, plans, objectifs, tags et idées sont stockés sur l’appareil et synchronisés entre vos appareils iCloud via les bases privées Apple CloudKit. La base publique fournit uniquement la configuration des abonnements, pas les tâches personnelles. Les dates d’essai utilisent iCloud KV, le trousseau et les préférences locales ; le consentement IA reste local.</p>
+    <h3 data-topic="1">Données IA et destinataires</h3>
+    <p>Le modèle en ligne par défaut est Alibaba Cloud Model Studio (Qwen). L’app contacte directement son API de Pékin par HTTPS. Les autres fournisseurs configurés incluent MiniMax et DeepSeek. Les échanges peuvent inclure des messages antérieurs et des résultats de requêtes sur les données pertinentes de l’app. Les pièces jointes sélectionnées sont traitées localement : leur texte extrait est envoyé, pas le fichier original. Les fichiers non sélectionnés ne sont pas lus.</p>
+    <p>Pour répondre, vos messages et le contexte de conversation, transcriptions, texte des pièces jointes choisies ainsi que tâches, plans, objectifs, tags, idées, statistiques et résultats de requêtes utiles seront transmis à Alibaba Cloud Model Studio (Qwen).</p>
+    <p>La voix est transcrite sur votre appareil ; les enregistrements ne sont pas envoyés. Tout ajout, modification ou suppression reste soumis à votre confirmation.</p>
+    <h3 data-topic="2">Authentification et registres</h3>
+    <p>core.pixelyang.com, hébergé à Chengdu, reçoit les preuves Apple App Attest et conserve identifiants d’enregistrement, clés publiques, environnement, compteurs, dates de création/utilisation et quotas. Des hachages dérivés d’IP préviennent les abus. Core ne reçoit ni conversations ni pièces jointes. Les clés temporaires durent jusqu’à 300 secondes et restent en mémoire de l’app. Les diagnostics contiennent étapes fixes, statut et durée, sans clés, preuves ou conversations. Les enregistrements restent durant le service ; contactez-nous pour désactiver ou supprimer un enregistrement identifiable. Défis expirés et fenêtres de quota sont nettoyés périodiquement, normalement sous environ 1–3 jours ; les journaux techniques suivent la rotation du serveur.</p>
+    <h3 data-topic="3">Consentement, conservation et suppression</h3>
+    <p>Avant le premier envoi en ligne, vous pouvez accepter ou refuser. Refuser ou fermer conserve brouillon et pièce jointe ; les autres fonctions restent disponibles. Réglages → Autorisation des données IA permet de retirer l’accord, d’annuler les requêtes actives et de bloquer les envois suivants. Les modèles locaux ne nécessitent pas d’accord réseau. L’historique de l’app reste en mémoire jusqu’à la fermeture de l’assistant. Le retrait ne rappelle pas les données déjà envoyées. Model Studio conserve les appels conformément au droit applicable ; les fournisseurs appliquent leurs accords et notices de confidentialité pour conservation et suppression. Nous ne promettons pas une conservation nulle. La suppression d’éléments se synchronise dans CloudKit privé ; désinstaller ne supprime pas tous les registres cloud ou fournisseurs.</p>
+    <h3 data-topic="4">Services système et finalité</h3>
+    <p>Apple StoreKit gère achats et partage familial ; nous ne recevons pas de données bancaires. La synchronisation Rappels exige permission et action explicite. Les autorisations micro/voix se retirent dans iOS ; les notifications Pomodoro sont locales. Les données servent à l’assistant, l’authentification, la sécurité et les quotas, sans publicité ni suivi. Nous ne vendons pas vos tâches. Le contenu peut identifier des personnes ; l’absence de compte ne signifie pas anonymat. Les identifiants d’authentification ne figurent pas dans les instructions du modèle.</p>
+    <h3 data-topic="5">Enfants et informations sensibles</h3>
+    <p>Évitez les informations sensibles inutiles ou les données d’autrui dans messages et pièces jointes. En dessous de l’âge local de consentement autonome, un responsable légal doit décider de l’IA en ligne.</p>
+    <h3 data-topic="6">Contact et modifications</h3>
+    <p>Confidentialité : pixelyang@icloud.com. Les informations reçues par courriel servent à traiter la demande. Les changements importants sont annoncés dans l’app ou les notes de version. Une portée élargie ou un changement de destinataire/endpoint exige un nouvel accord.</p>
+    <p><a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> · <a href="https://help.aliyun.com/zh/model-studio/privacy-notice">Alibaba Cloud Model Studio (Qwen)</a> · <a href="https://www.apple.com/legal/privacy/">Apple</a></p>
     <p class="nav">→ <a href="guide.html">Guide d'utilisation</a> &nbsp;·&nbsp; <a href="support.html">Assistance</a></p>
   </section>
 
   <section class="lang-block" data-lang="es" data-title="Política de privacidad - DynamicTask">
     <h1>Política de privacidad</h1>
-    <p class="meta">Última actualización: 24/05/2026</p>
-    <h3>Qué datos recopilamos</h3>
-    <p><strong>Ningún dato.</strong> DynamicTask no recopila datos de usuario en nuestros servidores ni transmite datos a terceros.</p>
-    <h3>Cómo se almacenan los datos</h3>
-    <ul>
-      <li><strong>En el dispositivo</strong>: todos los pendientes, objetivos, planes, dimensiones e inspiraciones se almacenan localmente en la base de datos SwiftData de tu dispositivo iOS.</li>
-      <li><strong>Sincronización con iCloud</strong>: si has iniciado sesión en iCloud con iCloud Drive activado, tus datos se sincronizan entre tus propios dispositivos a través de la <strong>base de datos privada</strong> de Apple CloudKit. Solo tú y Apple podéis acceder a esos datos: ni el desarrollador de DynamicTask ni ningún tercero pueden hacerlo.</li>
-    </ul>
-    <h3>Permisos del sistema</h3>
-    <ul>
-      <li><strong>Recordatorios (opcional)</strong>: solo escribimos los pendientes en la app «Recordatorios» de iOS después de que toques explícitamente el botón de sincronización y concedas el permiso. Puedes revocarlo en cualquier momento desde Ajustes → Privacidad y seguridad → Recordatorios.</li>
-      <li><strong>Notificaciones</strong>: notificaciones locales al finalizar las sesiones de Pomodoro. Todo se ejecuta en el dispositivo.</li>
-      <li><strong>iCloud (automático)</strong>: se activa en el primer arranque para la sincronización entre dispositivos.</li>
-    </ul>
-    <h3>Servicios de terceros</h3>
-    <ul>
-      <li><strong>Apple iCloud / CloudKit</strong>: sincronización de datos entre dispositivos. Consulta la <a href="https://www.apple.com/legal/privacy/" target="_blank">Política de privacidad de Apple</a>.</li>
-      <li><strong>Apple StoreKit</strong>: procesamiento de suscripciones y compras. Nunca vemos tu información de pago.</li>
-      <li><strong>Apple EventKit (opcional)</strong>: se invoca únicamente cuando autorizas y sincronizas explícitamente un pendiente. Solo escribe en la app Recordatorios de iOS, sin comunicación con servidores externos.</li>
-    </ul>
-    <h3>En familia</h3>
-    <p>Si tú o un organizador familiar activáis En familia para la suscripción / compra única, los miembros de la familia pueden usar las funciones Pro mediante el entitlement compartido. La información de pago solo es visible para el organizador.</p>
-    <h3>Niños</h3>
-    <p>DynamicTask tiene clasificación 4+ y es adecuada para todas las edades. No recopilamos datos a sabiendas de nadie, sin importar la edad.</p>
-    <h3>Cambios en la política</h3>
-    <p>Cualquier cambio relevante en esta política se anunciará mediante una notificación dentro de la app o las notas de versión.</p>
-    <h3>Contacto</h3>
-    <p>Cuestiones relacionadas con la privacidad: <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a></p>
+    <p class="meta">2026-10-09</p>
+    <h3 data-topic="0">Almacenamiento y sincronización</h3>
+    <p>Tareas, planes, objetivos, etiquetas e ideas se guardan en el dispositivo y se sincronizan entre sus dispositivos iCloud mediante bases privadas de Apple CloudKit. La base pública solo ofrece configuración de membresía, no tareas personales. Las fechas de prueba usan iCloud KV, Llavero y preferencias locales; el consentimiento de IA se guarda localmente.</p>
+    <h3 data-topic="1">Datos de IA y destinatarios</h3>
+    <p>El modelo en línea predeterminado es Alibaba Cloud Model Studio (Qwen). La app accede por HTTPS directamente a su API de Pekín. Otros proveedores configurados son MiniMax y DeepSeek. Las conversaciones pueden incluir mensajes anteriores y resultados de consultas a datos relevantes de la app. Se extrae texto de los adjuntos seleccionados localmente y se envía ese texto, no el archivo original. No se leen archivos no seleccionados.</p>
+    <p>Para responder, se enviarán a Alibaba Cloud Model Studio (Qwen) tus mensajes y contexto de conversación, transcripciones, texto de adjuntos seleccionados y tareas, planes, objetivos, etiquetas, ideas, estadísticas y resultados de consultas pertinentes.</p>
+    <p>La voz se transcribe en tu dispositivo; no se envían grabaciones. Añadir, editar o eliminar elementos sigue requiriendo tu confirmación.</p>
+    <h3 data-topic="2">Autenticación y registros</h3>
+    <p>core.pixelyang.com, alojado en Chengdu, recibe pruebas Apple App Attest y conserva identificadores de registro, claves públicas, entorno, contadores, fechas de creación/uso y cuotas. Los hashes derivados de IP previenen abusos. Core no recibe conversaciones ni adjuntos. Las claves temporales duran hasta 300 segundos, solo en memoria de la app. Los diagnósticos contienen etapas fijas, estado y duración, no claves, pruebas ni conversaciones. Los registros se conservan durante el servicio; puede solicitar desactivar o borrar un registro identificable. Los desafíos caducados y ventanas de cuota se limpian periódicamente, normalmente en unos 1–3 días; los registros técnicos siguen la rotación del servidor.</p>
+    <h3 data-topic="3">Consentimiento, conservación y borrado</h3>
+    <p>Puede aceptar o rechazar antes del primer envío en línea. Rechazar o cerrar conserva borrador y adjunto; las otras funciones siguen disponibles. Ajustes → Consentimiento de datos de IA permite revocar, cancelar solicitudes activas y bloquear envíos posteriores. Los modelos locales no necesitan consentimiento en línea. El historial de la app permanece en memoria hasta cerrar el asistente. Revocar no recupera datos ya enviados. Model Studio conserva datos de llamadas según la legislación aplicable; los proveedores gestionan conservación y borrado según sus acuerdos y avisos de privacidad. No prometemos conservación nula. Borrar elementos sincroniza el borrado con CloudKit privado; desinstalar no elimina todos los registros de la nube o proveedores.</p>
+    <h3 data-topic="4">Servicios del sistema y finalidad</h3>
+    <p>Apple StoreKit procesa compras y En familia; no recibimos datos de tarjetas. Sincronizar Recordatorios requiere permiso y una acción explícita. Los permisos de micrófono y voz se revocan en iOS; las notificaciones Pomodoro son locales. Los datos sirven para asistencia, autenticación, seguridad y cuotas, no publicidad ni seguimiento. No vendemos datos de tareas. El contenido puede identificar personas; no tener cuenta no implica anonimato. Los identificadores de autenticación no se insertan en las instrucciones del modelo.</p>
+    <h3 data-topic="5">Menores e información sensible</h3>
+    <p>Evite información sensible innecesaria o datos personales ajenos en mensajes y adjuntos. Por debajo de la edad local de consentimiento independiente, un tutor debe decidir sobre la IA en línea.</p>
+    <h3 data-topic="6">Contacto y cambios</h3>
+    <p>Privacidad: pixelyang@icloud.com. Usamos la información de su correo para atender su solicitud. Los cambios importantes se anuncian en la app o notas de versión. Ampliar datos o cambiar destinatario/endpoint exige nuevo consentimiento.</p>
+    <p><a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> · <a href="https://help.aliyun.com/zh/model-studio/privacy-notice">Alibaba Cloud Model Studio (Qwen)</a> · <a href="https://www.apple.com/legal/privacy/">Apple</a></p>
     <p class="nav">→ <a href="guide.html">Guía de uso</a> &nbsp;·&nbsp; <a href="support.html">Soporte</a></p>
   </section>
 
   <section class="lang-block" data-lang="it" data-title="Informativa sulla privacy - DynamicTask">
     <h1>Informativa sulla privacy</h1>
-    <p class="meta">Ultimo aggiornamento: 24/05/2026</p>
-    <h3>Quali dati raccogliamo</h3>
-    <p><strong>Nessun dato.</strong> DynamicTask non raccoglie alcun dato utente sui nostri server e non trasmette dati a terze parti.</p>
-    <h3>Come vengono memorizzati i dati</h3>
-    <ul>
-      <li><strong>Sul dispositivo</strong>: tutte le attività, obiettivi, piani, dimensioni e ispirazioni sono memorizzati localmente nel database SwiftData del tuo dispositivo iOS.</li>
-      <li><strong>Sincronizzazione iCloud</strong>: se hai effettuato l'accesso a iCloud con iCloud Drive attivo, i tuoi dati sono sincronizzati tra i tuoi dispositivi tramite il <strong>database privato</strong> di Apple CloudKit. Solo tu e Apple potete accedere a questi dati — né lo sviluppatore di DynamicTask né alcuna terza parte possono.</li>
-    </ul>
-    <h3>Autorizzazioni di sistema</h3>
-    <ul>
-      <li><strong>Promemoria (facoltativo)</strong>: scriviamo le attività nell'app «Promemoria» di iOS solo dopo che tocchi esplicitamente il pulsante di sincronizzazione e concedi l'autorizzazione. Revocabile in qualsiasi momento da Impostazioni → Privacy e sicurezza → Promemoria.</li>
-      <li><strong>Notifiche</strong>: notifiche locali al termine delle sessioni Pomodoro. Tutto avviene sul dispositivo.</li>
-      <li><strong>iCloud (automatico)</strong>: attivato al primo avvio per la sincronizzazione tra dispositivi.</li>
-    </ul>
-    <h3>Servizi di terze parti</h3>
-    <ul>
-      <li><strong>Apple iCloud / CloudKit</strong>: sincronizzazione dei dati tra dispositivi. Consulta l'<a href="https://www.apple.com/legal/privacy/" target="_blank">Informativa sulla privacy di Apple</a>.</li>
-      <li><strong>Apple StoreKit</strong>: elaborazione di abbonamenti e acquisti. Non vediamo mai le tue informazioni di pagamento.</li>
-      <li><strong>Apple EventKit (facoltativo)</strong>: invocato solo quando autorizzi e sincronizzi esplicitamente un'attività. Scrive solo nell'app Promemoria di iOS, senza comunicare con server esterni.</li>
-    </ul>
-    <h3>In famiglia</h3>
-    <p>Se tu o un organizzatore familiare attivate In famiglia per l'abbonamento / acquisto una tantum, i membri della famiglia possono usare le funzioni Pro tramite l'entitlement condiviso. Le informazioni di pagamento sono visibili solo all'organizzatore.</p>
-    <h3>Bambini</h3>
-    <p>DynamicTask è classificata 4+ ed è adatta a tutte le età. Non raccogliamo consapevolmente dati da chiunque, indipendentemente dall'età.</p>
-    <h3>Modifiche all'informativa</h3>
-    <p>Eventuali modifiche sostanziali a questa informativa saranno comunicate tramite notifica in-app o note di versione di una nuova release.</p>
-    <h3>Contatti</h3>
-    <p>Domande relative alla privacy: <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a></p>
+    <p class="meta">2026-10-09</p>
+    <h3 data-topic="0">Archiviazione e sincronizzazione</h3>
+    <p>Attività, piani, obiettivi, tag e idee sono sul dispositivo e si sincronizzano tra i propri dispositivi iCloud nelle banche dati private Apple CloudKit. La banca dati pubblica contiene solo configurazione dell’abbonamento, non attività personali. Le date di prova usano iCloud KV, Portachiavi e preferenze locali; il consenso IA resta locale.</p>
+    <h3 data-topic="1">Dati IA e destinatari</h3>
+    <p>Il modello online predefinito è Alibaba Cloud Model Studio (Qwen). L’app contatta direttamente via HTTPS la sua API di Pechino. Altri fornitori configurati sono MiniMax e DeepSeek. Le conversazioni possono includere messaggi precedenti e risultati di query sui dati rilevanti dell’app. Dagli allegati scelti si estrae localmente il testo e si invia questo, non il file originale. I file non scelti non vengono letti.</p>
+    <p>Per rispondere, messaggi e contesto della conversazione, trascrizioni, testo degli allegati scelti e attività, piani, obiettivi, tag, idee, statistiche e risultati di query pertinenti saranno inviati a Alibaba Cloud Model Studio (Qwen).</p>
+    <p>La voce viene trascritta sul dispositivo; le registrazioni non vengono inviate. Aggiunte, modifiche ed eliminazioni richiedono sempre la tua conferma.</p>
+    <h3 data-topic="2">Autenticazione e registri</h3>
+    <p>core.pixelyang.com, ospitato a Chengdu, riceve prove Apple App Attest e conserva identificatori di registrazione, chiavi pubbliche, ambiente, contatori, date di creazione/uso e quote. Hash derivati da IP prevengono abusi. Core non riceve conversazioni o allegati. Le chiavi temporanee durano fino a 300 secondi, solo nella memoria dell’app. La diagnostica contiene fasi fisse, stato e durata, non chiavi, prove o conversazioni. Le registrazioni restano durante il servizio; contattateci per disattivare o eliminare una registrazione identificabile. Sfide scadute e finestre di quota vengono eliminate periodicamente, di norma entro circa 1–3 giorni; i log tecnici seguono la rotazione del server.</p>
+    <h3 data-topic="3">Consenso, conservazione ed eliminazione</h3>
+    <p>Prima del primo invio online si può accettare o rifiutare. Rifiuto o chiusura preservano bozza e allegato; le altre funzioni restano disponibili. Impostazioni → Consenso dati IA consente di revocare, annullare richieste attive e bloccare invii successivi. I modelli locali non richiedono consenso online. La cronologia resta in memoria fino alla chiusura dell’assistente. La revoca non ritira dati già inviati. Model Studio conserva dati delle chiamate secondo la legge applicabile; i fornitori applicano i propri accordi e informative a conservazione ed eliminazione. Non promettiamo conservazione zero. Eliminare elementi sincronizza l’eliminazione nel CloudKit privato; disinstallare non elimina tutti i registri cloud o dei fornitori.</p>
+    <h3 data-topic="4">Servizi di sistema e finalità</h3>
+    <p>Apple StoreKit gestisce acquisti e In famiglia; non riceviamo dati delle carte. La sincronizzazione Promemoria richiede permesso e azione esplicita. I permessi microfono/voce si revocano in iOS; le notifiche Pomodoro sono locali. I dati servono per assistente, autenticazione, sicurezza e quote, non pubblicità o tracciamento. Non vendiamo dati delle attività. Il contenuto può identificare persone; senza account non è automaticamente anonimo. Gli identificatori di autenticazione non entrano nei prompt del modello.</p>
+    <h3 data-topic="5">Minori e informazioni sensibili</h3>
+    <p>Evitate dati sensibili non necessari o dati personali altrui in messaggi e allegati. Sotto l’età locale del consenso autonomo, un tutore deve decidere sull’IA online.</p>
+    <h3 data-topic="6">Contatto e modifiche</h3>
+    <p>Privacy: pixelyang@icloud.com. Le informazioni inviate per email servono a gestire la richiesta. Cambiamenti importanti sono annunciati nell’app o nelle note di versione. Ampliare i dati o cambiare destinatario/endpoint richiede nuovo consenso.</p>
+    <p><a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> · <a href="https://help.aliyun.com/zh/model-studio/privacy-notice">Alibaba Cloud Model Studio (Qwen)</a> · <a href="https://www.apple.com/legal/privacy/">Apple</a></p>
     <p class="nav">→ <a href="guide.html">Guida d'uso</a> &nbsp;·&nbsp; <a href="support.html">Supporto</a></p>
   </section>
 
   <section class="lang-block" data-lang="pt" data-title="Política de Privacidade - DynamicTask">
     <h1>Política de Privacidade</h1>
-    <p class="meta">Última atualização: 24/05/2026</p>
-    <h3>Quais dados coletamos</h3>
-    <p><strong>Nenhum dado.</strong> O DynamicTask não coleta dados de usuários em nossos servidores e não transmite dados a terceiros.</p>
-    <h3>Como os dados são armazenados</h3>
-    <ul>
-      <li><strong>No dispositivo</strong>: todas as tarefas, metas, planos, dimensões e inspirações ficam armazenadas localmente no banco de dados SwiftData do seu dispositivo iOS.</li>
-      <li><strong>Sincronização com iCloud</strong>: se você está conectado ao iCloud com o iCloud Drive ativado, seus dados sincronizam entre seus dispositivos pelo <strong>banco de dados privado</strong> do Apple CloudKit. Apenas você e a Apple podem acessar esses dados — nem o desenvolvedor do DynamicTask nem terceiros podem.</li>
-    </ul>
-    <h3>Permissões do sistema</h3>
-    <ul>
-      <li><strong>Lembretes (opcional)</strong>: só gravamos tarefas no app «Lembretes» do iOS depois que você toca explicitamente no botão de sincronização e concede a permissão. Revogável a qualquer momento em Ajustes → Privacidade e Segurança → Lembretes.</li>
-      <li><strong>Notificações</strong>: notificações locais ao término das sessões Pomodoro. Tudo roda no dispositivo.</li>
-      <li><strong>iCloud (automático)</strong>: ativado na primeira execução para a sincronização entre dispositivos.</li>
-    </ul>
-    <h3>Serviços de terceiros</h3>
-    <ul>
-      <li><strong>Apple iCloud / CloudKit</strong>: sincronização de dados entre dispositivos. Consulte a <a href="https://www.apple.com/legal/privacy/" target="_blank">Política de Privacidade da Apple</a>.</li>
-      <li><strong>Apple StoreKit</strong>: processamento de assinaturas e compras. Nunca vemos suas informações de pagamento.</li>
-      <li><strong>Apple EventKit (opcional)</strong>: invocado apenas quando você autoriza e sincroniza explicitamente uma tarefa. Grava somente no app Lembretes do iOS, sem comunicação com servidores externos.</li>
-    </ul>
-    <h3>Compartilhamento Familiar</h3>
-    <p>Se você ou um organizador familiar ativar o Compartilhamento Familiar para a assinatura / compra única, os membros da família podem usar os recursos Pro através do entitlement compartilhado. As informações de pagamento são visíveis apenas para o organizador.</p>
-    <h3>Crianças</h3>
-    <p>O DynamicTask é classificado como 4+ e é adequado para todas as idades. Não coletamos intencionalmente dados de ninguém, independentemente da idade.</p>
-    <h3>Alterações na política</h3>
-    <p>Alterações relevantes nesta Política serão anunciadas via notificação no app ou notas de versão.</p>
-    <h3>Contato</h3>
-    <p>Dúvidas sobre privacidade: <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a></p>
+    <p class="meta">2026-10-09</p>
+    <h3 data-topic="0">Armazenamento e sincronização</h3>
+    <p>Tarefas, planos, metas, etiquetas e ideias ficam no dispositivo e sincronizam entre os seus dispositivos iCloud pelas bases privadas Apple CloudKit. A base pública só fornece configurações de assinatura, não tarefas pessoais. Datas de teste usam iCloud KV, Porta-chaves e preferências locais; o consentimento de IA fica local.</p>
+    <h3 data-topic="1">Dados de IA e destinatários</h3>
+    <p>O modelo online padrão é Alibaba Cloud Model Studio (Qwen). O app acessa diretamente por HTTPS a API de Pequim. Outros provedores configurados incluem MiniMax e DeepSeek. Conversas podem incluir mensagens anteriores e resultados de consultas a dados relevantes do app. Anexos selecionados têm texto extraído localmente; envia-se esse texto, não o arquivo original. Arquivos não selecionados não são lidos.</p>
+    <p>Para responder, as suas mensagens e contexto da conversa, transcrições, texto dos anexos escolhidos e tarefas, planos, objetivos, etiquetas, ideias, estatísticas e resultados de consultas relevantes serão enviados para Alibaba Cloud Model Studio (Qwen).</p>
+    <p>A voz é transcrita no dispositivo; as gravações não são enviadas. Adicionar, editar ou eliminar itens continua a exigir a sua confirmação.</p>
+    <h3 data-topic="2">Autenticação e registros</h3>
+    <p>core.pixelyang.com, hospedado em Chengdu, recebe provas Apple App Attest e mantém identificadores de registro, chaves públicas, ambiente, contadores, datas de criação/uso e cotas. Hashes derivados de IP previnem abuso. Core não recebe conversas ou anexos. Chaves temporárias duram até 300 segundos, apenas na memória do app. Diagnósticos contêm etapas fixas, estado e duração, sem chaves, provas ou conversas. Registros ficam durante o serviço; contate-nos para desativar ou excluir um registro identificável. Desafios expirados e janelas de cota são removidos periodicamente, normalmente em cerca de 1–3 dias; logs técnicos seguem a rotação do servidor.</p>
+    <h3 data-topic="3">Consentimento, retenção e exclusão</h3>
+    <p>Antes do primeiro envio online, pode aceitar ou recusar. Recusar ou fechar mantém rascunho e anexo; outras funções continuam disponíveis. Ajustes → Consentimento de dados de IA permite revogar, cancelar solicitações ativas e bloquear novos envios. Modelos locais não precisam de consentimento online. O histórico fica na memória até fechar o assistente. Revogar não recupera dados já enviados. Model Studio retém dados de chamadas conforme a lei aplicável; provedores seguem seus acordos e avisos para retenção e exclusão. Não prometemos retenção zero. Excluir itens sincroniza a exclusão no CloudKit privado; desinstalar não elimina todos os registros da nuvem ou dos provedores.</p>
+    <h3 data-topic="4">Serviços do sistema e finalidade</h3>
+    <p>Apple StoreKit processa compras e Compartilhamento Familiar; não recebemos dados de cartão. Sincronizar Lembretes exige permissão e ação explícita. Permissões de microfone/voz podem ser revogadas no iOS; notificações Pomodoro são locais. Os dados servem ao assistente, autenticação, segurança e cotas, não publicidade ou rastreamento. Não vendemos dados de tarefas. O conteúdo pode identificar pessoas; não ter conta não significa anonimato. Identificadores de autenticação não entram nas instruções do modelo.</p>
+    <h3 data-topic="5">Crianças e informações sensíveis</h3>
+    <p>Evite informações sensíveis desnecessárias ou dados pessoais de terceiros em mensagens e anexos. Abaixo da idade local para consentimento independente, um responsável deve decidir sobre IA online.</p>
+    <h3 data-topic="6">Contato e alterações</h3>
+    <p>Privacidade: pixelyang@icloud.com. As informações enviadas por email servem para atender o pedido. Mudanças importantes são anunciadas no app ou nas notas de versão. Ampliar os dados ou mudar destinatário/endpoint exige novo consentimento.</p>
+    <p><a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> · <a href="https://help.aliyun.com/zh/model-studio/privacy-notice">Alibaba Cloud Model Studio (Qwen)</a> · <a href="https://www.apple.com/legal/privacy/">Apple</a></p>
     <p class="nav">→ <a href="guide.html">Guia de uso</a> &nbsp;·&nbsp; <a href="support.html">Suporte</a></p>
   </section>
 
   <section class="lang-block" data-lang="ru" data-title="Политика конфиденциальности - DynamicTask">
     <h1>Политика конфиденциальности</h1>
-    <p class="meta">Последнее обновление: 24.05.2026</p>
-    <h3>Какие данные мы собираем</h3>
-    <p><strong>Никакие данные.</strong> DynamicTask не собирает пользовательские данные на наших серверах и не передаёт их третьим лицам.</p>
-    <h3>Как хранятся данные</h3>
-    <ul>
-      <li><strong>На устройстве</strong>: все задачи, цели, планы, измерения и идеи хранятся локально в базе данных SwiftData вашего iOS-устройства.</li>
-      <li><strong>Синхронизация iCloud</strong>: если вы вошли в iCloud и включили iCloud Drive, ваши данные синхронизируются между вашими устройствами через <strong>частную базу данных</strong> Apple CloudKit. Доступ к этим данным имеете только вы и Apple — ни разработчик DynamicTask, ни какие-либо третьи лица не могут получить к ним доступ.</li>
-    </ul>
-    <h3>Системные разрешения</h3>
-    <ul>
-      <li><strong>Напоминания (по желанию)</strong>: мы записываем задачи в приложение «Напоминания» iOS только после того, как вы явно нажмёте кнопку синхронизации и предоставите разрешение. Отозвать можно в любой момент через Настройки → Конфиденциальность и безопасность → Напоминания.</li>
-      <li><strong>Уведомления</strong>: локальные уведомления по завершении сессий Pomodoro. Всё выполняется на устройстве.</li>
-      <li><strong>iCloud (автоматически)</strong>: включается при первом запуске для синхронизации между устройствами.</li>
-    </ul>
-    <h3>Сторонние сервисы</h3>
-    <ul>
-      <li><strong>Apple iCloud / CloudKit</strong>: синхронизация данных между устройствами. См. <a href="https://www.apple.com/legal/privacy/" target="_blank">Политику конфиденциальности Apple</a>.</li>
-      <li><strong>Apple StoreKit</strong>: обработка подписок и покупок. Мы никогда не видим вашу платёжную информацию.</li>
-      <li><strong>Apple EventKit (по желанию)</strong>: вызывается только когда вы даёте разрешение и явно синхронизируете задачу. Записывает только в приложение «Напоминания» iOS, без обращения к внешним серверам.</li>
-    </ul>
-    <h3>Семейный доступ</h3>
-    <p>Если вы или организатор семьи включит Семейный доступ для подписки / разовой покупки, члены семьи смогут пользоваться функциями Pro через общий entitlement. Платёжная информация видна только организатору.</p>
-    <h3>Дети</h3>
-    <p>DynamicTask имеет рейтинг 4+ и подходит для всех возрастов. Мы не собираем данные ни о ком намеренно, независимо от возраста.</p>
-    <h3>Изменения политики</h3>
-    <p>О существенных изменениях этой политики мы сообщим через уведомление в приложении или примечания к выпуску новой версии.</p>
-    <h3>Контакты</h3>
-    <p>Вопросы по конфиденциальности: <a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a></p>
+    <p class="meta">2026-10-09</p>
+    <h3 data-topic="0">Хранение и синхронизация</h3>
+    <p>Задачи, планы, цели, теги и идеи хранятся на устройстве и синхронизируются между вашими устройствами iCloud через частные базы Apple CloudKit. Общая база содержит только настройки подписки, не личные задачи. Даты пробного периода хранятся в iCloud KV, Связке ключей и локальных настройках; согласие на ИИ — локально.</p>
+    <h3 data-topic="1">Данные ИИ и получатели</h3>
+    <p>Онлайн-модель по умолчанию — Alibaba Cloud Model Studio (Qwen). Приложение напрямую по HTTPS обращается к API в Пекине. Другие настроенные поставщики — MiniMax и DeepSeek. Диалог может включать прошлые сообщения и результаты запросов к относящимся к нему данным приложения. Из выбранных вложений локально извлекается и отправляется текст, не исходный файл. Невыбранные файлы не читаются.</p>
+    <p>Для ответов сообщения и контекст диалога, расшифровки речи, текст выбранных вложений, нужные задачи, планы, цели, теги, идеи, статистика и результаты запросов инструментов передаются в Alibaba Cloud Model Studio (Qwen).</p>
+    <p>Речь преобразуется в текст на устройстве; записи не отправляются. Добавление, изменение и удаление записей по-прежнему требуют подтверждения.</p>
+    <h3 data-topic="2">Аутентификация и записи сервиса</h3>
+    <p>Сервис core.pixelyang.com в Чэнду получает подтверждения Apple App Attest и хранит идентификаторы регистрации, открытые ключи, среду, счётчики, время создания/использования и квоты. Хеши на основе IP предотвращают злоупотребления. Core не получает диалоги или вложения. Временные ключи действуют до 300 секунд и остаются только в памяти приложения. Диагностика содержит фиксированные этапы, статус и длительность, без ключей, подтверждений и диалогов. Регистрации хранятся во время работы сервиса; для отключения или удаления определимой регистрации свяжитесь с нами. Просроченные запросы-проверки и окна квот очищаются периодически, обычно примерно за 1–3 дня; технические журналы следуют правилам ротации сервера.</p>
+    <h3 data-topic="3">Согласие, хранение и удаление</h3>
+    <p>Перед первой онлайн-отправкой можно согласиться или отказаться. Отказ или закрытие сохраняет черновик и вложение; остальные функции доступны. Настройки → Согласие на данные ИИ позволяет отозвать согласие, отменить активные запросы и остановить будущие отправки. Локальным моделям сетевое согласие не нужно. История приложения остаётся в памяти до закрытия помощника. Отзыв не возвращает уже отправленные данные. Model Studio хранит данные вызовов согласно применимому закону; поставщики регулируют хранение и удаление своими соглашениями и уведомлениями. Мы не обещаем нулевое хранение. Удаление элементов синхронизируется с частным CloudKit; удаление приложения не удаляет все облачные записи или записи поставщиков.</p>
+    <h3 data-topic="4">Системные сервисы и цели</h3>
+    <p>Apple StoreKit обрабатывает покупки и Семейный доступ; мы не получаем данные карт. Синхронизация Напоминаний требует разрешения и явного действия. Доступ к микрофону/речи отзывается в iOS; уведомления Pomodoro локальные. Данные нужны помощнику, аутентификации, безопасности и квотам, не рекламе или отслеживанию. Мы не продаём данные задач. Содержание может идентифицировать людей; отсутствие аккаунта не означает анонимность. Идентификаторы аутентификации не входят в запросы модели.</p>
+    <h3 data-topic="5">Дети и конфиденциальные сведения</h3>
+    <p>Не отправляйте ненужные чувствительные сведения или персональные данные других людей в сообщениях и вложениях. До местного возраста самостоятельного согласия решение об онлайн-ИИ должен принять опекун.</p>
+    <h3 data-topic="6">Контакты и изменения</h3>
+    <p>Запросы о конфиденциальности: pixelyang@icloud.com. Сведения из письма используются для обработки запроса. Важные изменения сообщаются в приложении или примечаниях к версии. Расширение данных, смена получателя или адреса API требуют нового согласия.</p>
+    <p><a href="mailto:pixelyang@icloud.com">pixelyang@icloud.com</a> · <a href="https://help.aliyun.com/zh/model-studio/privacy-notice">Alibaba Cloud Model Studio (Qwen)</a> · <a href="https://www.apple.com/legal/privacy/">Apple</a></p>
     <p class="nav">→ <a href="guide.html">Руководство пользователя</a> &nbsp;·&nbsp; <a href="support.html">Поддержка</a></p>
   </section>
 
